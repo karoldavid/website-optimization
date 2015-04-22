@@ -15,29 +15,6 @@ body {
   background: #fff;
 }
 
-/*header {
-  padding: 0 0.5em;
-  color: #C90B0B;
-}
-
-header img {
-  border-radius: 40px;
-  float: left;
-}
-
-header p {
-  font-size:1.5em;
-  font-weight: bold;
-  padding-left: 4em;
-}
-
-header p span {
-  font-size: 0.8em;
-  font-weight: normal;
-}*/
-
-/*button, input, select, textarea { font-family: 'open_sanslight', sans-serif; color: #333; }*/
-
 a {
   color: #12C;
 }
@@ -116,12 +93,12 @@ footer {
   padding: 0 0.5em;
   border-top: 1px solid #ccc;
 }
+
 footer span {
   float: right;
   font-style: italic;
 }
 
-/* Smartphones (portrait) */
 @media only screen and (min-width: 481px) {
   body {
     font-size: 16px;
