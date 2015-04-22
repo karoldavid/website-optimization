@@ -6,13 +6,56 @@ html {
   -webkit-text-size-adjust: none;
 }
 body {
-  margin: 0;
+  margin: 0.2em;
   font-size: 14px;
   line-height: 1.61;
   font-weight: 400;
   font-family: 'open_sanslight', sans-serif;
   color: #333;
   background: #fff;
+  display: -webkit-box;
+	display: -moz-box;
+	display: box;
+
+	-webkit-box-orient: vertical;
+	-moz-box-orient: vertical;
+	box-orient: vertical;
+
+	-webkit-box-align: center;
+	-moz-box-align: center;
+	box-align: center;
+}
+
+.box-2 {
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	box-flex: 1;
+}
+
+
+header {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  box-align: start;
+  /*padding: 0 0.5em;*/
+  color: #C90B0B;
+}
+header img {
+  margin: 2em 0 0 0;
+  border-radius: 40px;
+}
+header p {
+  font-size: 1.5em;
+  font-weight: bold;
+  padding-left: 4.5em;
+}
+header p span {
+  font-size: 0.8em;
+  font-weight: normal;
 }
 
 a {
@@ -53,12 +96,6 @@ ol {
 img {
   border: 0;
   max-width: 100%;
-}
-
-footer,
-.container {
-  max-width: 45em;
-  margin: 0 auto;
 }
 
 .hero {
@@ -105,5 +142,10 @@ footer span {
   }
   header p {
     padding-left: 4em;
+  }
+  footer,
+  .container {
+    max-width: 45em;
+    margin: 0 auto;
   }
 }

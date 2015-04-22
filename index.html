@@ -23,33 +23,14 @@
     </script>
     <script async src="http://www.google-analytics.com/analytics.js"></script>
     <script async src="js/perfmatters.js"></script>
-    <style>
-      header {
-        padding: 0 0.5em;
-        color: #C90B0B;
-        max-width: 45em;
-        margin: 0 auto;
-      }
-      header img {
-        border-radius: 40px;
-        float: left;
-      }
-      header p {
-        font-size: 1.5em;
-        font-weight: bold;
-        padding-left: 4.5em;
-      }
-      header p span {
-        font-size: 0.8em;
-        font-weight: normal;
-      }
-    </style>
   </head>
 
   <body>
     <header>
       <a href="http://karoldavid.github.io/interactive-resume/" target="_blank"><img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="img/karol.jpg" alt="Karol Portrait"></a>
-      <p>Karol Zyskowski<br><span>Front-End Web Developer</span></p>
+      <div class="box-2">
+        <p>Karol Zyskowski<br><span>Front-End Web Developer</span></p>
+      </div>
     </header>
 
     <div class="container">
@@ -88,7 +69,7 @@
     <footer>
       <p>&copy; Web Performance <script async>document.write(new Date().getFullYear())</script> <span id="crp-stats"></span></p>
     </footer>
-    <script src="js/classie.js"></script>
+    <script async src="js/classie.js"></script>
     <script>
       function init() {
         var imgDefer = document.getElementsByTagName('img');
