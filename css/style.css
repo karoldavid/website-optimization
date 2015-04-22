@@ -7,7 +7,7 @@ html {
 }
 body {
   margin: 0;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.61;
   font-weight: 400;
   font-family: 'open_sanslight', sans-serif;
@@ -78,7 +78,6 @@ img {
   max-width: 100%;
 }
 
-header,
 footer,
 .container {
   max-width: 45em;
@@ -123,11 +122,11 @@ footer span {
 }
 
 /* Smartphones (portrait) */
-@media only screen and (max-width: 480px) {
+@media only screen and (min-width: 481px) {
   body {
-    font-size: 14px;
+    font-size: 16px;
   }
   header p {
-    padding-left: 4.5em;
+    padding-left: 4em;
   }
 }
