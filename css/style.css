@@ -34,25 +34,29 @@ body {
 }
 
 header {
+  background: #f5b732;
+}
+
+.header__inner {
   display: -webkit-flex;
   display:         flex;
   -webkit-flex-flow: row;
          flex-flow: row;
-  color: #C90B0B;
+  color: #fff;
 }
 
-header img {
-   margin: 2em 0 0 0;
-   border-radius: 40px;
+.header__inner img {
+   margin: 1.75em 0;
+   /*border-radius: 40px;*/
 }
 
-header p {
+.header__inner p {
   font-size: 1.5em;
   font-weight: bold;
-  padding-left: 4.5em;
+  /*padding-left: 4.5em;*/
 }
 
-header p span {
+.header__inner p span {
   font-size: 0.8em;
   font-weight: normal;
 }
@@ -107,6 +111,23 @@ footer {
   margin: 4px;
   padding: 5px;
   text-align: center;
+}
+
+footer ul {
+  display: inline;
+}
+
+footer ul li {
+  margin: 15px;
+  padding: 10px;
+  list-style-type: none;
+  font-size: 1.1em;
+  color: #77c4d3;
+}
+
+footer a:hover {
+  opacity: 0.5;
+  cursor: pointer;
 }
 
 .hero {
@@ -213,14 +234,14 @@ div p {
   body {
     font-size: 16px;
   }
-  .main, content, header, footer {
+  .main, .header__inner, content, footer {
     max-width: 45em;
     margin: 0 auto;
   }
 }
 
 @media only screen and (min-width: 70em) {
-  .main, content, header, footer {
+  .main, .header__inner, content, footer {
     max-width: 60em;
     margin: 0 auto;
   }
