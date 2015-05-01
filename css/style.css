@@ -170,17 +170,7 @@ div p {
  }
 }
 
-@media only screen and (max-width: 899px) {
-}
-
-@media only screen and (min-width: 900px) {
-  body {
-    font-size: 16px;
-  }
-  .main, header, footer {
-    max-width: 45em;
-    margin: 0 auto;
-  }
+@media only screen and (min-width: 30em) {
   .flex {
     /* basic styling */
     width: 100%;
@@ -211,5 +201,25 @@ div p {
 
   .flex > div:hover {
     width: 200%;
+  }
+}
+
+@media only screen and (max-width: 49em) {
+}
+
+@media only screen and (min-width: 50em) {
+  body {
+    font-size: 16px;
+  }
+  .main, header, footer {
+    max-width: 45em;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (min-width: 70em) {
+  .main, header, footer {
+    max-width: 60em;
+    margin: 0 auto;
   }
 }
