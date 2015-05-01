@@ -15,6 +15,7 @@ body {
   color: #333;
   width: 100%;
   min-width: 320px;
+  background: #f2f9fb;
 }
 
 .main {
@@ -25,14 +26,11 @@ body {
   display:         flex;
   -webkit-flex-flow: row;
           flex-flow: row;
-  border: 1px solid #cccc33;
-  border-radius: 7pt;
-  background: #dddd88;
+  /*border: 1px solid #cccc33;*/
 }
 
-.main > article {
-  margin: 4px;
-  padding: 5px;
+.main > content {
+  border-bottom: 1px solid #ccc;
 }
 
 header {
@@ -99,15 +97,15 @@ img {
   max-width: 100%;
 }
 
-header, footer {
+header {
   margin: 4px;
   padding: 5px;
-  border: 1px solid #eebb55;
-  border-radius: 7pt;
-  background: #ffeebb;
+  /*border: 1px solid #eebb55;*/
 }
 
 footer {
+  margin: 4px;
+  padding: 5px;
   text-align: center;
 }
 
@@ -119,8 +117,8 @@ footer {
   border-top: 1px solid #ccc;
 }
 
-.container {
-  align-items: left;
+article {
+  padding: 2em 0;
 }
 
 li {
@@ -158,7 +156,7 @@ div p {
        flex-direction: column;
  }
 
- .main > article {
+ .main > content {
   /* Return them to document order */
     -webkit-order: 0;
             order: 0;
@@ -175,12 +173,13 @@ div p {
     /* basic styling */
     width: 100%;
     height: 200px;
-    border: 1px solid #555;
+    /*border: 1px solid #555;*/
     /* flexbox setup */
     display: -webkit-flex;
     -webkit-flex-direction: row;
     display: flex;
     flex-direction: row;
+    /*flex-wrap: wrap;*/
   }
 
   .flex > div {
@@ -189,15 +188,18 @@ div p {
     width: 50%; /* To make the transition work nicely.  (Transitions to/from
                      "width:auto" are buggy in Gecko and Webkit, at least.
                      See http://bugzil.la/731886 for more info.) */
+    border: 1px solid #cccc33;
+    border-radius: 7pt;
 
     -webkit-transition: width 0.7s ease-out;
     transition: width 0.7s ease-out;
   }
 
   /* colors */
-  .flex > div:nth-child(1){ background : #009246; }
-  .flex > div:nth-child(2){ background : #F1F2F1; }
-  .flex > div:nth-child(3){ background : #CE2B37; }
+  .flex > div:nth-child(1){ background : #77c4d3; }
+  .flex > div:nth-child(2){ background : #df3c57; }
+  .flex > div:nth-child(3){ background : #eaf299; }
+  .flex > div:nth-child(4){ background : #f2f9fb; }
 
   .flex > div:hover {
     width: 200%;
@@ -211,14 +213,14 @@ div p {
   body {
     font-size: 16px;
   }
-  .main, header, footer {
+  .main, content, header, footer {
     max-width: 45em;
     margin: 0 auto;
   }
 }
 
 @media only screen and (min-width: 70em) {
-  .main, header, footer {
+  .main, content, header, footer {
     max-width: 60em;
     margin: 0 auto;
   }
