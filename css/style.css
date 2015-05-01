@@ -5,6 +5,7 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: none;
 }
+
 body {
   margin: 0.2em;
   font-size: 14px;
@@ -12,47 +13,45 @@ body {
   font-weight: 400;
   font-family: 'open_sanslight', sans-serif;
   color: #333;
-  background: #fff;
-  display: -webkit-box;
-	display: -moz-box;
-	display: box;
-
-	-webkit-box-orient: vertical;
-	-moz-box-orient: vertical;
-	box-orient: vertical;
-
-	-webkit-box-align: center;
-	-moz-box-align: center;
-	box-align: center;
 }
 
-.box-2 {
-	-webkit-box-flex: 1;
-	-moz-box-flex: 1;
-	box-flex: 1;
+.main {
+  height: auto;
+  margin: 4px;
+  padding: 5px;
+  display: -webkit-flex;
+  display:         flex;
+  -webkit-flex-flow: row;
+          flex-flow: row;
+  border: 1px solid #cccc33;
+  border-radius: 7pt;
+  background: #dddd88;
 }
 
+.main > article {
+  margin: 4px;
+  padding: 5px;
+}
 
 header {
-  display: -webkit-box;
-  display: -moz-box;
-  display: box;
-
-  -webkit-box-align: start;
-  -moz-box-align: start;
-  box-align: start;
-  /*padding: 0 0.5em;*/
+  display: -webkit-flex;
+  display:         flex;
+  -webkit-flex-flow: row;
+         flex-flow: row;
   color: #C90B0B;
 }
+
 header img {
-  margin: 2em 0 0 0;
-  border-radius: 40px;
+   margin: 2em 0 0 0;
+   border-radius: 40px;
 }
+
 header p {
   font-size: 1.5em;
   font-weight: bold;
   padding-left: 4.5em;
 }
+
 header p span {
   font-size: 0.8em;
   font-weight: normal;
@@ -65,7 +64,6 @@ a {
 a:visited {
   color: #61C;
 }
-
 a:focus {
   outline: thin dotted;
 }
@@ -91,11 +89,24 @@ ul,
 ol {
   margin: 1em 0;
   padding: 0 0 0 20px;
+  display: inline;
 }
 
 img {
   border: 0;
   max-width: 100%;
+}
+
+header, footer {
+  margin: 4px;
+  padding: 5px;
+  border: 1px solid #eebb55;
+  border-radius: 7pt;
+  background: #ffeebb;
+}
+
+footer {
+  text-align: center;
 }
 
 .hero {
@@ -106,17 +117,17 @@ img {
   border-top: 1px solid #ccc;
 }
 
-.content {
-  padding: 1em 1em;
+.container {
+  align-items: left;
 }
 
-.content li {
+li {
   list-style-type: none;
   font-size: 1.1em;
 }
 
 li img {
-  float:left;
+  float: left;
   padding-right: 1em;
   width: 100px;
 }
@@ -126,26 +137,77 @@ li p {
   font-style: italic;
 }
 
-footer {
-  padding: 0 0.5em;
-  border-top: 1px solid #ccc;
+div img {
+  float: left;
+  padding-right: 1em;
+  width: 100px;
 }
 
-footer span {
-  float: right;
+div p {
+  font-size: 0.9em;
   font-style: italic;
 }
 
-@media only screen and (min-width: 481px) {
+/* Too narrow to support three columns */
+@media only screen and (max-width: 640px) {
+
+ .main {
+    -webkit-flex-flow: column;
+       flex-direction: column;
+ }
+
+ .main > article {
+  /* Return them to document order */
+    -webkit-order: 0;
+            order: 0;
+ }
+
+ .main > footer {
+    min-height: 50px;
+    max-height: 50px;
+ }
+}
+
+@media only screen and (min-width: 900px) {
   body {
     font-size: 16px;
   }
-  header p {
-    padding-left: 4em;
-  }
-  footer,
-  .container {
+  .main, header, footer {
     max-width: 45em;
     margin: 0 auto;
   }
+}
+
+.flex {
+  /* basic styling */
+  width: 100%;
+  height: 200px;
+  border: 1px solid #555;
+  font: 14px Arial;
+
+  /* flexbox setup */
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+  display: flex;
+  flex-direction: row;
+}
+
+.flex > div {
+  -webkit-flex: 1 1 auto;
+  flex: 1 1 auto;
+  width: 50%; /* To make the transition work nicely.  (Transitions to/from
+                   "width:auto" are buggy in Gecko and Webkit, at least.
+                   See http://bugzil.la/731886 for more info.) */
+
+  -webkit-transition: width 0.7s ease-out;
+  transition: width 0.7s ease-out;
+}
+
+/* colors */
+.flex > div:nth-child(1){ background : #009246; }
+.flex > div:nth-child(2){ background : #F1F2F1; }
+.flex > div:nth-child(3){ background : #CE2B37; }
+
+.flex > div:hover {
+  width: 200%;
 }
