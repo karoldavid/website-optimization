@@ -18,21 +18,6 @@ body {
   background: #f2f9fb;
 }
 
-.main {
-  height: 850px;
-  margin: 4px;
-  padding: 5px;
-  display: -webkit-flex;
-  display:         flex;
-  -webkit-flex-flow: row;
-          flex-flow: row;
-  /*border: 1px solid #cccc33;*/
-}
-
-.main > content {
-  border-bottom: 1px solid #ccc;
-}
-
 header {
     position: fixed;
     top: 0;
@@ -71,6 +56,8 @@ header p {
 
 header p span {
   font-size: 0.8em;
+  padding: 0;
+  margin: 0;
   font-weight: normal;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
@@ -78,7 +65,7 @@ header p span {
 }
 
 header img {
-    margin: 0.5em 0;
+    margin: 0.5em 1em 0.5em 0;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s;
@@ -174,6 +161,20 @@ footer a:hover {
   cursor: pointer;
 }
 
+.main {
+  margin: 150px 4px 4px;
+  padding: 150px 5px 5px;
+  display: -webkit-flex;
+  display:         flex;
+  -webkit-flex-flow: row;
+          flex-flow: row;
+  /*border: 1px solid #cccc33;*/
+}
+
+.main > content {
+  border-bottom: 1px solid #ccc;
+}
+
 .hero {
   padding: 2em;
   background-color: #f8f8f8;
@@ -233,6 +234,14 @@ div p {
 
 /* Too narrow to support three columns */
 @media only screen and (max-width: 640px) {
+
+  header p {
+      font-size: 1.5em;
+  }
+
+  header p span {
+    font-size: 0.8em;
+  }
 
  .main {
     -webkit-flex-flow: column;
