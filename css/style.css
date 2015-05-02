@@ -42,7 +42,7 @@ header {
 
 }
 header.shrink {
-    height: 50px;
+    height: 3em;
 }
 header p {
     padding: 0;
@@ -200,7 +200,16 @@ footer a:hover {
 
 .hero {
   padding: 2em;
-  background-color: #176bec;
+  /*background-color: #176bec;*/
+  background: #8cd3f6; /* Old browsers */
+background: -moz-linear-gradient(left,  #8cd3f6 0%, #1489e2 67%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,#8cd3f6), color-stop(67%,#1489e2)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left,  #8cd3f6 0%,#1489e2 67%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left,  #8cd3f6 0%,#1489e2 67%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left,  #8cd3f6 0%,#1489e2 67%); /* IE10+ */
+background: linear-gradient(to right,  #8cd3f6 0%,#1489e2 67%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8cd3f6', endColorstr='#1489e2',GradientType=1 ); /* IE6-9 */
+
   color: #fff;
   border-bottom: 1px solid #ccc;
   border-top: 1px solid #ccc;
