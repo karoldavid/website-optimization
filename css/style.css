@@ -19,7 +19,7 @@ body {
 }
 
 .main {
-  height: auto;
+  height: 850px;
   margin: 4px;
   padding: 5px;
   display: -webkit-flex;
@@ -34,31 +34,75 @@ body {
 }
 
 header {
-  background: #f5b732;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #f5b732;
+    height: auto;
+    color:#fff;
+    z-index: 1000;
+    overflow: hidden;
+    -webkit-transition: height 0.3s;
+    -moz-transition: height 0.3s;
+    transition: height 0.3s;
+    display: -webkit-flex;
+    display:         flex;
+    flex-wrap: wrap;
+    -webkit-flex-flow: row;
+           flex-flow: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+}
+header.shrink {
+    height: 50px;
+}
+header p {
+    padding: 0;
+    margin: 0;
+    font-size: 2em;
+    font-weight: bold;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
 }
 
-.header__inner {
-  display: -webkit-flex;
-  display:         flex;
-  -webkit-flex-flow: row;
-         flex-flow: row;
-  color: #fff;
-}
-
-.header__inner img {
-   margin: 1.75em 0;
-   /*border-radius: 40px;*/
-}
-
-.header__inner p {
-  font-size: 1.5em;
-  font-weight: bold;
-  /*padding-left: 4.5em;*/
-}
-
-.header__inner p span {
+header p span {
   font-size: 0.8em;
   font-weight: normal;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+header img {
+    margin: 0.5em 0;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+header.shrink p {
+    font-size: 1em;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+header.shrink p span {
+    font-size: 0.7em;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+header.shrink img {
+    width: 0;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
 }
 
 a {
@@ -141,6 +185,24 @@ footer a:hover {
 article {
   padding: 2em 0;
 }
+
+.favorites {
+  width: 100%;
+  margin-bottom: 2em;
+  padding-bottom: 2em;
+}
+
+iframe {
+  float: left;
+  margin-right: 10px;
+  width: calc((100% - 20px)/3);
+  min-height: 200px;
+}
+
+iframe:last-of-type {
+  margin-right: 0;
+}
+
 
 li {
   list-style-type: none;
@@ -234,14 +296,14 @@ div p {
   body {
     font-size: 16px;
   }
-  .main, .header__inner, content, footer {
+  .main, content, footer {
     max-width: 45em;
     margin: 0 auto;
   }
 }
 
 @media only screen and (min-width: 70em) {
-  .main, .header__inner, content, footer {
+  .main, content, footer {
     max-width: 60em;
     margin: 0 auto;
   }

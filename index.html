@@ -14,29 +14,31 @@
     <link rel="stylesheet" href="icons/css/font-awesome.min.css">
     <link href="css/style.css" rel="stylesheet">
     <!-- <link href="css/print.css" rel="stylesheet" media="print"> -->
-
+    <script src="js/min/jquery-1.11.2.min.js"></script>
     <script async src="js/build/production.min.js"></script>
     <!--<script async src="js/classie.js"></script>-->
   </head>
   <body>
     <header>
-      <div class="header__inner">
       <a href="http://karoldavid.github.io/interactive-resume/" target="_blank">
         <picture>
           <source srcset="img/profile_pic-150_large_2x.jpg 2x, img/profile_pic-75_large_1x.jpg" />
           <img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="img/profile_pic.jpg" width="75" alt="Karol Portrait">
         </picture>
       </a>
-      <p>Front-End Web Developer<br><span>Karol Zyskowski</span></p>
-    </div>
+      <p>Front-End Web Developer<span>Karol Zyskowski - eat, sleep, develop</span></p>
     </header>
 
     <div class="main">
        <content>
          <div class="hero">
-           <strong>Z-SITES</strong> the fastest pages on the web... zzz Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. <br> Contact me: k.zysk@zoho.com
-         </div>
+           <strong>Z-SITES:</strong> among the fastest pages on the web... zzz<br><br>'It is your mission to get your content out, on whichever platform, in whichever format your audience wants to consume it. Your users get to decide how, when, and where they want to read your content. It is your challenge and your responsibility to deliver a good experience to them.'<br><br>Karen McGrane (A List Apart)</div>
        <article>
+         <!-- <div class="favorites" style="display:none">
+           <iframe class="sample-video" src="https://www.youtube.com/embed/kuuCjumml3Q" frameborder="0" allowfullscreen></iframe>
+           <iframe class="sample-video" src="https://youtube.com/embed/djqpC2ZdDNc" frameborder="0" allowfullscreen></iframe>
+           <iframe class="sample-video" src="https://www.youtube.com/embed/d3_ErCmE2Ts?feature=player_profilepage" frameborder="0" allowfullscreen></iframe>
+        </div> -->
          <div class="flex">
            <div>
                <picture>
@@ -86,6 +88,7 @@
         <a href="http://pouchkine.tumblr.com/"><li class="fa fa-tumblr"></li></a>
         <a href="#"><li class="fa fa-linkedin"></li></a>
         <a href="mailto:k.zysk@zoho.com" target="_self"><li class="fa fa-envelope-o"></li></a>
+        <a href="#"><li class="fa fa-rss"></li></a>
       </ul>
       <p>&copy; Web Performance <script async>document.write(new Date().getFullYear())</script> <span id="crp-stats"></span></p>
     </footer>
@@ -121,6 +124,23 @@
         }
       }
       window.onload = init;
+  </script>
+  <script>
+  $(function(){
+var shrinkHeader = 50;
+$(window).scroll(function() {
+  var scroll = getCurrentScroll();
+    if ( scroll >= shrinkHeader ) {
+         $('header').addClass('shrink');
+      }
+      else {
+          $('header').removeClass('shrink');
+      }
+});
+function getCurrentScroll() {
+  return window.pageYOffset;
+  }
+});
   </script>
   </body>
 </html>
