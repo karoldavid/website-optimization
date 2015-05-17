@@ -489,10 +489,12 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
   var items = document.querySelectorAll('.mover');
-  var scroll = document.body.scrollTop / 1250;
+  var phase = [];
+  for (var x = 0; x < 5; x++) { phase[x] = Math.sin((document.body.scrollTop / 1250) + x); }
+  var x = 0;
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin(scroll + (i % 5));
-    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+    items[i].style.left = items[i].basicLeft + 100 * phase[x] + 'px';
+    if (x < 4) { x += 1; } else { x = 0; }
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -522,6 +524,6 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     document.querySelector("#movingPizzas1").appendChild(elem);
   }
-  console.log(document.querySelector("#movingPizzas1").getElementsByTagName("img").length);
+  console.log('Number of moving pizzas: ' + document.querySelector("#movingPizzas1").getElementsByTagName("img").length);
   updatePositions();
 });
