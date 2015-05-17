@@ -142,6 +142,8 @@ pizzaIngredients.crusts = [
   "Stuffed Crust"
 ];
 
+var items = [];
+
 // Name generator pulled from http://saturdaykid.com/usernames/generator.html
 // Capitalizes first letter of each word
 String.prototype.capitalize = function() {
@@ -489,11 +491,8 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
   var phase = [];
   for (var x = 0; x < 5; x++) { phase[x] = Math.sin((document.body.scrollTop / 1250) + x); }
-  var items = document.getElementsByClassName('mover');
-  var x = 0;
   for (var i = 0; i < items.length; i++) {
-    items[i].style.left = items[i].basicLeft + 100 * phase[x] + 'px';
-    if (x < 4) { x += 1; } else { x = 0; }
+    items[i].style.left = items[i].basicLeft + 100 * phase[i % 5] + 'px';
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -523,6 +522,6 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     document.querySelector("#movingPizzas1").appendChild(elem);
   }
-  console.log('Number of moving pizzas: ' + document.querySelector("#movingPizzas1").getElementsByTagName("img").length);
+  items = document.getElementsByClassName('mover');
   updatePositions();
 });
