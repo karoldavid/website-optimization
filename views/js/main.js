@@ -437,7 +437,7 @@ var resizePizzas = function(size) {
         console.log("Bug in sizeSwitcher");
     }
 
-    var randomPizzas = document.querySelectorAll(".randomPizzaContainer");
+    var randomPizzas = document.getElementsByClassName(".randomPizzaContainer");
     for (var i = 0; i < randomPizzas.length; i++) {
       randomPizzas[i].style.width = newWidth + "%";
     }
@@ -487,10 +487,9 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
-
-  var items = document.querySelectorAll('.mover');
   var phase = [];
   for (var x = 0; x < 5; x++) { phase[x] = Math.sin((document.body.scrollTop / 1250) + x); }
+  var items = document.getElementsByClassName('mover');
   var x = 0;
   for (var i = 0; i < items.length; i++) {
     items[i].style.left = items[i].basicLeft + 100 * phase[x] + 'px';
