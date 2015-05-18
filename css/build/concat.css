@@ -1,375 +1,3 @@
-@media print {
-  * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; }
-  a, a:visited { color: #444 !important; text-decoration: underline; }
-  a[href]:after { content: " (" attr(href) ")"; }
-  tr, img { page-break-inside: avoid; }
-  img { max-width: 100% !important; }
-  @page { margin: 0.5cm; }
-  p, h2, h3 { orphans: 3; widows: 3; }
-  h2, h3{ page-break-after: avoid; }
-}
-
-html {
-  font-size: 100%;
-  overflow-y: scroll;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: none;
-}
-
-body {
-  margin: 0.2em;
-  font-size: 14px;
-  line-height: 1.61;
-  font-weight: 400;
-  font-family: 'open_sanslight', sans-serif;
-  color: #333;
-  width: 100%;
-  min-width: 320px;
-  background: #f2f9fb;
-}
-
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #f5b732;
-    height: auto;
-    color:#fff;
-    z-index: 1000;
-    overflow: hidden;
-    -webkit-transition: height 0.3s;
-    -moz-transition: height 0.3s;
-    transition: height 0.3s;
-    display: -webkit-flex;
-    display:         flex;
-    flex-wrap: wrap;
-    -webkit-flex-flow: row;
-           flex-flow: row;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-
-}
-header.shrink {
-    height: 3em;
-}
-header p {
-    padding: 0;
-    margin: 0;
-    font-size: 2em;
-    font-weight: bold;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
-}
-
-header p span {
-  font-size: 0.8em;
-  padding: 0;
-  margin: 0;
-  font-weight: normal;
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
-header img {
-    margin: 0.5em 1em 0.5em 0;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
-}
-
-header.shrink p {
-    font-size: 1em;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
-}
-
-header.shrink p span {
-    font-size: 0.7em;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
-}
-
-header.shrink img {
-    width: 0;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
-}
-
-a {
-  color: #12C;
-}
-
-a:visited {
-  color: #61C;
-}
-a:focus {
-  outline: thin dotted;
-}
-
-a:hover,
-a:active {
-  color: #c00;
-  outline: 0;
-}
-
-b,
-strong {
-  font-weight: bold;
-}
-
-pre,
-code {
-  font-family: monospace, monospace;
-  font-size: 1em;
-}
-
-ul,
-ol {
-  margin: 1em 0;
-  padding: 0 0 0 20px;
-  display: inline;
-}
-
-q {
-    quotes: "«" "»";
-}
-
-blockquote {
-  background: #eaf299;
-  border-left: 10px solid #ccc;
-  margin: 1.5em 10px;
-  padding: 0.5em 10px;
-  quotes: "\201C""\201D""\2018""\2019";
-}
-blockquote:before {
-  color: #ccc;
-  content: open-quote;
-  font-size: 4em;
-  line-height: 0.1em;
-  margin-right: 0.25em;
-  vertical-align: -0.4em;
-}
-blockquote p {
-  display: inline;
-}
-
-img {
-  border: 0;
-  max-width: 100%;
-}
-
-header {
-  margin: 4px;
-  padding: 5px;
-  /*border: 1px solid #eebb55;*/
-}
-
-footer {
-  margin: 4px;
-  padding: 5px;
-  text-align: center;
-}
-
-footer ul {
-  display: inline;
-}
-
-footer ul li {
-  margin: 15px;
-  padding: 10px;
-  list-style-type: none;
-  font-size: 1.1em;
-  color: #77c4d3;
-}
-
-footer a:hover {
-  opacity: 0.5;
-  cursor: pointer;
-}
-
-.main {
-  margin: 150px 4px 4px;
-  padding: 150px 5px 5px;
-  display: -webkit-flex;
-  display:         flex;
-  -webkit-flex-flow: row;
-          flex-flow: row;
-  /*border: 1px solid #cccc33;*/
-}
-
-.main > content {
-  border-bottom: 1px solid #ccc;
-}
-
-.hero {
-  padding: 2em;
-  /*background-color: #176bec;*/
-  background: #8cd3f6; /* Old browsers */
-background: -moz-linear-gradient(left,  #8cd3f6 0%, #1489e2 67%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, right top, color-stop(0%,#8cd3f6), color-stop(67%,#1489e2)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(left,  #8cd3f6 0%,#1489e2 67%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(left,  #8cd3f6 0%,#1489e2 67%); /* Opera 11.10+ */
-background: -ms-linear-gradient(left,  #8cd3f6 0%,#1489e2 67%); /* IE10+ */
-background: linear-gradient(to right,  #8cd3f6 0%,#1489e2 67%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8cd3f6', endColorstr='#1489e2',GradientType=1 ); /* IE6-9 */
-
-  color: #fff;
-  border-bottom: 1px solid #ccc;
-  border-top: 1px solid #ccc;
-  text-align: center;
-}
-
-.hero h1 {
-  padding: 0;
-  margin: 0;
-}
-
-article {
-  padding: 2em 0;
-}
-
-.favorites {
-  width: 100%;
-  margin-bottom: 2em;
-  padding-bottom: 2em;
-}
-
-iframe {
-  float: left;
-  margin-right: 10px;
-  width: calc((100% - 20px)/3);
-  min-height: 200px;
-}
-
-iframe:last-of-type {
-  margin-right: 0;
-}
-
-
-li {
-  list-style-type: none;
-  font-size: 1.1em;
-}
-
-li img {
-  float: left;
-  padding-right: 1em;
-  width: 100px;
-}
-
-li p {
-  font-size: 0.9em;
-  font-style: italic;
-}
-
-div img {
-  float: left;
-  padding-right: 1em;
-  width: 100px;
-}
-
-div p {
-  font-size: 0.9em;
-  font-style: italic;
-}
-
-/* Too narrow to support three columns */
-@media only screen and (max-width: 640px) {
-
-  header p {
-      font-size: 1.2em;
-  }
-
-  header p span {
-    font-size: 0.6em;
-  }
-
- .main {
-   padding-top: 0;
-   margin-top: 0;
-
-    -webkit-flex-flow: column;
-       flex-direction: column;
- }
-
- .main > content {
-  /* Return them to document order */
-    -webkit-order: 0;
-            order: 0;
- }
-
- .main > footer {
-    min-height: 50px;
-    max-height: 50px;
- }
-}
-
-@media only screen and (min-width: 30em) {
-  .flex {
-    /* basic styling */
-    width: 100%;
-    height: 200px;
-    /*border: 1px solid #555;*/
-    /* flexbox setup */
-    display: -webkit-flex;
-    -webkit-flex-direction: row;
-    display: flex;
-    flex-direction: row;
-    /*flex-wrap: wrap;*/
-  }
-
-  .flex > div {
-    -webkit-flex: 1 1 auto;
-    flex: 1 1 auto;
-    width: 50%; /* To make the transition work nicely.  (Transitions to/from
-                     "width:auto" are buggy in Gecko and Webkit, at least.
-                     See http://bugzil.la/731886 for more info.) */
-    border: 1px solid #cccc33;
-    border-radius: 7pt;
-
-    -webkit-transition: width 0.7s ease-out;
-    transition: width 0.7s ease-out;
-  }
-
-  /* colors */
-  .flex > div:nth-child(1){ background : #77c4d3; }
-  .flex > div:nth-child(2){ background : #df3c57; }
-  .flex > div:nth-child(3){ background : #eaf299; }
-  .flex > div:nth-child(4){ background : #f2f9fb; }
-
-  .flex > div:hover {
-    width: 200%;
-  }
-}
-
-@media only screen and (max-width: 49em) {
-}
-
-@media only screen and (min-width: 50em) {
-  body {
-    font-size: 16px;
-  }
-  .main, content, footer {
-    max-width: 45em;
-    margin: 0 auto;
-  }
-}
-
-@media only screen and (min-width: 70em) {
-  .main, content, footer {
-    max-width: 60em;
-    margin: 0 auto;
-  }
-}
-
 /* Generated by Font Squirrel (http://www.fontsquirrel.com) on April 21, 2015 */
 
 
@@ -2218,4 +1846,72 @@ div p {
 }
 .fa-medium:before {
   content: "\f23a";
+}
+
+@media print {
+  * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; }
+  a, a:visited { color: #444 !important; text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3{ page-break-after: avoid; }
+}
+
+header.shrink, img {
+   -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+header.shrink p, p span {
+   -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    transition: all 0.1s;
+}
+
+header.shrink {
+    height: 3em;
+}
+
+header.shrink p {
+    font-size: 95%;
+}
+
+header.shrink p span {
+    font-size: 95%;
+}
+
+header.shrink img {
+    width: 0;
+    height: 0;
+}
+
+a:visited {
+  color: #61C;
+}
+a:focus {
+  outline: thin dotted;
+}
+
+a:hover,
+a:active {
+  color: #c00;
+  outline: 0;
+}
+
+
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+footer a:hover {
+  opacity: 0.5;
+  cursor: pointer;
 }
