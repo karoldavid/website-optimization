@@ -26,6 +26,9 @@
       }
       /* Too narrow to support three columns */
 @media only screen and (max-width: 40em) {
+  body {
+    font-size: 14px;
+  }
   header p {
       font-size: 1.2em;
   }
@@ -38,7 +41,7 @@
   /* Return them to document order */
     -webkit-order: 0;
             order: 0;
-  margin-top: 10em;
+     margin-top: 9em;
   }
 
   footer {
@@ -83,8 +86,16 @@
   }
 }
 
-@media only screen and (min-width: 30em) and (max-width: 49em) {
-
+@media only screen and (min-width: 41em) {
+  header p {
+      font-size: 1.8em;
+    }
+    header p span {
+      font-size: 1em;
+    }
+  content {
+    margin-top: 9em;
+  }
 }
 
 @media only screen and (min-width: 50em) {
@@ -105,7 +116,6 @@
 }
       body {
         margin: 0.2em;
-        font-size: 14px;
         line-height: 1.61;
         font-weight: 400;
         font-family: 'open_sanslight', sans-serif;
@@ -141,13 +151,11 @@
     header p {
       padding: 0;
       margin: 0;
-      font-size: 1.8em;
       font-weight: bold;
     }
     header p span {
       padding: 0;
       margin: 0;
-      font-size: 1em;
       font-weight: normal;
     }
     header img {
@@ -209,7 +217,6 @@
       flex-flow: row;
       }
     .main > content {
-      margin-top: 9em;
       border-bottom: 1px solid #ccc;
     }
     .hero {
