@@ -24,6 +24,87 @@
         -ms-text-size-adjust: 100%;
         -webkit-text-size-adjust: none;
       }
+      /* Too narrow to support three columns */
+@media only screen and (max-width: 40em) {
+
+  header p {
+      font-size: 1.2em;
+  }
+
+  header p span {
+    font-size: 0.6em;
+  }
+
+  content {
+    -webkit-flex-flow: column;
+       flex-direction: column;
+  /* Return them to document order */
+    -webkit-order: 0;
+            order: 0;
+  }
+
+  footer {
+    min-height: 2em;
+    max-height: 2em;
+  }
+  footer ul li {
+    margin: 12px;
+    padding: 8px;
+  }
+}
+
+@media only screen and (min-width: 30em) {
+  .flex {
+    /* basic styling */
+    width: 100%;
+    height: 200px;
+    /*border: 1px solid #555;*/
+    /* flexbox setup */
+    display: -webkit-flex;
+    -webkit-flex-direction: row;
+    display: flex;
+    flex-direction: row;
+    /*flex-wrap: wrap;*/
+  }
+
+  .flex > div {
+    -webkit-flex: 1 1 auto;
+    flex: 1 1 auto;
+    width: 50%; /* To make the transition work nicely.  (Transitions to/from
+                     "width:auto" are buggy in Gecko and Webkit, at least.
+                     See http://bugzil.la/731886 for more info.) */
+    border: 1px solid #cccc33;
+    border-radius: 7pt;
+
+    -webkit-transition: width 0.7s ease-out;
+    transition: width 0.7s ease-out;
+  }
+
+  .flex > div:hover {
+    width: 200%;
+  }
+}
+
+@media only screen and (min-width: 30em) and (max-width: 49em) {
+
+}
+
+@media only screen and (min-width: 50em) {
+  body {
+    font-size: 16px;
+  }
+  .main, footer {
+    max-width: 45em;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (min-width: 70em) {
+  .main, footer {
+    max-width: 60em;
+    margin: 0 auto;
+  }
+}
       body {
         margin: 0.2em;
         font-size: 14px;
@@ -110,8 +191,7 @@
       max-width: 100%;
       }
     footer {
-      margin: 4px;
-      padding: 5px;
+      
       text-align: center;
     }
     footer ul {
@@ -197,89 +277,6 @@
   .yellow { background : #0D808E; }
   .green  { background : #7F6EA5; }
 
-/* Too narrow to support three columns */
-@media only screen and (max-width: 40em) {
-
-  header p {
-      font-size: 1.2em;
-  }
-
-  header p span {
-    font-size: 0.6em;
-  }
-
-  content {
-    -webkit-flex-flow: column;
-       flex-direction: column;
-  /* Return them to document order */
-    -webkit-order: 0;
-            order: 0;
-  }
-
-  footer {
-    min-height: 2em;
-    max-height: 2em;
-  }
-  footer ul li {
-    margin: 12px;
-    padding: 8px;
-  }
-}
-
-@media only screen and (min-width: 30em) {
-  .flex {
-    /* basic styling */
-    width: 100%;
-    height: 200px;
-    /*border: 1px solid #555;*/
-    /* flexbox setup */
-    display: -webkit-flex;
-    -webkit-flex-direction: row;
-    display: flex;
-    flex-direction: row;
-    /*flex-wrap: wrap;*/
-  }
-
-  .flex > div {
-    -webkit-flex: 1 1 auto;
-    flex: 1 1 auto;
-    width: 50%; /* To make the transition work nicely.  (Transitions to/from
-                     "width:auto" are buggy in Gecko and Webkit, at least.
-                     See http://bugzil.la/731886 for more info.) */
-    border: 1px solid #cccc33;
-    border-radius: 7pt;
-
-    -webkit-transition: width 0.7s ease-out;
-    transition: width 0.7s ease-out;
-  }
-
-  .flex > div:hover {
-    width: 200%;
-  }
-}
-
-@media only screen and (min-width: 30em) and (max-width: 49em) {
-
-}
-
-@media only screen and (min-width: 50em) {
-  body {
-    font-size: 16px;
-  }
-  .main, footer {
-    max-width: 45em;
-    margin: 0 auto;
-  }
-  content {
-    max-width: 45em;
-  }
-}
-
-@media only screen and (min-width: 70em) {
-  .main, content, footer {
-    max-width: 60em;
-  }
-}
 
     </style>
   </head>
