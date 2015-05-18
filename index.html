@@ -9,14 +9,13 @@
     <base target="_blank">
     <link rel="icon" type="image/png" href="favicon.png">
 
-    <!--<link href="css/build/concat.min.css" rel="stylesheet"> -->
+    <!--<link href="css/build/concat.min.css" rel="stylesheet">
     <link rel="stylesheet" href="icons/css/font-awesome.min.css">
     <link rel="stylesheet" href="fonts/stylesheet.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css"> -->
     <link rel="stylesheet" href="css/print.css" media="print">
-    <script src="js/min/jquery-1.11.2.min.js"></script>
-    <script async src="js/build/production.min.js"></script>
-    <!--<script async src="js/classie.js"></script>-->
+    <!--<script src="js/jquery-1.11.3.js"></script>
+    <script async src="js/classie.js"></script>-->
     <style>
       html {
         font-size: 100%;
@@ -338,9 +337,12 @@
                <p>Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna</p>
              </div>
            </div>
-        <article>
-          <blockquote><p>It is your mission to get your content out, on whichever platform, in whichever format your audience wants to consume it. Your users get to decide how, when, and where they want to read your content. It is your challenge and your responsibility to deliver a good experience to them.</p><br><br>- Karen McGrane (A List Apart)</blockquote>
+        
+          <blockquote><p>It is your mission to get your content out, on whichever platform, in whichever format your audience wants to consume it. Your users get to decide how, when, and where they want to read your content. It is your challenge and your responsibility to deliver a good experience to them.</p><br><br>- Karen McGrane (<a href="http://alistapart.com/article/your-content-now-mobile">A List Apart</a>)</blockquote>
+        
+          <p>By the way: Want some of the <a href="views/pizza.html">fastest Pizza's</a> served?</p>
 
+        </article>
       </content>
     </div>
     <footer>
@@ -348,13 +350,13 @@
         <a href="https://twitter.com/karoldawid"><li></li></a>
         <a href="https://github.com/karoldavid?tab=repositories"><li></li></a>
         <a href="http://pouchkine.tumblr.com/"><li></li></a>
-        <a href="#"><li class="fa-linkedin"></li></a>
+        <a href="#"><li></li></a>
         <a href="mailto:k.zysk@zoho.com" target="_self"><li></li></a>
         <a href="#"><li></li></a>
       </ul>
       <p>&copy; Web Performance <script async>document.write(new Date().getFullYear())</script> <span id="crp-stats"></span></p>
     </footer>
-    <!--<script>
+    <script>
       var cb = function() {
         var l = document.createElement('link'); l.rel = 'stylesheet';
         l.href = 'css/build/concat.min.css';
@@ -364,7 +366,7 @@
           webkitRequestAnimationFrame || msRequestAnimationFrame;
       if (raf) raf(cb);
       else window.addEventListener('load', cb);
-    </script> -->
+    </script>
     <script>
        (function(w,g){w['GoogleAnalyticsObject']=g;
           w[g]=w[g]||function(){(w[g].q=w[g].q||[]).push(arguments)};w[g].l=1*new Date();})(window,'ga');
@@ -374,6 +376,7 @@
         ga('send', 'pageview');
     </script>
     <script async src="http://www.google-analytics.com/analytics.js"></script>
+    <script src="js/build/production.min.js"></script>
     <script>
       
       function init() {
@@ -385,7 +388,7 @@
           }
         }
         // append footer social icon classes
-        var fa = ['fa-twitter', 'fa-github', 'fa-tumblr', 'fa-envelope-o', 'fa-rss'],
+        var fa = ['fa-twitter', 'fa-github', 'fa-tumblr', 'fa-linkedin', 'fa-envelope-o', 'fa-rss'],
             socialFooter = document.getElementById('social'),
             x = 0;
         $( "li" ).each(function(socialFooter) {
