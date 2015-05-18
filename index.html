@@ -17,6 +17,50 @@
     <script src="js/min/jquery-1.11.2.min.js"></script>
     <script async src="js/build/production.min.js"></script>
     <!--<script async src="js/classie.js"></script>-->
+    <style>
+      body {
+
+      display: -webkit-box;
+      display: -moz-box;
+      display: box;
+
+      -webkit-box-orient: vertical;
+      -moz-box-orient: vertical;
+      box-orient: vertical;
+
+      -webkit-box-align: center;
+      -moz-box-align: center;
+      box-align: center;
+    }
+    @media only screen and (min-width: 481px) {
+      body {
+        font-size: 16px;
+      }
+      header p {
+        padding-left: 4em;
+      }
+      footer,
+      .container {
+        max-width: 45em;
+        margin: 0 auto;
+      }
+    }
+    .box-2 {
+      -webkit-box-flex: 1;
+      -moz-box-flex: 1;
+      box-flex: 1;
+    }
+    .hero {
+      padding: 2em;
+      background-color: #f8f8f8;
+      font-size: 1.2em;
+      border-bottom: 1px solid #ccc;
+      border-top: 1px solid #ccc;
+    }
+      .content {
+        padding: 1em 1em;
+      }
+    </style>
   </head>
   <body>
     <header>
