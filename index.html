@@ -9,10 +9,11 @@
     <base target="_blank">
     <link rel="icon" type="image/png" href="favicon.png">
 
-    <!--<link href="css/build/concat.min.css" rel="stylesheet">
+    <!--<link href="css/build/concat.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="icons/css/font-awesome.min.css">
-    <link href="css/style.css" rel="stylesheet">-->
-    <link href="css/print.css" rel="stylesheet" media="print">
+    <link rel="stylesheet" href="fonts/stylesheet.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/print.css" media="print">
     <script src="js/min/jquery-1.11.2.min.js"></script>
     <script async src="js/build/production.min.js"></script>
     <!--<script async src="js/classie.js"></script>-->
@@ -36,6 +37,8 @@
         background: #f2f9fb;
       }
       header {
+        margin: 4px;
+        padding: 5px;
         position: fixed;
         top: 0;
         left: 0;
@@ -60,26 +63,17 @@
     header p {
       padding: 0;
       margin: 0;
-      font-size: 2em;
+      font-size: 1.8em;
       font-weight: bold;
-      -webkit-transition: all 0.3s;
-      -moz-transition: all 0.3s;
-      transition: all 0.3s;
     }
     header p span {
-      font-size: 0.8em;
       padding: 0;
       margin: 0;
+      font-size: 1em;
       font-weight: normal;
-      -webkit-transition: all 0.3s;
-      -moz-transition: all 0.3s;
-      transition: all 0.3s;
     }
     header img {
       margin: 0.5em 1em 0.5em 0;
-      -webkit-transition: all 0.3s;
-      -moz-transition: all 0.3s;
-      transition: all 0.3s;
     }
     a {
       color: #12C;
@@ -116,10 +110,6 @@
       border: 0;
       max-width: 100%;
       }
-    header {
-      margin: 4px;
-      padding: 5px;
-    }
     footer {
       margin: 4px;
       padding: 5px;
@@ -136,14 +126,13 @@
       color: #77c4d3;
     }
     .main {
-      margin: 150px 4px 4px;
-      padding: 150px 5px 5px;
       display: -webkit-flex;
       display:         flex;
       -webkit-flex-flow: row;
       flex-flow: row;
       }
     .main > content {
+      margin-top: 9em;
       border-bottom: 1px solid #ccc;
     }
     .hero {
@@ -164,6 +153,14 @@
     .hero h1 {
       padding: 0;
       margin: 0;
+      font-style: bold;
+      font-size: 3em;
+    }
+    .hero p {
+      padding: 0;
+      margin: 0;
+      font-style: bold;
+      font-size: 1em;
     }
     article {
       padding: 2em 0;
@@ -196,8 +193,13 @@
       font-style: italic;
     }
 
+  .blue   { background : #A79AE2; }
+  .red    { background : #865667; }
+  .yellow { background : #0D808E; }
+  .green  { background : #7F6EA5; }
+
 /* Too narrow to support three columns */
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 40em) {
 
   header p {
       font-size: 1.2em;
@@ -207,24 +209,22 @@
     font-size: 0.6em;
   }
 
- .main {
-   padding-top: 0;
-   margin-top: 0;
-
+  content {
     -webkit-flex-flow: column;
        flex-direction: column;
- }
-
- .main > content {
   /* Return them to document order */
     -webkit-order: 0;
             order: 0;
- }
+  }
 
- .main > footer {
-    min-height: 50px;
-    max-height: 50px;
- }
+  footer {
+    min-height: 2em;
+    max-height: 2em;
+  }
+  footer ul li {
+    margin: 12px;
+    padding: 8px;
+  }
 }
 
 @media only screen and (min-width: 30em) {
@@ -254,34 +254,31 @@
     transition: width 0.7s ease-out;
   }
 
-  /* colors */
-  .flex > div:nth-child(1){ background : #77c4d3; }
-  .flex > div:nth-child(2){ background : #df3c57; }
-  .flex > div:nth-child(3){ background : #eaf299; }
-  .flex > div:nth-child(4){ background : #f2f9fb; }
-
   .flex > div:hover {
     width: 200%;
   }
 }
 
-@media only screen and (max-width: 49em) {
+@media only screen and (min-width: 30em) and (max-width: 49em) {
+
 }
 
 @media only screen and (min-width: 50em) {
   body {
     font-size: 16px;
   }
-  .main, content, footer {
+  .main, footer {
     max-width: 45em;
     margin: 0 auto;
+  }
+  content {
+    max-width: 45em;
   }
 }
 
 @media only screen and (min-width: 70em) {
   .main, content, footer {
     max-width: 60em;
-    margin: 0 auto;
   }
 }
 
@@ -300,44 +297,44 @@
     <div class="main">
        <content>
          <div class="hero">
-           <h1>Z-SITES</h1>among the fastest pages on the web... zzz
+           <h1>Z-SITES</h1><p>among the fastest pages on the web... zzz</p>
           </div>
        <article>
          <div class="flex">
-           <div>
+           <div class="blue">
                <picture>
                  <source srcset="views/images/dziecko_rosemary-200_large_2x.jpg 2x, views/images/dziecko_rosemary-100_large_1x.jpg" />
                  <img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="views/images/dziecko_rosemary.jpg" alt="Dziecko Rosemary">
                </picture>
-               <a href="project-2048.html">Movie Poster Gallery</a>
+               <a href="http://karoldavid.github.io/movie-poster-blog/">Movie Poster Gallery</a>
                <p>Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna</p>
              </div>
 
-             <div>
+             <div class="red">
                <picture>
                  <source srcset="views/images/susanne_fuelscher-200_large_2x.jpg 2x, views/images/susanne_fuelscher-100_large_1x.jpg" />
                  <img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="views/images/susanne_fuelscher.jpg" alt="Susanne Fülscher Portrait">
                </picture>
-               <a href="project-webperf.html">Responsive Author Website</a>
+               <a href="http://www.susanne-fuelscher.de/">Responsive Author Website</a>
                <p>Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna</p>
              </div>
         </div>
         <div class="flex">
-             <div>
+             <div class="yellow">
                <picture>
                  <source srcset="views/images/logo-200_large_2x.png 2x, views/images/logo-100_large_1x.png" />
                  <img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="views/images/logo.png" alt="Logo">
                </picture>
-               <a href="project-mobile.html">Interactive Resume</a>
+               <a href="http://karoldavid.github.io/interactive-resume/">Interactive Online Resume</a>
                <p>Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna</p>
              </div>
 
-             <div>
+             <div class="green">
                <picture>
                  <source srcset="views/images/star-200_large_2x.png 2x, views/images/star-100_large_1x.png" />
                  <img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="views/images/star.png" alt="Arcade Game Star">
                </picture>
-               <a href="views/pizza.html">Arcade Game</a>
+               <a href="http://karoldavid.github.io/arcade-game/">Gem Land - Game</a>
                <p>Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna</p>
              </div>
            </div>
@@ -357,7 +354,7 @@
       </ul>
       <p>&copy; Web Performance <script async>document.write(new Date().getFullYear())</script> <span id="crp-stats"></span></p>
     </footer>
-    <script>
+    <!--<script>
       var cb = function() {
         var l = document.createElement('link'); l.rel = 'stylesheet';
         l.href = 'css/build/concat.min.css';
@@ -367,7 +364,7 @@
           webkitRequestAnimationFrame || msRequestAnimationFrame;
       if (raf) raf(cb);
       else window.addEventListener('load', cb);
-    </script> 
+    </script> -->
     <script>
        (function(w,g){w['GoogleAnalyticsObject']=g;
           w[g]=w[g]||function(){(w[g].q=w[g].q||[]).push(arguments)};w[g].l=1*new Date();})(window,'ga');

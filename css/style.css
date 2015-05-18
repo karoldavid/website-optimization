@@ -1,27 +1,30 @@
+header.shrink, img {
+   -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+header.shrink p, p span {
+   -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    transition: all 0.1s;
+}
 
 header.shrink {
     height: 3em;
 }
 
 header.shrink p {
-    font-size: 1em;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
+    font-size: 95%;
 }
 
 header.shrink p span {
-    font-size: 0.7em;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
+    font-size: 95%;
 }
 
 header.shrink img {
     width: 0;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
+    height: 0;
 }
 
 a:visited {
