@@ -9,11 +9,11 @@
     <base target="_blank">
     <link rel="icon" type="image/png" href="favicon.png">
 
-    <!-- <link href="css/build/concat.min.css" rel="stylesheet"> -->
+    <!-- <link href="css/build/concat.min.css" rel="stylesheet">
     <link rel="stylesheet" href="fonts/stylesheet.css"/>
     <link rel="stylesheet" href="icons/css/font-awesome.min.css">
-    <link href="css/style.css" rel="stylesheet">
-    <!-- <link href="css/print.css" rel="stylesheet" media="print"> -->
+    <link href="css/style.css" rel="stylesheet">-->
+    <link href="css/print.css" rel="stylesheet" media="print">
     <script src="js/min/jquery-1.11.2.min.js"></script>
     <script async src="js/build/production.min.js"></script>
     <!--<script async src="js/classie.js"></script>-->
@@ -34,11 +34,6 @@
            <h1>Z-SITES</h1>among the fastest pages on the web... zzz
           </div>
        <article>
-         <!-- <div class="favorites" style="display:none">
-           <iframe class="sample-video" src="https://www.youtube.com/embed/kuuCjumml3Q" frameborder="0" allowfullscreen></iframe>
-           <iframe class="sample-video" src="https://youtube.com/embed/djqpC2ZdDNc" frameborder="0" allowfullscreen></iframe>
-           <iframe class="sample-video" src="https://www.youtube.com/embed/d3_ErCmE2Ts?feature=player_profilepage" frameborder="0" allowfullscreen></iframe>
-        </div> -->
          <div class="flex">
            <div>
                <picture>
@@ -94,7 +89,7 @@
       <p>&copy; Web Performance <script async>document.write(new Date().getFullYear())</script> <span id="crp-stats"></span></p>
     </footer>
 
-    <!-- <script>
+    <script>
       var cb = function() {
         var l = document.createElement('link'); l.rel = 'stylesheet';
         l.href = 'css/build/concat.min.css';
@@ -104,7 +99,7 @@
           webkitRequestAnimationFrame || msRequestAnimationFrame;
       if (raf) raf(cb);
       else window.addEventListener('load', cb);
-    </script> -->
+    </script>
     <script>
        (function(w,g){w['GoogleAnalyticsObject']=g;
           w[g]=w[g]||function(){(w[g].q=w[g].q||[]).push(arguments)};w[g].l=1*new Date();})(window,'ga');
@@ -127,21 +122,21 @@
       window.onload = init;
   </script>
   <script>
-  $(function(){
-var shrinkHeader = 50;
-$(window).scroll(function() {
-  var scroll = getCurrentScroll();
-    if ( scroll >= shrinkHeader ) {
-         $('header').addClass('shrink');
-      }
-      else {
+    $(function(){
+      var shrinkHeader = 50;
+      $(window).scroll(function() {
+        var scroll = getCurrentScroll();
+        if ( scroll >= shrinkHeader ) {
+          $('header').addClass('shrink');
+        }
+        else {
           $('header').removeClass('shrink');
+        }
+      });
+      function getCurrentScroll() {
+        return window.pageYOffset;
       }
-});
-function getCurrentScroll() {
-  return window.pageYOffset;
-  }
-});
+    });
   </script>
   </body>
 </html>
