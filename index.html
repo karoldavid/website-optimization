@@ -26,21 +26,19 @@
       }
       /* Too narrow to support three columns */
 @media only screen and (max-width: 40em) {
-
   header p {
       font-size: 1.2em;
   }
-
   header p span {
     font-size: 0.6em;
   }
-
   content {
     -webkit-flex-flow: column;
        flex-direction: column;
   /* Return them to document order */
     -webkit-order: 0;
             order: 0;
+  margin-top: 10em;
   }
 
   footer {
