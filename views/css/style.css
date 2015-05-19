@@ -34,11 +34,13 @@ form {
   width: 256px;
   will-change: transform;
   backface-visibility: hidden;
+  z-index: -1;
 }
 
 .randomPizzaContainer {
   float: left;
   display: flex;
+  will-change: transform;
 }
 
 .randomPizzaContainer:after {
