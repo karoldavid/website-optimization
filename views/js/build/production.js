@@ -380,7 +380,7 @@ var pizzaElementGenerator = function(i) {
   pizzaContainer.id = "pizza" + i;                // gives each pizza element a unique id
   pizzaImageContainer.classList.add("col-md-6");
 
-  pizzaImage.src = "images/pizza.png";
+  pizzaImage.src = "images/pizza-large.png";
   pizzaImage.classList.add("img-responsive");
   pizzaImageContainer.appendChild(pizzaImage);
   pizzaContainer.appendChild(pizzaImageContainer);
@@ -418,6 +418,7 @@ var resizePizzas = function(size) {
         return;
       default:
         console.log("bug in changeSliderLabel");
+        break;
     }
   }
 
@@ -425,6 +426,7 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
+    var newWidth;
     switch(size) {
       case "1":
         newWidth = 25;
@@ -437,9 +439,10 @@ var resizePizzas = function(size) {
         break;
       default:
         console.log("Bug in sizeSwitcher");
+        break;
     }
 
-    var randomPizzas = document.getElementsByClassName(".randomPizzaContainer");
+    var randomPizzas = document.getElementsByClassName("randomPizzaContainer");
     for (var i = 0; i < randomPizzas.length; i++) {
       randomPizzas[i].style.width = newWidth + "%";
     }
@@ -457,7 +460,7 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
-for (var i = 2; i < 100; i++) {
+for (var i = 2; i < 50; i++) {
   var pizzasDiv = document.getElementById("randomPizzas");
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
@@ -515,9 +518,9 @@ document.addEventListener('DOMContentLoaded', function() {
   for (var i = 0; i < 50; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
-    elem.src = "images/pizza.png";
-    elem.style.height = "100px";
-    elem.style.width = "73.333px";
+    elem.src = "images/pizza-small.png";
+    elem.style.height = "129px";
+    elem.style.width = "100px";
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     document.querySelector("#movingPizzas1").appendChild(elem);
