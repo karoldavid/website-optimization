@@ -25,95 +25,79 @@
         -webkit-text-size-adjust: none;
       }
       /* Too narrow to support three columns */
-@media only screen and (max-width: 40em) {
-  body {
-    font-size: 14px;
-  }
-  header p {
-      font-size: 1.2em;
-  }
-  header p span {
-    font-size: 0.6em;
-  }
-  content {
-    -webkit-flex-flow: column;
-       flex-direction: column;
-  /* Return them to document order */
-    -webkit-order: 0;
-            order: 0;
-     margin-top: 9em;
-  }
-
-  footer {
-    min-height: 2em;
-    max-height: 2em;
-  }
-  footer ul li {
-    margin: 12px;
-    padding: 8px;
-  }
-}
-
-@media only screen and (min-width: 30em) {
-  .flex {
-    /* basic styling */
-    width: 100%;
-    height: 200px;
-    /*border: 1px solid #555;*/
-    /* flexbox setup */
-    display: -webkit-flex;
-    -webkit-flex-direction: row;
-    display: flex;
-    flex-direction: row;
-    /*flex-wrap: wrap;*/
-  }
-
-  .flex > div {
-    -webkit-flex: 1 1 auto;
-    flex: 1 1 auto;
-    width: 50%; /* To make the transition work nicely.  (Transitions to/from
-                     "width:auto" are buggy in Gecko and Webkit, at least.
-                     See http://bugzil.la/731886 for more info.) */
-    border: 1px solid #cccc33;
-    border-radius: 7pt;
-
-    -webkit-transition: width 0.7s ease-out;
-    transition: width 0.7s ease-out;
-  }
-
-  .flex > div:hover {
-    width: 200%;
-  }
-}
-
-@media only screen and (min-width: 41em) {
-  header p {
-      font-size: 1.8em;
-    }
-    header p span {
-      font-size: 1em;
-    }
-  content {
-    margin-top: 9em;
-  }
-}
-
-@media only screen and (min-width: 50em) {
-  body {
-    font-size: 16px;
-  }
-  .main, footer {
-    max-width: 45em;
-    margin: 0 auto;
-  }
-}
-
-@media only screen and (min-width: 70em) {
-  .main, footer {
-    max-width: 60em;
-    margin: 0 auto;
-  }
-}
+      @media only screen and (max-width: 40em) {
+        body {
+          font-size: 14px;
+        }
+        header p {
+          font-size: 1.2em;
+        }
+        header p span {
+          font-size: 0.6em;
+        }
+        content {
+          margin-top: 9em;
+          -webkit-flex-flow: column;
+          flex-direction: column;
+          -webkit-order: 0;
+          order: 0;
+        }
+        footer {
+          max-height: 2em;
+        }
+        footer ul li {
+          margin: 12px;
+          padding: 8px;
+        }
+      }
+      @media only screen and (min-width: 30em) {
+        .flex {
+          width: 100%;
+          height: 200px;
+          display: -webkit-flex;
+          -webkit-flex-direction: row;
+          display: flex;
+          flex-direction: row;
+        }
+        .flex > div {
+          -webkit-flex: 1 1 auto;
+          flex: 1 1 auto;
+          width: 50%;
+          border: 1px solid #cccc33;
+          border-radius: 7pt;
+          -webkit-transition: width 0.7s ease-out;
+          transition: width 0.7s ease-out;
+        }
+        .flex > div:hover {
+          width: 200%;
+        }
+      }
+      @media only screen and (min-width: 41em) {
+        header p {
+          font-size: 1.8em;
+        }
+        header p span {
+          font-size: 1em;
+        }
+        content {
+          margin-top: 9em;
+        }
+      }
+      @media only screen and (min-width: 50em) {
+        body {
+          font-size: 16px;
+        }
+        .main, footer {
+          max-width: 45em;
+          margin: 0 auto;
+        }
+      }
+      @media only screen and (min-width: 70em) {
+        .main, footer {
+          max-width: 60em;
+          margin: 0 auto;
+        }
+      }
       body {
         margin: 0.2em;
         line-height: 1.61;
@@ -148,141 +132,113 @@
         align-content: center;
         align-items: center;
       }
-    header p {
-      padding: 0;
-      margin: 0;
-      font-weight: bold;
-    }
-    header p span {
-      padding: 0;
-      margin: 0;
-      font-weight: normal;
-    }
-    header img {
-      margin: 0.5em 1em 0.5em 0;
-    }
-    a {
-      color: #12C;
-    }
-    b,
-    strong {
-      font-weight: bold;
-    }
-    pre,
-    code {
-      font-family: monospace, monospace;
-      font-size: 1em;
-    }
-    ul,
-    ol {
-      margin: 1em 0;
-      padding: 0 0 0 20px;
-      display: inline;
-    }
-    q {
-      quotes: "«" "»";
-    }
-    blockquote {
-      background: #eaf299;
-      border-left: 10px solid #ccc;
-      margin: 1.5em 10px;
-      padding: 0.5em 10px;
-      quotes: "\201C""\201D""\2018""\2019";
-    }
-    blockquote p {
-      display: inline;
-    }
-    img {
-      border: 0;
-      max-width: 100%;
+      header p {
+        padding: 0;
+        margin: 0;
+        font-weight: bold;
       }
-    footer {
-      
-      text-align: center;
-    }
-    footer ul {
-      display: inline;
-    }
-    footer ul li {
-      margin: 15px;
-      padding: 10px;
-      list-style-type: none;
-      font-size: 1.1em;
-      color: #77c4d3;
-    }
-    .main {
-      display: -webkit-flex;
-      display:         flex;
-      -webkit-flex-flow: row;
-      flex-flow: row;
+      header p span {
+        padding: 0;
+        margin: 0;
+        font-weight: normal;
       }
-    .main > content {
-      border-bottom: 1px solid #ccc;
-    }
-    .hero {
-      padding: 2em;
-      background: #8cd3f6; /* Old browsers */
-      background: -moz-linear-gradient(left,  #8cd3f6 0%, #1489e2 67%); /* FF3.6+ */
-      background: -webkit-gradient(linear, left top, right top, color-stop(0%,#8cd3f6), color-stop(67%,#1489e2)); /* Chrome,Safari4+ */
-      background: -webkit-linear-gradient(left,  #8cd3f6 0%,#1489e2 67%); /* Chrome10+,Safari5.1+ */
-      background: -o-linear-gradient(left,  #8cd3f6 0%,#1489e2 67%); /* Opera 11.10+ */
-      background: -ms-linear-gradient(left,  #8cd3f6 0%,#1489e2 67%); /* IE10+ */
-      background: linear-gradient(to right,  #8cd3f6 0%,#1489e2 67%); /* W3C */
-      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8cd3f6', endColorstr='#1489e2',GradientType=1 ); /* IE6-9 */
-      color: #fff;
-      border-bottom: 1px solid #ccc;
-      border-top: 1px solid #ccc;
-      text-align: center;
-    }
-    .hero h1 {
-      padding: 0;
-      margin: 0;
-      font-style: bold;
-      font-size: 3em;
-    }
-    .hero p {
-      padding: 0;
-      margin: 0;
-      font-style: bold;
-      font-size: 1em;
-    }
-    article {
-      padding: 2em 0;
-    }   
-    .favorites {
-      width: 100%;
-      margin-bottom: 2em;
-      padding-bottom: 2em;
-    }
-    li {
-      list-style-type: none;
-      font-size: 1.1em;
-    }
-    li img {
-      float: left;
-      padding-right: 1em;
-      width: 100px;
-    }
-    li p {
-      font-size: 0.9em;
-      font-style: italic;
-    }
-    div img {
-      float: left;
-      padding-right: 1em;
-      width: 100px;
-    }
-    div p {
-      font-size: 0.9em;
-      font-style: italic;
-    }
-
-  .blue   { background : #A79AE2; }
-  .red    { background : #865667; }
-  .yellow { background : #0D808E; }
-  .green  { background : #7F6EA5; }
-
-
+      header img {
+        margin: 0.5em 1em 0.5em 0;
+      }
+      a {
+        color: #12C;
+      }
+      b,
+      strong {
+        font-weight: bold;
+      }
+      ul {
+        margin: 1em 0;
+        padding: 0 0 0 20px;
+        display: inline;
+      }
+      q {
+        quotes: "«" "»";
+      }
+      blockquote {
+        background: #eaf299;
+        border-left: 10px solid #ccc;
+        margin: 1.5em 10px;
+        padding: 0.5em 10px;
+        quotes: "\201C""\201D""\2018""\2019";
+      }
+      blockquote p {
+        display: inline;
+      }
+      img {
+        border: 0;
+        max-width: 100%;
+      }
+      footer {
+        text-align: center;
+      }
+      footer ul {
+        display: inline;
+      }
+      footer ul li {
+        margin: 15px;
+        padding: 10px;
+        list-style-type: none;
+        font-size: 1.1em;
+        color: #77c4d3;
+      }
+      .main {
+        display: -webkit-flex;
+        display:         flex;
+        -webkit-flex-flow: row;
+        flex-flow: row;
+      }
+      content {
+        border-bottom: 1px solid #ccc;
+      }
+      .hero {
+        padding: 2em;
+        background: #8cd3f6; /* Old browsers */
+        background: -moz-linear-gradient(left,  #8cd3f6 0%, #1489e2 67%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, right top, color-stop(0%,#8cd3f6), color-stop(67%,#1489e2)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(left,  #8cd3f6 0%,#1489e2 67%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(left,  #8cd3f6 0%,#1489e2 67%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(left,  #8cd3f6 0%,#1489e2 67%); /* IE10+ */
+        background: linear-gradient(to right,  #8cd3f6 0%,#1489e2 67%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8cd3f6', endColorstr='#1489e2',GradientType=1 ); /* IE6-9 */
+        color: #fff;
+        border-bottom: 1px solid #ccc;
+        border-top: 1px solid #ccc;
+        text-align: center;
+      }
+      .hero h1 {
+        padding: 0;
+        margin: 0;
+        font-style: bold;
+        font-size: 3em;
+      }
+      .hero p {
+        padding: 0;
+        margin: 0;
+        font-style: bold;
+        font-size: 1em;
+      }
+      article {
+        padding: 2em 0;
+      }   
+      div img {
+        float: left;
+        padding-right: 1em;
+        width: 100px;
+      }
+      div p {
+        font-size: 0.9em;
+        font-style: italic;
+      }
+      .blue   { background : #A79AE2; }
+      .red    { background : #865667; }
+      .yellow { background : #0D808E; }
+      .green  { background : #7F6EA5; }
     </style>
   </head>
   <body>
@@ -310,7 +266,6 @@
                <a href="http://karoldavid.github.io/movie-poster-blog/">Movie Poster Gallery</a>
                <p>Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna</p>
              </div>
-
              <div class="red">
                <picture>
                  <source srcset="views/images/susanne_fuelscher-200_large_2x.jpg 2x, views/images/susanne_fuelscher-100_large_1x.jpg" />
@@ -329,7 +284,6 @@
                <a href="http://karoldavid.github.io/interactive-resume/">Interactive Online Resume</a>
                <p>Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna</p>
              </div>
-
              <div class="green">
                <picture>
                  <source srcset="views/images/star-200_large_2x.png 2x, views/images/star-100_large_1x.png" />
@@ -359,6 +313,7 @@
       <p>&copy; Web Performance <script async>document.write(new Date().getFullYear())</script> <span id="crp-stats"></span></p>
     </footer>
     <script>
+      // load css after page build
       var cb = function() {
         var l = document.createElement('link'); l.rel = 'stylesheet';
         l.href = 'css/build/concat.min.css';
@@ -380,16 +335,15 @@
     <script async src="http://www.google-analytics.com/analytics.js"></script>
     <script src="js/build/production.min.js"></script>
     <script>
-      
       function init() {
-        // load images
+        // load defered images after page build
         var imgDefer = document.getElementsByTagName('img');
         for (var i=0; i<imgDefer.length; i++) {
           if(imgDefer[i].getAttribute('data-src')) {
             imgDefer[i].setAttribute('src',imgDefer[i].getAttribute('data-src'));
           }
         }
-        // append footer social icon classes
+        // append footer social icon classes after page build
         var fa = ['fa-twitter', 'fa-github', 'fa-tumblr', 'fa-linkedin', 'fa-envelope-o', 'fa-rss'],
             socialFooter = document.getElementById('social'),
             x = 0;
@@ -400,23 +354,22 @@
       }
       window.onload = init;
 
-    
-    // header shrink on scroll
-    $(function(){
-      var shrinkHeader = 50;
-      $(window).scroll(function() {
-        var scroll = getCurrentScroll();
-        if ( scroll >= shrinkHeader ) {
-          $('header').addClass('shrink');
-        }
-        else {
-          $('header').removeClass('shrink');
+      // header shrink on scroll
+      $(function(){
+        var shrinkHeader = 50;
+        $(window).scroll(function() {
+          var scroll = getCurrentScroll();
+          if ( scroll >= shrinkHeader ) {
+            $('header').addClass('shrink');
+          }
+          else {
+            $('header').removeClass('shrink');
+          }
+        });
+        function getCurrentScroll() {
+          return window.pageYOffset;
         }
       });
-      function getCurrentScroll() {
-        return window.pageYOffset;
-      }
-    });
-  </script>
+    </script>
   </body>
 </html>
