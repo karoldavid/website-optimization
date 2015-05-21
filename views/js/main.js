@@ -141,7 +141,7 @@ pizzaIngredients.crusts = [
   "Flatbread Crust",
   "Stuffed Crust"
 ];
-
+// array for moving pizza objects
 var items = [];
 
 // Name generator pulled from http://saturdaykid.com/usernames/generator.html
@@ -441,7 +441,7 @@ var resizePizzas = function(size) {
         console.log("Bug in sizeSwitcher");
         break;
     }
-
+    
     var randomPizzas = document.getElementsByClassName("randomPizzaContainer");
     for (var i = 0; i < randomPizzas.length; i++) {
       randomPizzas[i].style.width = newWidth + "%";
@@ -527,6 +527,7 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     document.querySelector("#movingPizzas1").appendChild(elem);
   }
+  // get all moving pizza objects from the DOM and put them into one array to reduce DOM access
   items = document.getElementsByClassName('mover');
   updatePositions();
 });
