@@ -786,9 +786,6 @@ hr {
   transform: translate3d(0, 0, 0);
 }
 
-/** {
-  outline: 1px solid red !important;
-}*/
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -820,7 +817,7 @@ form {
 .mover {
   position: fixed;
   width: 256px;
-  will-change: transform;
+  transform: translateZ(0);
   backface-visibility: hidden;
   z-index: -1;
 }
@@ -828,7 +825,7 @@ form {
 .randomPizzaContainer {
   float: left;
   display: flex;
-  will-change: transform;
+  transform: translateZ(0);
 }
 
 .randomPizzaContainer:after {
@@ -837,6 +834,6 @@ form {
   clear:both;
 }
 
- .container {
+.container {
   background-color: rgba(240, 60, 60, 0.8);
 }
