@@ -31,41 +31,6 @@ Furthermore, static assests such as images, css and javascipt files are automati
 
 Steps:
 
-1. Mobile Portfolio: Performance Optimization
-
-
-The key to getting a higher score is to reduce the number of Critical Rendering Paths as well as the Critical Size of our
-files. Therefore we need to use a combination of:
-Create async script requests
-Use specific media types such as print and media to strategically load our CSS
-Inlining our CSS
-Minifying our CSS
-Use JavaScript to load resources after the DOM has completely loaded
-Base64 encode our resources such as fonts and images and embed the code inside the HTML
-
-  reduce number of assets (concatenate), minify, inline code portions, defer loading
-
-- optimize delivery of web fonts
-
-- media="print"
-
-inline css
-inline header image
-css concatenation and minification
-js concatenation and minification
-defer loading of css
-defer loading of js
-add css after page load
-defer images after page load
-optimize images
-load js async
-
-append additional js interactivity after page load
-
-
-
-
-
 
 2. Pizza: Rendering Optimization (views/js/main.js)
 
