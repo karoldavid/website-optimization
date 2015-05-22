@@ -3,7 +3,11 @@
 Here is a link to the live version:
 http://karoldavid.github.io/frontend-nanodegree-mobile-portfolio/
 
-On the bottom of the mobile portfolio page you will find the link to Cameron's Pizza Shop.
+Usage:
+On the bottom of the mobile portfolio page (index.html) you will find a link to Cam's Online Pizzeria (views/pizza.html).
+
+Once you get there, you can scroll down or you may click on one of the menu items "Menu", "Our Ingredients", "Pick a Pizza Now!" to
+get to the slider, where you can adjust your pizza to one of three sizes.
 
 
 Description:
@@ -12,27 +16,22 @@ Project 4 consists of two parts, the Mobile Portfolio Performance Optimization a
 of the Cameron's Pizza Shop's Rendering Optimization.
 
 Time for initial page load in index.html
-Smooth browser animations and efficient code execution in main.js for the Pizzas page under /view/pizza.html
-
-
-Resume
+Smooth browser animations and efficient code execution in main.js for the Pizzas page under /views/pizza.html
 
 Optimization Results:
 
-(1) Google Page Speed Insights: 94% mobile; 95% desktop; 100% usability on mobile
-    (index.html) https://developers.google.com/speed/pagespeed/insights/
+(1) Mobile Portfolio Page (index.html): 94% Mobile Speed; 95% Desktop Speed; 100% User Experience;
+    https://developers.google.com/speed/pagespeed/insights/
 
-(2) Scolling in pizza.html is unde 60 frames per second; time to resize a pizza in pizza.html is less than 5ms shown in the console
-    (=> views/js/main.js)
+(2) Cam's Online Pizzeria (pizza.html, views/js/main.js): Scrolling is unde 60 frames per second;
+    time to resize a pizza is less than 5ms shown in the console;
 
 Furthermore, static assests such as images, css and javascipt files are automatically optimized, concatenated and/ or minified with Grunt.
 
 
+Optimizations:
 
-Steps:
-
-
-2. Pizza: Rendering Optimization (views/js/main.js)
+2. Cam's Online Pizzeria
 
 Essentially optimizing JavaScript, Layout and Paint executions
 
