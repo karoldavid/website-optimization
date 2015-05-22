@@ -1901,6 +1901,9 @@ a:active {
   outline: 0;
 }
 
+footer ul li a:visited {
+ color: #77c4d3;
+}
 
 blockquote:before {
   color: #ccc;
