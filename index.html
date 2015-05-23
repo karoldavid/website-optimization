@@ -99,7 +99,7 @@
           font-size: 2em;
         }
         .portfolio h2 {
-          font-size: 1em;
+          font-size: 1.4em;
         }
         .portfolio p {
           font-size: 0.9em;
@@ -349,7 +349,7 @@
       function init() {
         // load defered images after page build
         var imgDefer = document.getElementsByTagName('img');
-        for (var i=0; i<imgDefer.length; i++) {
+        for (var i=1; i<imgDefer.length; i++) {
           if(imgDefer[i].getAttribute('data-src')) {
             imgDefer[i].setAttribute('src',imgDefer[i].getAttribute('data-src'));
           }
