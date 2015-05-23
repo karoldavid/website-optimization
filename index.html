@@ -17,6 +17,61 @@
         -ms-text-size-adjust: 100%;
         -webkit-text-size-adjust: none;
       }
+         body {
+        margin: 0.2em;
+        line-height: 1.61;
+        font-weight: 400;
+        font-family: 'open_sanslight', sans-serif;
+        color: #333;
+        width: 100%;
+        min-width: 320px;
+        background: #f2f9fb;
+      }
+      header {
+        margin: 4px;
+        padding: 5px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: #f5b732;
+        height: auto;
+        color:#fff;
+        z-index: 1000;
+        overflow: hidden;
+        -webkit-transition: height 0.3s;
+        -moz-transition: height 0.3s;
+        transition: height 0.3s;
+        display: -webkit-flex;
+        display:         flex;
+        flex-wrap: wrap;
+        -webkit-flex-flow: row;
+           flex-flow: row;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+      }
+      h2,
+      p,
+      span {
+      	padding: 0;
+        margin: 0;
+      }
+      header p {
+        font-weight: bold;
+      }
+      header p span {
+        font-weight: normal;
+      }
+      header img {
+        margin: 0.5em 1em 0.5em 0;
+      }
+      a {
+        color: #12C;
+      }
+      h2 {
+        font-weight: bold;
+      }
        /* Too narrow to support three columns */
       @media only screen and (max-width: 40em) {
         body {
@@ -110,61 +165,6 @@
         .main, footer {
           max-width: 60em;
         }
-      }
-      body {
-        margin: 0.2em;
-        line-height: 1.61;
-        font-weight: 400;
-        font-family: 'open_sanslight', sans-serif;
-        color: #333;
-        width: 100%;
-        min-width: 320px;
-        background: #f2f9fb;
-      }
-      header {
-        margin: 4px;
-        padding: 5px;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background: #f5b732;
-        height: auto;
-        color:#fff;
-        z-index: 1000;
-        overflow: hidden;
-        -webkit-transition: height 0.3s;
-        -moz-transition: height 0.3s;
-        transition: height 0.3s;
-        display: -webkit-flex;
-        display:         flex;
-        flex-wrap: wrap;
-        -webkit-flex-flow: row;
-           flex-flow: row;
-        justify-content: center;
-        align-content: center;
-        align-items: center;
-      }
-      h2,
-      p,
-      span {
-      	padding: 0;
-        margin: 0;
-      }
-      header p {
-        font-weight: bold;
-      }
-      header p span {
-        font-weight: normal;
-      }
-      header img {
-        margin: 0.5em 1em 0.5em 0;
-      }
-      a {
-        color: #12C;
-      }
-      h2 {
-        font-weight: bold;
       }
       .main {
         display: -webkit-flex;
