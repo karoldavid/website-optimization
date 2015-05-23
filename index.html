@@ -34,8 +34,17 @@
           -webkit-order: 0;
           order: 0;
         }
+        .hero {
+        	padding: 1em;
+        }
+        .hero h2 {
+          font-size: 2em;
+        }
         .portfolio h2 {
           font-size: 1em;
+        }
+        .portfolio p {
+          font-size: 0.9em;
         }
         footer {
           max-height: 2em;
@@ -74,8 +83,17 @@
         header p span {
           font-size: 1em;
         }
+        .hero {
+          padding: 2em;
+        }
+        .hero h2 {
+          font-size: 3em;
+        }
         .portfolio h2 {
           font-size: 1.5em;
+        }
+        .portfolio p {
+          font-size: 0.9em;
         }
         footer ul li a {
       	  margin: 15px;
@@ -159,8 +177,8 @@
         border-bottom: 1px solid #ccc;
       }
       .hero {
+      	max-width: 100%;
       	margin-bottom: 2em;
-        padding: 2em;
         background: #8cd3f6; /* Old browsers */
         background: -moz-linear-gradient(left,  #8cd3f6 0%, #1489e2 67%); /* FF3.6+ */
         background: -webkit-gradient(linear, left top, right top, color-stop(0%,#8cd3f6), color-stop(67%,#1489e2)); /* Chrome,Safari4+ */
@@ -174,12 +192,12 @@
         border-bottom: 1px solid #ccc;
         text-align: center;
       }
-      .hero h2 {
-        font-size: 3em;
-      }
       .hero p {
         font-weight: bold;
         font-size: 1em;
+      }
+      .portfolio {
+      	max-width: 100%;
       }
       .portfolio img {
       	float: left;
@@ -189,7 +207,6 @@
         border: 0;   
       }
       .portfolio p {
-        font-size: 0.9em;
         font-style: italic;
       }
   
@@ -238,7 +255,7 @@
             <div class="hero">
               <h2>Z-SITES</h2><p>among the fastest pages on the web... zzz</p>
             </div>
-           <!--  <div class="flex portfolio">
+            <div class="flex portfolio">
                 <div class="blue">
                     <picture>
                        <source srcset="img/dziecko_rosemary-200_large_2x.jpg 2x, img/dziecko_rosemary-100_large_1x.jpg" />
@@ -256,7 +273,8 @@
                     <p>Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna</p>
                 </div>
             </div>
-            <div class="flex portfolio">
+            <div class="portfolio">
+            <div class="flex">
                 <div class="yellow">
                     <picture>
                        <source srcset="img/logo-200_large_2x.png 2x, img/logo-100_large_1x.png" />
@@ -273,7 +291,8 @@
                     <a href="http://karoldavid.github.io/arcade-game/"><h2>Gem Land - Game</h2></a>
                     <p>Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna</p>
                 </div>
-            </div> -->
+              </div>
+            </div>
          
             <blockquote>
                 <p>It is your mission to get your content out, on whichever platform, in whichever format your audience wants to consume it. Your users get to decide how, when, and where they want to read your content. It is your challenge and your responsibility to deliver a good experience to them.</p><br><br>- Karen McGrane (<a href="http://alistapart.com/article/your-content-now-mobile">A List Apart</a>)
