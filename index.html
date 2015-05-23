@@ -118,7 +118,7 @@
         font-family: 'open_sanslight', sans-serif;
         color: #333;
         width: 100%;
-        /*min-width: 320px;*/
+        min-width: 320px;
         background: #f2f9fb;
       }
       header {
@@ -255,7 +255,8 @@
             <div class="hero">
               <h2>Z-SITES</h2><p>among the fastest pages on the web... zzz</p>
             </div>
-            <div class="flex portfolio">
+            <div class="portfolio">
+              <div class="flex">
                 <div class="blue">
                     <picture>
                        <source srcset="img/dziecko_rosemary-200_large_2x.jpg 2x, img/dziecko_rosemary-100_large_1x.jpg" />
@@ -273,7 +274,6 @@
                     <p>Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna</p>
                 </div>
             </div>
-            <div class="portfolio">
             <div class="flex">
                 <div class="yellow">
                     <picture>
@@ -353,21 +353,21 @@
            x += 1;
          });
          // header shrink on scroll
-      $(function() {
-        var shrinkHeader = 50;
-        $(window).scroll(function() {
-          var scroll = getCurrentScroll();
-          if ( scroll >= shrinkHeader ) {
-            $('header').addClass('shrink');
-          }
-          else {
-            $('header').removeClass('shrink');
+        $(function() {
+          var shrinkHeader = 50;
+          $(window).scroll(function() {
+            var scroll = getCurrentScroll();
+            if ( scroll >= shrinkHeader ) {
+              $('header').addClass('shrink');
+            }
+            else {
+              $('header').removeClass('shrink');
+            }
+          });
+          function getCurrentScroll() {
+            return window.pageYOffset;
           }
         });
-        function getCurrentScroll() {
-          return window.pageYOffset;
-        }
-      });
       }
       window.onload = init;
 
