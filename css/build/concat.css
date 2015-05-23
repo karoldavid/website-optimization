@@ -1901,10 +1901,6 @@ a:active {
   outline: 0;
 }
 
-footer ul li a:visited {
- color: #77c4d3;
-}
-
 blockquote:before {
   color: #ccc;
   content: open-quote;
@@ -1914,7 +1910,17 @@ blockquote:before {
   vertical-align: -0.4em;
 }
 
-footer a:hover {
+@media only screen and (min-width: 30em) {
+  .flex > div:hover {
+    width: 200%;
+  }
+}
+
+footer ul li a:visited {
+ color: #77c4d3;
+}
+
+footer ul li a:hover {
   opacity: 0.5;
   cursor: pointer;
 }
