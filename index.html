@@ -324,7 +324,7 @@
       if (raf) raf(cb);
       else window.addEventListener('load', cb);
     </script>
-     <script src="js/build/production.min.js"></script>
+    <script async src="js/build/production.min.js"></script>
     <script>
       function init() {
         // load defered images after page build
@@ -342,10 +342,7 @@
            $(this.firstChild).addClass('fa' + ' ' + fa[x]);
            x += 1;
          });
-      }
-      window.onload = init;
-
-      // header shrink on scroll
+         // header shrink on scroll
       $(function() {
         var shrinkHeader = 50;
         $(window).scroll(function() {
@@ -361,6 +358,9 @@
           return window.pageYOffset;
         }
       });
+      }
+      window.onload = init;
+
     </script>
   </body>
 </html>
