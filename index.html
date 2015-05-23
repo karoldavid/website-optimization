@@ -18,17 +18,17 @@
         -webkit-text-size-adjust: none;
       }
       body {
-        margin: 0.2em;
+        /*margin: 0.2em;*/
         line-height: 1.61;
         font-weight: 400;
         font-family: 'open_sanslight', sans-serif;
         color: #333;
-        width: 100%;
-        min-width: 320px;
+        max-width: 100%;
+        /*min-width: 320px;*/
         background: #f2f9fb;
       }
       header {
-        margin: 4px;
+        /*margin: 4px;*/
         padding: 5px;
         position: fixed;
         top: 0;
@@ -83,6 +83,9 @@
         header p span {
           font-size: 0.6em;
         }
+        .main {
+          margin: 0 auto;
+        }
         content {
           -webkit-flex-flow: column;
           flex-direction: column;
@@ -90,7 +93,7 @@
           order: 0;
         }
         .hero {
-        	padding: 1em;
+        	padding: 0.5em;
         }
         .hero h2 {
           font-size: 2em;
@@ -173,6 +176,7 @@
         flex-flow: row;
       }
       content {
+      	/*padding: 2px;*/
       	margin-top: 9em;
         border-bottom: 1px solid #ccc;
       }
@@ -204,8 +208,7 @@
       .portfolio img {
       	float: left;
         padding-right: 1em;
-      	max-width: 100%;
-      	width: 100px;
+      	max-width: 100%;    	
         border: 0;   
       }
       .portfolio p {
@@ -222,12 +225,15 @@
       blockquote {
         background: #eaf299;
         border-left: 10px solid #ccc;
-        margin: 1.5em 10px;
+        /*margin: 1.5em 10px;*/
         padding: 0.5em 10px;
         quotes: "\201C""\201D""\2018""\2019";
       }
       blockquote p {
         display: inline;
+      }
+      .pizza {
+        text-align: center;
       }
       footer {
         text-align: center;
@@ -301,9 +307,9 @@
             <blockquote>
                 <p>It is your mission to get your content out, on whichever platform, in whichever format your audience wants to consume it. Your users get to decide how, when, and where they want to read your content. It is your challenge and your responsibility to deliver a good experience to them.</p><br><br>- Karen McGrane (<a href="http://alistapart.com/article/your-content-now-mobile">A List Apart</a>)
             </blockquote>
-          
-            <p>By the way: Looking for some of the <a href="views/pizza.html">fastest Pizza's</a> served?</p><br>
-          
+            <div class="pizza">
+                <p>By the way: Looking for some of the <a href="views/pizza.html">fastest Pizza's</a> served?</p>
+            </div>
         </content>
     </div>
     <footer>
