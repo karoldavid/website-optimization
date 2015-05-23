@@ -324,7 +324,7 @@
       if (raf) raf(cb);
       else window.addEventListener('load', cb);
     </script>
-    <script src="js/build/production.min.js"></script>
+     <script async src="js/build/production.min.js"></script>
     <script>
       function init() {
         // load defered images after page build
@@ -335,13 +335,13 @@
           }
         }
         // append footer social icon classes after page build
-        var fa = ['fa-twitter', 'fa-github', 'fa-tumblr', 'fa-linkedin', 'fa-envelope-o', 'fa-rss'],
+        /*var fa = ['fa-twitter', 'fa-github', 'fa-tumblr', 'fa-linkedin', 'fa-envelope-o', 'fa-rss'],
             socialFooter = document.getElementById('social'),
             x = 0;
         $( "li" ).each(function(socialFooter) {
            $(this.firstChild).addClass('fa' + ' ' + fa[x]);
            x += 1;
-         });
+         });*/
       }
       window.onload = init;
 
