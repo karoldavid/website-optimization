@@ -76,12 +76,8 @@
       a {
         color: #12C;
       }
-      b,
-      strong {
+      h2 {
         font-weight: bold;
-      }
-       h2 {
-        font-style: bold;
       }
       .main {
         display: -webkit-flex;
@@ -90,6 +86,7 @@
         flex-flow: row;
       }
       article {
+      	margin-top: 9em;
         border-bottom: 1px solid #ccc;
       }
       .hero {
@@ -104,26 +101,26 @@
         background: linear-gradient(to right,  #8cd3f6 0%,#1489e2 67%); /* W3C */
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8cd3f6', endColorstr='#1489e2',GradientType=1 ); /* IE6-9 */
         color: #fff;
-        border-bottom: 1px solid #ccc;
         border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
         text-align: center;
       }
       .hero h2 {
         font-size: 3em;
       }
       .hero p {
-        font-style: bold;
+        font-weight: bold;
         font-size: 1em;
       } 
       .portfolio {
-
+        
       }
       .portfolio img {
-        float: left;
+      	float: left;
         padding-right: 1em;
-        width: 100px;
-        border: 0;
-        max-width: 100%;
+      	max-width: 100%;
+      	width: 100px;
+        border: 0;   
       }
       .portfolio p {
         font-size: 0.9em;
@@ -169,7 +166,6 @@
           font-size: 0.6em;
         }
         article {
-          margin-top: 9em;
           -webkit-flex-flow: column;
           flex-direction: column;
           -webkit-order: 0;
@@ -206,16 +202,16 @@
         }
       }
       @media only screen and (min-width: 41em) {
+      	body {
+          font-size: 16px;
+        }
         header p {
           font-size: 1.8em;
         }
         header p span {
           font-size: 1em;
         }
-        article{
-          margin-top: 9em;
-        }
-        .portfolio h2{
+        .portfolio h2 {
           font-size: 1.5em;
         }
         footer ul li a {
@@ -224,9 +220,6 @@
         }
       }
       @media only screen and (min-width: 50em) {
-        body {
-          font-size: 16px;
-        }
         .main, footer {
           max-width: 45em;
           margin: 0 auto;
@@ -311,6 +304,15 @@
       <p>&copy; Web Performance <script async>document.write(new Date().getFullYear())</script> <span id="crp-stats"></span></p>
     </footer>
     <script>
+       (function(w,g){w['GoogleAnalyticsObject']=g;
+          w[g]=w[g]||function(){(w[g].q=w[g].q||[]).push(arguments)};w[g].l=1*new Date();})(window,'ga');
+
+         // TODO: replace with your Google Analytics profile ID.
+        ga('create', 'UA-XXXX-Y');
+        ga('send', 'pageview');
+    </script>
+    <script async src="http://www.google-analytics.com/analytics.js"></script>
+    <script>
       // load css after page build
       var cb = function() {
         var l = document.createElement('link'); l.rel = 'stylesheet';
@@ -322,15 +324,6 @@
       if (raf) raf(cb);
       else window.addEventListener('load', cb);
     </script>
-    <script>
-       (function(w,g){w['GoogleAnalyticsObject']=g;
-          w[g]=w[g]||function(){(w[g].q=w[g].q||[]).push(arguments)};w[g].l=1*new Date();})(window,'ga');
-
-         // TODO: replace with your Google Analytics profile ID.
-        ga('create', 'UA-XXXX-Y');
-        ga('send', 'pageview');
-    </script>
-    <script async src="http://www.google-analytics.com/analytics.js"></script>
     <script src="js/build/production.min.js"></script>
     <script>
       function init() {
