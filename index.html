@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Professional Portfolio">
     <meta name="author" content="Karol Zyskowski">
     <title>Website Performance Optimization</title>
@@ -17,7 +17,7 @@
         -ms-text-size-adjust: 100%;
         -webkit-text-size-adjust: none;
       }
-         body {
+      body {
         margin: 0.2em;
         line-height: 1.61;
         font-weight: 400;
@@ -51,16 +51,14 @@
         align-content: center;
         align-items: center;
       }
-      h2,
-      p,
-      span {
+      header p {
       	padding: 0;
         margin: 0;
-      }
-      header p {
         font-weight: bold;
       }
       header p span {
+      	padding: 0;
+        margin: 0;
         font-weight: normal;
       }
       header img {
@@ -70,6 +68,8 @@
         color: #12C;
       }
       h2 {
+      	padding: 0;
+        margin: 0;
         font-weight: bold;
       }
        /* Too narrow to support three columns */
@@ -83,7 +83,7 @@
         header p span {
           font-size: 0.6em;
         }
-        article {
+        content {
           -webkit-flex-flow: column;
           flex-direction: column;
           -webkit-order: 0;
@@ -172,7 +172,7 @@
         -webkit-flex-flow: row;
         flex-flow: row;
       }
-      article {
+      content {
       	margin-top: 9em;
         border-bottom: 1px solid #ccc;
       }
@@ -193,6 +193,8 @@
         text-align: center;
       }
       .hero p {
+      	padding: 0;
+        margin: 0;
         font-weight: bold;
         font-size: 1em;
       }
@@ -207,6 +209,8 @@
         border: 0;   
       }
       .portfolio p {
+      	padding: 0;
+        margin: 0;
         font-style: italic;
       }
   
@@ -251,7 +255,7 @@
     </header>
 
     <div class="main">
-        <article>
+        <content>
             <div class="hero">
               <h2>Z-SITES</h2><p>among the fastest pages on the web... zzz</p>
             </div>
@@ -300,7 +304,7 @@
           
             <p>By the way: Looking for some of the <a href="views/pizza.html">fastest Pizza's</a> served?</p><br>
           
-        </article>
+        </content>
     </div>
     <footer>
         <ul id="social">
