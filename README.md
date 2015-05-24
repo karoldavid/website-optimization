@@ -20,66 +20,47 @@ Smooth browser animations and efficient code execution in main.js for the Pizzas
 
 Optimization Results:
 
-(1) Mobile Portfolio Page (index.html): 94% Mobile Speed; 95% Desktop Speed; 100% User Experience;
+(1) Mobile Portfolio Page (index.html):
+    - 94%  Speed on Mobile;
+    - 95%  Speed on Desktop;
+    - 100% Mobile User Experience;
     https://developers.google.com/speed/pagespeed/insights/
 
-(2) Cam's Online Pizzeria (pizza.html, views/js/main.js): Scrolling is unde 60 frames per second;
-    time to resize a pizza is less than 5ms shown in the console;
+(2) Cam's Online Pizzeria (pizza.html, views/js/main.js):
+    - scrolling is under 60 frames per second;
+    - time to resize a pizza is less than 5ms shown in the console;
 
 Furthermore, static assests such as images, css and javascipt files are automatically optimized, concatenated and/ or minified with Grunt.
 
 
-Optimizations:
-
-2. Cam's Online Pizzeria
+Optimization of Cam's Online Pizzeria:
 
 Essentially optimizing JavaScript, Layout and Paint executions
 
-Gain 60 FPS on Browser Scroll
-The next step is to gain 60 FPS when a user scrolls through the website on the Pizzas page. We open up Chome Dev
-Tools and inspect the performance of our page using the timeline feature in Chrome Dev Tools. We record the timeline
-and proceed to scroll through the browser for a couple of seconds and then stop recording.
-We then analyze the performance of our entire site and look try to find out what is causing the computation bottleneck
-that is preventing our site from performing at 60 FPS. To reach 60 FPS, the majority of the colored bars should be under
-the 60 FPS line such as this:
+First, in views/js/main.js I am looking for the more obvious and main bottlenecks, that are usually easier to change.
 
-Hint: The main cause of the bottleneck is in the JavaScript and we should be analyzing the efficiency of our code in the
-For Loops. console.log() all of the variables being calculated inside the For Loops and figure out which variables need to
-be calculated inside the For Loops and which variables can be calculated outside of the For Loops.
+So, I reduced the number of animated pizzas from 200 to a more reasonable number of 35:
 
+document.addEventListener('DOMContentLoaded', function() {
+  [...]
+  for (var i = 0; i < 35; i++) {
+    [...]
+  }
+  [...]
+});
 
-a. First Stage Optimizations: number of items and calculating items inside the For Loops
+Where possible, I calculate variables outside the For Loops, like the 5 phases:
 
-optimize the JavaScript:
-- calculating our variables inside the For loops
-- reduce the number of animated pizzas from 200 to 35
-
-=> Web site is performing at 60 FPS now
-
-
-b. Second Stage Optimization:
-
-- Reducing the Scripting Time
-
-
-* document.querySelectorAll() => document.getElementsByClassName()
-
-* There is no need to access the DOM element for every scroll. Create an array variable that has a reference to all of the pizzas that has the class name "mover"
-
-* calculate 5 phases in the function but outsite the loop.
-
-
-- Reducing Layout Time
-
-
-c. Third Stage Optimization
-
-Reducing the Paint time
-
-
-* backface-visibility: hidden ... in the CSS for the "mover" class. This forces each moving pizza to have its own composite layer.
-
-When we scroll, the browser will only repaint the pixels that are affected by the moving pizzas, and therefore will not repaint the whole screen, drastically reducing our total paint time and increasing our FPS.
+function updatePositions() {
+  [...]
+  var phases = [];
+  for (var x = 0; x < 5; x++) { phases[x] = Math.sin((document.body.scrollTop / 1250) + x); }
+  for (var i = 0; i < items.length; i++) {
+    items[i].style.transform = 'translateX(' + parseInt(items[i].basicLeft + 100 * phases[i % 5] - halfScreenWidth ) + 'px' + ')';
+  }
+  [...]
+  }
+}
 
 Change Pizza Sizes
 The last optimization we need to accomplish is to make the Change Pizza Sizes function more efficient. If we open up
@@ -96,8 +77,46 @@ resizePizzas(this.value)
 From there we then look into main.js and study the   
 resizePizzas() 
  function and proceed to look for bottle necks in the
-calculations. Again the main bottleneck is how everything is calculated in the For Loops.b
+calculations. Again the main bottleneck is how everything is calculated in the For Loops.
+
+The next change reduces the scripting time. There is no need to access the DOM element for every scroll.
+ Therefore I create an array variable that has a reference to all of the pizzas that has the class name "mover":
+
+[..]
+var items = [];
+[..]
+document.addEventListener('DOMContentLoaded', function() {
+  [..]
+  // get all moving pizza objects from the DOM and put them into one array to reduce DOM access
+  items = document.getElementsByClassName('mover');
+  [..]
+});
+
+- Furthermore, I reduce the layout time by using te more performant 'document.getElementsByClassName()' instead of 'document.querySelectorAll()':
+
+function changePizzaSizes(size) {
+    [..]
+    var randomPizzas = document.getElementsByClassName("randomPizzaContainer");
+    [..]
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  [..]
+  items = document.getElementsByClassName('mover');
+  [..]
+});
 
 
- Critical Rendering Path:
-HTML ­> CSSOM <­ JavaScript ­> Render Tree ­> Layout ­> Paint
+Then, I reduce the paint time by forcing each moving pizza into its own composite layer. Adding 'backface-visibility' to the css mover class in views/css/style.css does the trick:
+  .mover {
+    position: fixed;
+    width: 256px;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    z-index: -1;
+  }
+
+When we scroll, the browser will only repaint the pixels that are affected by the moving pizzas, and therefore will not repaint the whole screen, drastically reducing our total paint time and increasing our FPS.
+
+Finally, I give the background pizza an own image views/images/pizza-small.png, having the exact size on screen. The rezisable pizza gets its own optimized image views/images/pizza-large.png, too.
+
