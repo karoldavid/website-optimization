@@ -66,6 +66,9 @@
     a {
       color: #12C;
     }
+    strong {
+      font-weight: bold;
+    }
     h2,
     h3 {
     	margin: 0;
@@ -97,11 +100,26 @@
       .hero h2 {
         font-size: 2em;
       }
+      .blue-box,
+      .red-box,
+      .yellow-box,
+      .green-box {
+        margin: 0.5em 0;
+        height: 100px;
+      }
+      .portfolio {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+      }
       .portfolio h3 {
+        
         font-size: 1.2em;
       }
       .portfolio p {
-        font-size: 0.9em;
+        display: none;
+        /*font-size: 0.9em;*/
       }
       footer {
         max-height: 2em;
@@ -125,7 +143,7 @@
         flex: 1 1 auto;
         width: 50%;
         border: 1px solid #cccc33;
-        border-radius: 7pt;
+        overflow: hidden;
       }
     }
     @media only screen and (min-width: 40.5em) {
@@ -212,14 +230,26 @@
     	padding: 0;
       font-style: italic;
     }
-    .blue   { background : #A79AE2; }
-    .red    { background : #865667; }
-    .yellow { background : #0D808E; }
-    .green  { background : #7F6EA5; }
+    .blue-box {
+      padding: 5px;
+      background : #A79AE2;
+    }
+    .red-box {
+      padding: 5px;
+      background : #865667;
+    }
+    .yellow-box {
+      padding: 5px;
+      background : #0D808E;
+    }
+    .green-box {
+      padding: 5px;
+      background : #7F6EA5;
+    }
     blockquote {
       background: #eaf299;
       border-left: 10px solid #ccc;
-      /*margin: 1.5em 10px;*/
+      margin: 1.5em 10px;
       padding: 0.5em 10px;
       quotes: "\201C""\201D""\2018""\2019";
     }
@@ -228,6 +258,7 @@
     }
     #pizzeria {
       text-align: center;
+      margin-bottom: 1em;
     }
     #pizzeria img {
       max-width: 50%;
@@ -260,39 +291,40 @@
       </div>
       <div class="portfolio">
         <div class="flex">
-          <div class="blue">
+          <div class="blue-box">
             <picture>
               <source srcset="img/dziecko_rosemary-200_large_2x.jpg 2x, img/dziecko_rosemary-100_large_1x.jpg" />
               <img src="img/dziecko_rosemary.jpg" alt="Dziecko Rosemary">
             </picture>
             <a href="http://karoldavid.github.io/movie-poster-blog/"><h3>Movie Poster Gallery</h3></a>
-            <p>Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna</p>
+            <p>This movie poster gallery displays a collection of 110 Polish movie posters from 1947 to 1989. They are made by Polish artist.
+            The pictures of the movie posters are photographs of the original collection. The interactive and responsive online gallery is manly programmed in JavaScript. The data displayed is a json dump from mongoDB.</p>
           </div>
-          <div class="red">
+          <div class="red-box">
             <picture>
               <source srcset="img/susanne_fuelscher-200_large_2x.jpg 2x, img/susanne_fuelscher-100_large_1x.jpg" />
               <img src="img/susanne_fuelscher.jpg" alt="Susanne Fülscher Portrait">
             </picture>
-            <a href="http://www.susanne-fuelscher.de/"><h3>Responsive Author Website</h3></a>
-            <p>Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna</p>
+            <a href="http://www.susanne-fuelscher.de/"><h3>Author Website</h3></a>
+            <p>This website informs about the publications of a German author. She writes books for girls, teens, young women and scripts for TV-Series. The responsive website uses the Bootstrap Framework. It is programmed in CSS, HTML, JavaScript and PHP. As a CMS it uses WordPress.</p>
           </div>
         </div>
         <div class="flex">
-          <div class="yellow">
+          <div class="yellow-box">
             <picture>
               <source srcset="img/logo-200_large_2x.png 2x, img/logo-100_large_1x.png" />
               <img src="img/logo.png" alt="Logo">
             </picture>
             <a href="http://karoldavid.github.io/interactive-resume/"><h3>Interactive Online Resume</h3></a>
-            <p>Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna</p>
+            <p>The interactive online resume website is a project, programmed for the Udacity Front-End Web Developer Nano Degree. It is mainly programmed in JavaScript. The data displayed are wrapped in JSON objects</p>
           </div>
-          <div class="green">
+          <div class="green-box">
             <picture>
               <source srcset="img/star-200_large_2x.png 2x, img/star-100_large_1x.png" />
               <img src="img/star.png" alt="Arcade Game Star">
             </picture>
             <a href="http://karoldavid.github.io/arcade-game/"><h3>Gem Land - Game</h3></a>
-            <p>Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna</p>
+            <p>This game is a project, programmed for the Udacity Front-End Web Developer Nano Degree. The focos of this work is object oriented programming in JavaScript and HTML5 canvas manipulation.</p>
           </div>
         </div>
       </div>        
@@ -300,7 +332,7 @@
         <p>It is your mission to get your content out, on whichever platform, in whichever format your audience wants to consume it. Your users get to decide how, when, and where they want to read your content. It is your challenge and your responsibility to deliver a good experience to them.</p><br><br>- Karen McGrane (<a href="http://alistapart.com/article/your-content-now-mobile">A List Apart</a>)
       </blockquote>
       <div id="pizzeria">
-        <p>Psst: Want to share one of the <a href="views/pizza.html">fastest Pizza's</a> with the Cookie Monster?</p>
+        <p>Pssssst: Want to scroll or even resize one of the <a href="views/pizza.html"><strong>fastest Pizzas</strong></a> with the Cookie Monster?</p>
         <img src="img/cookie_monster_waiting.gif" alt="Cookie Monster Waiting">
       </div>
     </article>
