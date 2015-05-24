@@ -380,7 +380,7 @@ var pizzaElementGenerator = function(i) {
   pizzaContainer.id = "pizza" + i;                // gives each pizza element a unique id
   pizzaImageContainer.classList.add("col-md-6");
 
-  pizzaImage.src = "images/pizza-large.png";
+  pizzaImage.src = "images/pizza-200.png"; // resizable pizza with optimal size
   pizzaImage.classList.add("img-responsive");
   pizzaImageContainer.appendChild(pizzaImage);
   pizzaContainer.appendChild(pizzaImageContainer);
@@ -521,7 +521,7 @@ document.addEventListener('DOMContentLoaded', function() {
   for (var i = 0; i < 35; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
-    elem.src = "images/pizza-small.png";//background pizza image file with height 129px and width 100px
+    elem.src = "images/pizza-100.png";//background pizza image file with height 129px and width 100px
     elem.style.height = "129px";
     elem.style.width = "100px";
     elem.basicLeft = (i % cols) * s;
