@@ -385,7 +385,6 @@ var pizzaElementGenerator = function(i) {
   pizzaImageContainer.appendChild(pizzaImage);
   pizzaContainer.appendChild(pizzaImageContainer);
 
-
   pizzaDescriptionContainer.classList.add("col-md-6");
 
   pizzaName = document.createElement("h4");
@@ -441,7 +440,7 @@ var resizePizzas = function(size) {
         console.log("Bug in sizeSwitcher");
         break;
     }
-    
+    // accesses the DOM outside the For Loop
     var randomPizzas = document.getElementsByClassName("randomPizzaContainer");
     for (var i = 0; i < randomPizzas.length; i++) {
       randomPizzas[i].style.width = newWidth + "%";
@@ -491,12 +490,14 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // Moves the sliding background pizzas based on scroll position
 function updatePositions() {
   frame++;
+  //current screen width is needed for centering the background pizzas
   var halfScreenWidth = ((window.innerWidth > 0) ? window.innerWidth : screen.width) / 2;
   window.performance.mark("mark_start_frame");
   var phases = [];
+  //calculate the five phases that animate the scrolling background pizzas
   for (var x = 0; x < 5; x++) { phases[x] = Math.sin((document.body.scrollTop / 1250) + x); }
   for (var i = 0; i < items.length; i++) {
-    //items[i].style.left = items[i].basicLeft + 100 * phases[i % 5] + 'px';
+    //move background pizzas horizontally, relative to their current position 
     items[i].style.transform = 'translateX(' + parseInt(items[i].basicLeft + 100 * phases[i % 5] - halfScreenWidth ) + 'px' + ')';
   }
 
@@ -520,7 +521,7 @@ document.addEventListener('DOMContentLoaded', function() {
   for (var i = 0; i < 35; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
-    elem.src = "images/pizza-small.png";
+    elem.src = "images/pizza-small.png";//background pizza image file with height 129px and width 100px
     elem.style.height = "129px";
     elem.style.width = "100px";
     elem.basicLeft = (i % cols) * s;
