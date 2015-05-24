@@ -1,371 +1,366 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Professional Portfolio">
-    <meta name="author" content="Karol Zyskowski">
-    <title>Website Performance Optimization</title>
-    <base target="_blank">
-    <link rel="icon" type="image/png" href="favicon.png">
-    <script async src="js/build/production.min.js"></script>
-    <link rel="stylesheet" href="css/print.css" media="print">
-    <style>
-      html {
-        font-size: 100%;
-        overflow-y: scroll;
-        -webkit-tap-highlight-color: rgba(0,0,0,0);
-        -ms-text-size-adjust: 100%;
-        -webkit-text-size-adjust: none;
-      }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Professional Portfolio">
+  <meta name="author" content="Karol Zyskowski">
+  <title>Website Performance Optimization</title>
+  <base target="_blank">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <script async src="js/build/production.min.js"></script>
+  <link rel="stylesheet" href="css/print.css" media="print">
+  <style>
+    html {
+      font-size: 100%;
+      overflow-y: scroll;
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+      -ms-text-size-adjust: 100%;
+      -webkit-text-size-adjust: none;
+    }
+    body {
+      margin: 0.2em;
+      max-width: 100%;
+      background: #f2f9fb;
+      font-family: 'open_sanslight', sans-serif;
+      line-height: 1.61;
+      font-weight: 400;
+      color: #333;
+    }
+    header {
+      padding: 5px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #f5b732;
+      height: auto;
+      color:#fff;
+      z-index: 1000;
+      overflow: hidden;
+      -webkit-transition: height 0.3s;
+      -moz-transition: height 0.3s;
+      transition: height 0.3s;
+      display: -webkit-flex;
+      display:         flex;
+      flex-wrap: wrap;
+      -webkit-flex-flow: row;
+      flex-flow: row;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+    }
+    header p {
+    	margin: 0;
+    	padding: 0;
+      font-weight: bold;
+    }
+    header p span {
+    	margin: 0;
+    	padding: 0;
+      font-weight: normal;
+    }
+    header img {
+      margin: 0.5em 1em 0.5em 0;
+    }
+    a {
+      color: #12C;
+    }
+    h2,
+    h3 {
+    	margin: 0;
+    	padding: 0;
+      font-weight: bold;
+    }
+    @media only screen and (max-width: 40em) {
       body {
-        margin: 0.2em;
-        max-width: 100%;
-        background: #f2f9fb;
-        font-family: 'open_sanslight', sans-serif;
-        line-height: 1.61;
-        font-weight: 400;
-        color: #333;
-      }
-      header {
-        padding: 5px;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background: #f5b732;
-        height: auto;
-        color:#fff;
-        z-index: 1000;
-        overflow: hidden;
-        -webkit-transition: height 0.3s;
-        -moz-transition: height 0.3s;
-        transition: height 0.3s;
-        display: -webkit-flex;
-        display:         flex;
-        flex-wrap: wrap;
-        -webkit-flex-flow: row;
-        flex-flow: row;
-        justify-content: center;
-        align-content: center;
-        align-items: center;
+        font-size: 14px;
       }
       header p {
-      	margin: 0;
-      	padding: 0;
-        font-weight: bold;
+        font-size: 1.2em;
       }
       header p span {
-      	margin: 0;
-      	padding: 0;
-        font-weight: normal;
-      }
-      header img {
-        margin: 0.5em 1em 0.5em 0;
-      }
-      a {
-        color: #12C;
-      }
-      h2,
-      h3 {
-      	margin: 0;
-      	padding: 0;
-        font-weight: bold;
-      }
-      @media only screen and (max-width: 40em) {
-        body {
-          font-size: 14px;
-        }
-        header p {
-          font-size: 1.2em;
-        }
-        header p span {
-          font-size: 0.6em;
-        }
-        .main {
-          margin: 0 auto;
-        }
-        article {
-          -webkit-flex-flow: column;
-          flex-direction: column;
-          -webkit-order: 0;
-          order: 0;
-        }
-        .hero {
-        	padding: 0.5em;
-        }
-        .hero h2 {
-          font-size: 2em;
-        }
-        .portfolio h3 {
-          font-size: 1.2em;
-        }
-        .portfolio p {
-          font-size: 0.9em;
-        }
-        footer {
-          max-height: 2em;
-        }
-        footer ul li a {
-          margin: 12px;
-          padding: 8px;
-        }
-      }
-      @media only screen and (min-width: 30em) {
-        .flex {
-          width: 100%;
-          height: 200px;
-          display: -webkit-flex;
-          -webkit-flex-direction: row;
-          display: flex;
-          flex-direction: row;
-        }
-        .flex > div {
-          -webkit-flex: 1 1 auto;
-          flex: 1 1 auto;
-          width: 50%;
-          border: 1px solid #cccc33;
-          border-radius: 7pt;
-        }
-      }
-      @media only screen and (min-width: 40.5em) {
-      	body {
-          font-size: 16px;
-        }
-        header p {
-          font-size: 1.8em;
-        }
-        header p span {
-          font-size: 1em;
-        }
-        .hero {
-          padding: 2em;
-        }
-        .hero h2 {
-          font-size: 3em;
-        }
-        .portfolio h3 {
-          font-size: 1.5em;
-        }
-        .portfolio p {
-          font-size: 0.9em;
-        }
-        footer ul li a {
-      	  margin: 15px;
-          padding: 10px;
-        }
-      }
-      @media only screen and (min-width: 50em) {
-        .main, footer {
-          max-width: 45em;
-          margin: 0 auto;
-        }
-      }
-      @media only screen and (min-width: 70em) {
-        .main, footer {
-          max-width: 60em;
-        }
+        font-size: 0.6em;
       }
       .main {
-        display: -webkit-flex;
-        display:         flex;
-        -webkit-flex-flow: row;
-        flex-flow: row;
+        margin: 0 auto;
       }
       article {
-      	margin-top: 9em;
-        border-bottom: 1px solid #ccc;
+        -webkit-flex-flow: column;
+        flex-direction: column;
+        -webkit-order: 0;
+        order: 0;
       }
       .hero {
-      	max-width: 100%;
-      	margin-bottom: 2em;
-        background: #8cd3f6; /* Old browsers */
-        background: -moz-linear-gradient(left,  #8cd3f6 0%, #1489e2 67%); /* FF3.6+ */
-        background: -webkit-gradient(linear, left top, right top, color-stop(0%,#8cd3f6), color-stop(67%,#1489e2)); /* Chrome,Safari4+ */
-        background: -webkit-linear-gradient(left,  #8cd3f6 0%,#1489e2 67%); /* Chrome10+,Safari5.1+ */
-        background: -o-linear-gradient(left,  #8cd3f6 0%,#1489e2 67%); /* Opera 11.10+ */
-        background: -ms-linear-gradient(left,  #8cd3f6 0%,#1489e2 67%); /* IE10+ */
-        background: linear-gradient(to right,  #8cd3f6 0%,#1489e2 67%); /* W3C */
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8cd3f6', endColorstr='#1489e2',GradientType=1 ); /* IE6-9 */
-        color: #fff;
-        border-top: 1px solid #ccc;
-        border-bottom: 1px solid #ccc;
-        text-align: center;
+      	padding: 0.5em;
       }
-      .hero p {
-      	margin: 0;
-      	padding: 0;
-        font-weight: bold;
-        font-size: 1em;
+      .hero h2 {
+        font-size: 2em;
       }
-      .portfolio {
-      	max-width: 100%;
-      }
-      .portfolio img {
-      	float: left;
-        padding-right: 1em;
-      	max-width: 100%;    	
-        border: 0;   
+      .portfolio h3 {
+        font-size: 1.2em;
       }
       .portfolio p {
-      	margin: 0;
-      	padding: 0;
-        font-style: italic;
-      }
-  
-      .blue   { background : #A79AE2; }
-      .red    { background : #865667; }
-      .yellow { background : #0D808E; }
-      .green  { background : #7F6EA5; }
-
-      blockquote {
-        background: #eaf299;
-        border-left: 10px solid #ccc;
-        /*margin: 1.5em 10px;*/
-        padding: 0.5em 10px;
-        quotes: "\201C""\201D""\2018""\2019";
-      }
-      blockquote p {
-        display: inline;
-      }
-      .pizza {
-        text-align: center;
+        font-size: 0.9em;
       }
       footer {
-        text-align: center;
-      }
-      footer ul li {
-        list-style-type: none;
-        display: inline;
+        max-height: 2em;
       }
       footer ul li a {
-      	text-decoration: none;
-        font-size: 1.1em;
-        color: #77c4d3;
+        margin: 12px;
+        padding: 8px;
       }
-    </style>
+    }
+    @media only screen and (min-width: 30em) {
+      .flex {
+        width: 100%;
+        height: 200px;
+        display: -webkit-flex;
+        -webkit-flex-direction: row;
+        display: flex;
+        flex-direction: row;
+      }
+      .flex > div {
+        -webkit-flex: 1 1 auto;
+        flex: 1 1 auto;
+        width: 50%;
+        border: 1px solid #cccc33;
+        border-radius: 7pt;
+      }
+    }
+    @media only screen and (min-width: 40.5em) {
+    	body {
+        font-size: 16px;
+      }
+      header p {
+        font-size: 1.8em;
+      }
+      header p span {
+        font-size: 1em;
+      }
+      .hero {
+        padding: 2em;
+      }
+      .hero h2 {
+        font-size: 3em;
+      }
+      .portfolio h3 {
+        font-size: 1.5em;
+      }
+      .portfolio p {
+        font-size: 0.9em;
+      }
+      footer ul li a {
+    	  margin: 15px;
+        padding: 10px;
+      }
+    }
+    @media only screen and (min-width: 50em) {
+      .main, footer {
+        max-width: 45em;
+        margin: 0 auto;
+      }
+    }
+    @media only screen and (min-width: 70em) {
+      .main, footer {
+        max-width: 60em;
+      }
+    }
+    .main {
+      display: -webkit-flex;
+      display:         flex;
+      -webkit-flex-flow: row;
+      flex-flow: row;
+    }
+    article {
+    	margin-top: 9em;
+      border-bottom: 1px solid #ccc;
+    }
+    .hero {
+    	max-width: 100%;
+    	margin-bottom: 2em;
+      background: #8cd3f6; /* Old browsers */
+      background: -moz-linear-gradient(left,  #8cd3f6 0%, #1489e2 67%); /* FF3.6+ */
+      background: -webkit-gradient(linear, left top, right top, color-stop(0%,#8cd3f6), color-stop(67%,#1489e2)); /* Chrome,Safari4+ */
+      background: -webkit-linear-gradient(left,  #8cd3f6 0%,#1489e2 67%); /* Chrome10+,Safari5.1+ */
+      background: -o-linear-gradient(left,  #8cd3f6 0%,#1489e2 67%); /* Opera 11.10+ */
+      background: -ms-linear-gradient(left,  #8cd3f6 0%,#1489e2 67%); /* IE10+ */
+      background: linear-gradient(to right,  #8cd3f6 0%,#1489e2 67%); /* W3C */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8cd3f6', endColorstr='#1489e2',GradientType=1 ); /* IE6-9 */
+      color: #fff;
+      border-top: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+      text-align: center;
+    }
+    .hero p {
+    	margin: 0;
+    	padding: 0;
+      font-weight: bold;
+      font-size: 1em;
+    }
+    .portfolio {
+    	max-width: 100%;
+    }
+    .portfolio img {
+    	float: left;
+      padding-right: 1em;
+    	max-width: 100%;    	
+      border: 0;   
+    }
+    .portfolio p {
+    	margin: 0;
+    	padding: 0;
+      font-style: italic;
+    }
+    .blue   { background : #A79AE2; }
+    .red    { background : #865667; }
+    .yellow { background : #0D808E; }
+    .green  { background : #7F6EA5; }
+    blockquote {
+      background: #eaf299;
+      border-left: 10px solid #ccc;
+      /*margin: 1.5em 10px;*/
+      padding: 0.5em 10px;
+      quotes: "\201C""\201D""\2018""\2019";
+    }
+    blockquote p {
+      display: inline;
+    }
+    .pizza {
+      text-align: center;
+    }
+    footer {
+      text-align: center;
+    }
+    footer ul li {
+      list-style-type: none;
+      display: inline;
+    }
+    footer ul li a {
+    	text-decoration: none;
+      font-size: 1.1em;
+      color: #77c4d3;
+    }
+  </style>
 </head>
-
 <body>
-    <header>
-        <a href="http://karoldavid.github.io/interactive-resume/">
-            <img width="75" height="75" title="Karol" alt="Karol Portrait" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD//gATQ3JlYXRlZCB3aXRoIEdJTVD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCABLAEsDAREAAhEBAxEB/8QAGwAAAgIDAQAAAAAAAAAAAAAAAwQCBQABBgf/xAAxEAACAgEDAwEECQUAAAAAAAABAgADEQQSIQUxQVETImFxBhQyQmJygZGhI7HB4fD/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8AAFgT2huCOIGm/o4JYbT4PeAeoNZ2XA+MBldM553D9oGNp7FGe4HeANh7pgYo4EAiiBErzARUwMtsWmprG7Dx6wF9MWts32csf4+UC7p7AYgN1jjtANhducDMBS+hWyRw3g+sBRRjvAIogZiBWpAU6k+96qR+Y/2EA+jU58YEC4oGVGe8B5AccQNsrYgCsGBkwECwLtAIh+BgYWGYFYvaAq9D3XjUVkNWQB+XHqIDmlUg4/WA37R0XKDnwT4gCbUasDdTrgG9HUYgM6HqWqdxVq60P40gM36mmusta20DzAUpeq2wtTYrqR3BzAaQYECDAbjApweIBk3+0G2tRWAVPqcQM0Lq6nHriA9bpRcoAJA84gVrdHpS8XKrM2CNpc4+cCx6dpPqygtu+TeIFZ9JV1H1+pK03UWKDgHGDnnMAfQ9PjWPalfs1ryjYPDH/uYHQCANvtGBRbhjntAY0uop1en9rp7lcLkHB5z2OYC/T8pYR47wL7TWBx3gNE1oMnvAXu1SF9rOiEHAVjgmAPqVaXLUTjI/zAFpaxUjL+LMBkGANj7xgcd1fXNpaQiLlrQRuPiBWdGtrrtcM21j7y8+YHTaKwMhIb/UCy0rYbAzj1gRfqi1XlXG3BxuYcfvAhqLKNSGO+ixiOOQTARNj6ewi21m5GzntAttNYXqDn73MBlWgaY8mB5hr9W2r1Js5CjhR8IAFbyDgwLHQ9Vt0zEOcqe8DqNH1SmylTWwJ7H4QHtPctoZSAQe+YC+t0xH2dPW6+u3mAh9Wrr1KoK1V7OwHiBeVkKoA7DgQChoEi3MDyn+IG/PEDYORgwJV2vW3usQfhAtNF1u6ggWNlIFgfpGG2jdgD9MwBaDq5u61UgUOHBTcfu/KB06t7sAqt25gTzA8vwMQIp3gY/2gfWBs9hANpkV2IYZGIC93FzgeDAs/o4AesVZ8BiP2gdmpgFB4ECeYH//2Q==" />
-        </a>
-        <p>Front-End Web Developer<br><span>Karol Zyskowski - eat, sleep, develop</span></p>
-    </header>
-
-    <div class="main">
-        <article>
-            <div class="hero">
-              <h2>Z-SITES</h2><p>among the fastest pages on the web... zzz</p>
-            </div>
-            <div class="portfolio">
-              <div class="flex">
-                <div class="blue">
-                    <picture>
-                       <source srcset="img/dziecko_rosemary-200_large_2x.jpg 2x, img/dziecko_rosemary-100_large_1x.jpg" />
-                       <img src="img/dziecko_rosemary.jpg" alt="Dziecko Rosemary">
-                    </picture>
-                    <a href="http://karoldavid.github.io/movie-poster-blog/"><h3>Movie Poster Gallery</h3></a>
-                    <p>Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna</p>
-                </div>
-                <div class="red">
-                    <picture>
-                        <source srcset="img/susanne_fuelscher-200_large_2x.jpg 2x, img/susanne_fuelscher-100_large_1x.jpg" />
-                        <img src="img/susanne_fuelscher.jpg" alt="Susanne Fülscher Portrait">
-                    </picture>
-                    <a href="http://www.susanne-fuelscher.de/"><h3>Responsive Author Website</h3></a>
-                    <p>Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna</p>
-                </div>
-            </div>
-            <div class="flex">
-                <div class="yellow">
-                    <picture>
-                       <source srcset="img/logo-200_large_2x.png 2x, img/logo-100_large_1x.png" />
-                       <img src="img/logo.png" alt="Logo">
-                    </picture>
-                    <a href="http://karoldavid.github.io/interactive-resume/"><h3>Interactive Online Resume</h3></a>
-                    <p>Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna</p>
-                </div>
-                <div class="green">
-                    <picture>
-                        <source srcset="img/star-200_large_2x.png 2x, img/star-100_large_1x.png" />
-                        <img src="img/star.png" alt="Arcade Game Star">
-                    </picture>
-                    <a href="http://karoldavid.github.io/arcade-game/"><h3>Gem Land - Game</h3></a>
-                    <p>Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna</p>
-                </div>
-              </div>
-            </div>
-         
-            <blockquote>
-                <p>It is your mission to get your content out, on whichever platform, in whichever format your audience wants to consume it. Your users get to decide how, when, and where they want to read your content. It is your challenge and your responsibility to deliver a good experience to them.</p><br><br>- Karen McGrane (<a href="http://alistapart.com/article/your-content-now-mobile">A List Apart</a>)
-            </blockquote>
-            <div class="pizza">
-                <p>By the way: Looking for some of the <a href="views/pizza.html">fastest Pizza's</a> served?</p>
-            </div>
-        </article>
-    </div>
-    <footer>
-        <ul id="social">
-            <li><a href="https://twitter.com/karoldawid"></a></li>
-            <li><a href="https://github.com/karoldavid?tab=repositories"></a></li>
-            <li><a href="http://pouchkine.tumblr.com/"></a></li>
-            <li><a href="#"></a></li>
-            <li><a href="mailto:k.zysk@zoho.com" target="_self"></a></li>
-            <li><a href="#"></a></li>
-        </ul>
-        <p>&copy; Web Performance <script>document.write(new Date().getFullYear())</script> <span id="crp-stats"></span></p>
-    </footer>
-    <script>
-       (function(w,g){w['GoogleAnalyticsObject']=g;
-          w[g]=w[g]||function(){(w[g].q=w[g].q||[]).push(arguments)};w[g].l=1*new Date();})(window,'ga');
-
-         // TODO: replace with your Google Analytics profile ID.
-        ga('create', 'UA-XXXX-Y');
-        ga('send', 'pageview');
-    </script>
-    <script async src="http://www.google-analytics.com/analytics.js"></script>
-    <script>
-      // load css after page build
-      var cb = function() {
-        var l = document.createElement('link'); l.rel = 'stylesheet';
-        l.href = 'css/build/concat.min.css';
-        var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
-      };
-      var raf = requestAnimationFrame || mozRequestAnimationFrame ||
-          webkitRequestAnimationFrame || msRequestAnimationFrame;
-      if (raf) raf(cb);
-      else window.addEventListener('load', cb);
-    </script>
-    <script>
-      function init() {
-        // append footer social icon classes after page build
-        var fa = ['fa-twitter', 'fa-github', 'fa-tumblr', 'fa-linkedin', 'fa-envelope-o', 'fa-rss'],
-            socialFooter = document.getElementById('social'),
-            x = 0;
-        $( "li" ).each(function(socialFooter) {
-           $(this.firstChild).addClass('fa' + ' ' + fa[x]);
-           x += 1;
-         });
-        // shrink header on scroll
-        $(function() {
-          var shrinkHeader = 50;
-          $(window).scroll(function() {
-            var scroll = getCurrentScroll();
-            if ( scroll >= shrinkHeader ) {
-              $('header').addClass('shrink');
-            }
-            else {
-              $('header').removeClass('shrink');
-            }
-          });
-          function getCurrentScroll() {
-            return window.pageYOffset;
+  <header>
+    <a href="http://karoldavid.github.io/interactive-resume/">
+      <img width="75" height="75" title="Karol" alt="Karol Portrait" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD//gATQ3JlYXRlZCB3aXRoIEdJTVD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCABLAEsDAREAAhEBAxEB/8QAGwAAAgIDAQAAAAAAAAAAAAAAAwQCBQABBgf/xAAxEAACAgEDAwEECQUAAAAAAAABAgADEQQSIQUxQVETImFxBhQyQmJygZGhI7HB4fD/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8AAFgT2huCOIGm/o4JYbT4PeAeoNZ2XA+MBldM553D9oGNp7FGe4HeANh7pgYo4EAiiBErzARUwMtsWmprG7Dx6wF9MWts32csf4+UC7p7AYgN1jjtANhducDMBS+hWyRw3g+sBRRjvAIogZiBWpAU6k+96qR+Y/2EA+jU58YEC4oGVGe8B5AccQNsrYgCsGBkwECwLtAIh+BgYWGYFYvaAq9D3XjUVkNWQB+XHqIDmlUg4/WA37R0XKDnwT4gCbUasDdTrgG9HUYgM6HqWqdxVq60P40gM36mmusta20DzAUpeq2wtTYrqR3BzAaQYECDAbjApweIBk3+0G2tRWAVPqcQM0Lq6nHriA9bpRcoAJA84gVrdHpS8XKrM2CNpc4+cCx6dpPqygtu+TeIFZ9JV1H1+pK03UWKDgHGDnnMAfQ9PjWPalfs1ryjYPDH/uYHQCANvtGBRbhjntAY0uop1en9rp7lcLkHB5z2OYC/T8pYR47wL7TWBx3gNE1oMnvAXu1SF9rOiEHAVjgmAPqVaXLUTjI/zAFpaxUjL+LMBkGANj7xgcd1fXNpaQiLlrQRuPiBWdGtrrtcM21j7y8+YHTaKwMhIb/UCy0rYbAzj1gRfqi1XlXG3BxuYcfvAhqLKNSGO+ixiOOQTARNj6ewi21m5GzntAttNYXqDn73MBlWgaY8mB5hr9W2r1Js5CjhR8IAFbyDgwLHQ9Vt0zEOcqe8DqNH1SmylTWwJ7H4QHtPctoZSAQe+YC+t0xH2dPW6+u3mAh9Wrr1KoK1V7OwHiBeVkKoA7DgQChoEi3MDyn+IG/PEDYORgwJV2vW3usQfhAtNF1u6ggWNlIFgfpGG2jdgD9MwBaDq5u61UgUOHBTcfu/KB06t7sAqt25gTzA8vwMQIp3gY/2gfWBs9hANpkV2IYZGIC93FzgeDAs/o4AesVZ8BiP2gdmpgFB4ECeYH//2Q==" />
+    </a>
+    <p>Front-End Web Developer<br><span>Karol Zyskowski - eat, sleep, develop</span></p>
+  </header>
+  <div class="main">
+    <article>
+      <div class="hero">
+        <h2>Z-SITES</h2><p>among the fastest pages on the web... zzz</p>
+      </div>
+      <div class="portfolio">
+        <div class="flex">
+          <div class="blue">
+            <picture>
+              <source srcset="img/dziecko_rosemary-200_large_2x.jpg 2x, img/dziecko_rosemary-100_large_1x.jpg" />
+              <img src="img/dziecko_rosemary.jpg" alt="Dziecko Rosemary">
+            </picture>
+            <a href="http://karoldavid.github.io/movie-poster-blog/"><h3>Movie Poster Gallery</h3></a>
+            <p>Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna</p>
+          </div>
+          <div class="red">
+            <picture>
+              <source srcset="img/susanne_fuelscher-200_large_2x.jpg 2x, img/susanne_fuelscher-100_large_1x.jpg" />
+              <img src="img/susanne_fuelscher.jpg" alt="Susanne Fülscher Portrait">
+            </picture>
+            <a href="http://www.susanne-fuelscher.de/"><h3>Responsive Author Website</h3></a>
+            <p>Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna</p>
+          </div>
+        </div>
+        <div class="flex">
+          <div class="yellow">
+            <picture>
+              <source srcset="img/logo-200_large_2x.png 2x, img/logo-100_large_1x.png" />
+              <img src="img/logo.png" alt="Logo">
+            </picture>
+            <a href="http://karoldavid.github.io/interactive-resume/"><h3>Interactive Online Resume</h3></a>
+            <p>Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna</p>
+          </div>
+          <div class="green">
+            <picture>
+              <source srcset="img/star-200_large_2x.png 2x, img/star-100_large_1x.png" />
+              <img src="img/star.png" alt="Arcade Game Star">
+            </picture>
+            <a href="http://karoldavid.github.io/arcade-game/"><h3>Gem Land - Game</h3></a>
+            <p>Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna Ing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna</p>
+          </div>
+        </div>
+      </div>        
+      <blockquote>
+        <p>It is your mission to get your content out, on whichever platform, in whichever format your audience wants to consume it. Your users get to decide how, when, and where they want to read your content. It is your challenge and your responsibility to deliver a good experience to them.</p><br><br>- Karen McGrane (<a href="http://alistapart.com/article/your-content-now-mobile">A List Apart</a>)
+      </blockquote>
+      <div class="pizza">
+        <p>Psst: What to share one of the <a href="views/pizza.html">fastest Pizza's</a> with the Cookie Monster?</p>
+        <img src="img/cookie_monster_waiting.gif" style="width: 50%", alt="Cookie Monster Waiting">
+      </div>
+    </article>
+  </div>
+  <footer>
+    <ul id="social">
+      <li><a href="https://twitter.com/karoldawid"></a></li>
+      <li><a href="https://github.com/karoldavid?tab=repositories"></a></li>
+      <li><a href="http://pouchkine.tumblr.com/"></a></li>
+      <li><a href="#"></a></li>
+      <li><a href="mailto:k.zysk@zoho.com" target="_self"></a></li>
+      <li><a href="#"></a></li>
+    </ul>
+    <p>&copy; Web Performance <script>document.write(new Date().getFullYear())</script> <span id="crp-stats"></span></p>
+  </footer>
+  <script>
+    (function(w,g){w['GoogleAnalyticsObject']=g;
+      w[g]=w[g]||function(){(w[g].q=w[g].q||[]).push(arguments)};w[g].l=1*new Date();})(window,'ga');
+      // TODO: replace with your Google Analytics profile ID.
+      ga('create', 'UA-XXXX-Y');
+      ga('send', 'pageview');
+  </script>
+  <script async src="http://www.google-analytics.com/analytics.js"></script>
+  <script>
+    // load css after page build
+    var cb = function() {
+      var l = document.createElement('link'); l.rel = 'stylesheet';
+      l.href = 'css/build/concat.min.css';
+      var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
+    };
+    var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+        webkitRequestAnimationFrame || msRequestAnimationFrame;
+    if (raf) raf(cb);
+    else window.addEventListener('load', cb);
+  </script>
+  <script>
+    function init() {
+      // append footer social icon classes after page build
+      var fa = ['fa-twitter', 'fa-github', 'fa-tumblr', 'fa-linkedin', 'fa-envelope-o', 'fa-rss'],
+          socialFooter = document.getElementById('social'),
+          x = 0;
+      $( "li" ).each(function(socialFooter) {
+        $(this.firstChild).addClass('fa' + ' ' + fa[x]);
+        x += 1;
+      });
+      // shrink header on scroll
+      $(function() {
+        var shrinkHeader = 50;
+        $(window).scroll(function() {
+          var scroll = getCurrentScroll();
+          if ( scroll >= shrinkHeader ) {
+            $('header').addClass('shrink');
+          }
+          else {
+            $('header').removeClass('shrink');
           }
         });
-      }
-      window.onload = init;
-    </script>
+        function getCurrentScroll() {
+          return window.pageYOffset;
+        }
+      });
+    }
+    window.onload = init;
+  </script>
 </body>
 </html>
