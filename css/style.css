@@ -1,35 +1,40 @@
-header.shrink, img {
-   -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
-}
-
-header.shrink p, p span {
-   -webkit-transition: all 0.1s;
-    -moz-transition: all 0.1s;
-    transition: all 0.1s;
+header {
+  -webkit-transition: height 0.3s;
+  -moz-transition: height 0.3s;
+  transition: height 0.3s;
+  display: -webkit-flex;
+  display:         flex;
+  flex-wrap: wrap;
+  -webkit-flex-flow: row;
+  flex-flow: row;
 }
 
 header.shrink {
-    height: 3em;
-}
-
-header.shrink p {
-    font-size: 95%;
-}
-
-header.shrink p span {
-    font-size: 95%;
+  height: 3em;
 }
 
 header.shrink img {
-    width: 0;
-    height: 0;
+  width: 0;
+  height: 0;
+}
+
+header.shrink, img {
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+header.shrink p, p span {
+  -webkit-transition: all 0.1s;
+  -moz-transition: all 0.1s;
+  transition: all 0.1s;
+  font-size: 95%;
 }
 
 a:visited {
   color: #61C;
 }
+
 a:focus {
   outline: thin dotted;
 }
@@ -49,17 +54,21 @@ blockquote:before {
   vertical-align: -0.4em;
 }
 
-@media only screen and (min-width: 30em) {
-  .flex > div:hover {
-    width: 200%;
-  }
-}
-
-footer ul li a:visited {
- color: #77c4d3;
-}
-
 footer ul li a:hover {
   opacity: 0.5;
   cursor: pointer;
+}
+
+footer ul li a:visited {
+  color: #77c4d3;
+}
+
+@media only screen and (min-width: 30em) {
+  .flex > div {
+    -webkit-transition: width 0.7s ease-out;
+    transition: width 0.7s ease-out;
+  }
+  .flex > div:hover {
+    width: 200%;
+  }
 }
