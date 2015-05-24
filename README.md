@@ -3,28 +3,31 @@
 Here is a link to the live version:
 http://karoldavid.github.io/frontend-nanodegree-mobile-portfolio/
 
+
 Usage:
+------
 On the bottom of the mobile portfolio page (index.html) you will find a link to Cam's Online Pizzeria (views/pizza.html).
 
-Once you get there, you can scroll down or you may click on one of the menu items "Menu", "Our Ingredients", "Pick a Pizza Now!" to
-get to the slider, where you can adjust your pizza to one of three sizes.
+Once you get there, you may scroll down or you can click on one of the menu items "Menu", "Our Ingredients", "Pick a Pizza Now!" to
+get to the slider, which allows you to adjust your pizza to one of three sizes.
 
 
-Description:
-
+Overview:
+---------
 Project 4 consists of two parts, the Mobile Portfolio Performance Optimization and 
 of the Cameron's Pizza Shop's Rendering Optimization.
 
 Time for initial page load in index.html
 Smooth browser animations and efficient code execution in main.js for the Pizzas page under /views/pizza.html
 
-Optimization Results:
 
+Results:
+--------
 (1) Mobile Portfolio Page (index.html):
     - 94%  Speed on Mobile;
     - 95%  Speed on Desktop;
     - 100% Mobile User Experience;
-    https://developers.google.com/speed/pagespeed/insights/
+    => https://developers.google.com/speed/pagespeed/insights/
 
 (2) Cam's Online Pizzeria (pizza.html, views/js/main.js):
     - scrolling is under 60 frames per second;
@@ -34,12 +37,12 @@ Furthermore, static assests such as images, css and javascipt files are automati
 
 
 Optimization of Cam's Online Pizzeria:
+--------------------------------------
+Essentially, I am looking for possible optimization of JavaScript, Layout and Paint executions.
 
-Essentially optimizing JavaScript, Layout and Paint executions
-
-First, in views/js/main.js I am looking for the more obvious and main bottlenecks, that are usually easier to change.
-
-So, I reduced the number of animated pizzas from 200 to a more reasonable number of 35:
+To get started, I am on the lookout for the more obvious bottlenecks in 'views/js/main.js', that are usually easier to change.
+For example, I asked myself if there is really a need to animate 200 background pizzas. After some experimenting, I reduced this number to a
+more reasonable size of 35:
 
 document.addEventListener('DOMContentLoaded', function() {
   [...]
@@ -49,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
   [...]
 });
 
-Where possible, I calculate variables outside the For Loops, like the 5 phases:
+To save more scripting time, I calculate variables, where possible, outside the For Loops, like the 5 phases in the function updatePositions():
 
 function updatePositions() {
   [...]
@@ -59,28 +62,35 @@ function updatePositions() {
     items[i].style.transform = 'translateX(' + parseInt(items[i].basicLeft + 100 * phases[i % 5] - halfScreenWidth ) + 'px' + ')';
   }
   [...]
-  }
 }
 
-Change Pizza Sizes
-The last optimization we need to accomplish is to make the Change Pizza Sizes function more efficient. If we open up
-Chrome Dev Tools and look at the console, whenever we change the sizes of the pizzas with the slider on the page, wwe
-get an average time to resize pizzas of over 100 milliseconds. The goal is to reduce this time to under 5 milliseconds.
-We go into our HTML file and look at this line:
- 
-<input id="sizeSlider" type="range" min="1" max="3" value="2" step="1"
-onchange="resizePizzas(this.value)"> 
-We see that whenever we change the slider, we tell the slider to call the JavaScript function
- 
-resizePizzas(this.value) 
-.
-From there we then look into main.js and study the   
-resizePizzas() 
- function and proceed to look for bottle necks in the
-calculations. Again the main bottleneck is how everything is calculated in the For Loops.
+... access the DOM outside the For Loops and I get rid of calculating unnecessary values like 'dx':
 
-The next change reduces the scripting time. There is no need to access the DOM element for every scroll.
- Therefore I create an array variable that has a reference to all of the pizzas that has the class name "mover":
+function changePizzaSizes(size) {
+    var newWidth;
+    switch(size) {
+      case "1":
+        newWidth = 25;
+        break;
+      case "2":
+        newWidth = 33.3;
+        break;
+      case "3":
+        newWidth = 50;
+        break;
+      default:
+        console.log("Bug in sizeSwitcher");
+        break;
+    }
+    
+    var randomPizzas = document.getElementsByClassName("randomPizzaContainer");
+    for (var i = 0; i < randomPizzas.length; i++) {
+      randomPizzas[i].style.width = newWidth + "%";
+    }
+}
+
+The next change reduces the scripting time, too. There is no need to access the DOM element for every single scroll.
+Therefore, I create an array variable that has a reference to all of the pizzas that have the class name "mover":
 
 [..]
 var items = [];
@@ -92,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
   [..]
 });
 
-- Furthermore, I reduce the layout time by using te more performant 'document.getElementsByClassName()' instead of 'document.querySelectorAll()':
+Furthermore, I reduce the layout time by using the faster 'document.getElementsByClassName()' instead of 'document.querySelectorAll()':
 
 function changePizzaSizes(size) {
     [..]
@@ -107,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-Then, I reduce the paint time by forcing each moving pizza into its own composite layer. Adding 'backface-visibility' to the css mover class in views/css/style.css does the trick:
+Then, I reduce the paint time by forcing each moving pizza into its own composite layer. Adding 'backface-visibility' to the css mover class in 'views/css/style.css' does the trick:
   .mover {
     position: fixed;
     width: 256px;
@@ -116,7 +126,7 @@ Then, I reduce the paint time by forcing each moving pizza into its own composit
     z-index: -1;
   }
 
-When we scroll, the browser will only repaint the pixels that are affected by the moving pizzas, and therefore will not repaint the whole screen, drastically reducing our total paint time and increasing our FPS.
+When we scroll now, the browser will only repaint the pixels that are affected by the moving pizzas. There is no need anymore to repaint the whole screen.
 
-Finally, I give the background pizza an own image views/images/pizza-small.png, having the exact size on screen. The rezisable pizza gets its own optimized image views/images/pizza-large.png, too.
+Finally, I give the background pizza an own optimkized image file ('views/images/pizza-small.png'), having the exact size it will also have on screen. The resizable pizza gets its own optimized image file ('views/images/pizza-large.png'), too.
 
