@@ -1,14 +1,3 @@
-header {
-  -webkit-transition: height 0.3s;
-  -moz-transition: height 0.3s;
-  transition: height 0.3s;
-  display: -webkit-flex;
-  display:         flex;
-  flex-wrap: wrap;
-  -webkit-flex-flow: row;
-  flex-flow: row;
-}
-
 header.shrink {
   height: 3em;
 }
