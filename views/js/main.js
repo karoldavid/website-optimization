@@ -440,6 +440,7 @@ var resizePizzas = function(size) {
         console.log("Bug in sizeSwitcher");
         break;
     }
+    // accesses the DOM outside the For Loop
     var randomPizzas = document.getElementsByClassName("randomPizzaContainer");
     for (var i = 0; i < randomPizzas.length; i++) {
       randomPizzas[i].style.width = newWidth + "%";
