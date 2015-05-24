@@ -29,7 +29,6 @@ form {
 .mover {
   position: fixed;
   width: 256px;
-  transform: translateZ(0);
   backface-visibility: hidden;
   z-index: -1;
 }
@@ -37,7 +36,6 @@ form {
 .randomPizzaContainer {
   float: left;
   display: flex;
-  transform: translateZ(0);
 }
 
 .randomPizzaContainer:after {
