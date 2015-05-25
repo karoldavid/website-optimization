@@ -37,15 +37,19 @@ The optimization results will be rated for:
 
 ### Measured Results
 
-1. Mobile Portfolio Page (index.html):
+1.Mobile Portfolio Page (index.html):
+
 * 93% Speed on Mobile
 * 95%  Speed on Desktop
 * 100% Mobile UserExperience
+
 => https://developers.google.com/speed/pagespeed/insights/
 
 2. Cam's Online Pizzeria (views/pizza.html, views/js/main.js):
+
 * scrolling is under 60 frames per second
 * the time to resize a pizza is less than 5ms
+
 => shown in the browser console
 
 ### Additional Rating
@@ -180,6 +184,6 @@ Finally, I created an own optimized image file ('views/images/pizza-100.png') fo
 having the exact size it has on a normal desktop screen. The resizable pizza got it's own optimized image
 file ('views/images/pizza-200.png'), too.
 
- ### Contact
+### Contact
 
 My email address k.zysk@zoho.com
