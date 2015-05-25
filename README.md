@@ -49,13 +49,13 @@ To get started, I was on the lookout for the more obvious bottlenecks in 'views/
 For example, I asked myself if there is really a need to animate 200 background pizzas? After some experimenting, I reduced this number to a
 more reasonable size of 25:
 
-document.addEventListener('DOMContentLoaded', function() {
-  [...]
-  for (var i = 0; i < 25; i++) {
-    [...]
-  }
-  [...]
-});
+    document.addEventListener('DOMContentLoaded', function() {
+      [...]
+      for (var i = 0; i < 25; i++) {
+        [...]
+      }
+      [...]
+    });
 
 To save more SCRIPTING TIME, I calculated variables, where possible, outside the For Loops, like the 5 phases in the function updatePositions():
 
@@ -97,58 +97,58 @@ To save more SCRIPTING TIME, I calculated variables, where possible, outside the
 The next change reduced the SCRIPTING TIME, too. There is no need to access the DOM element for every single scroll.
 Therefore, I created an array variable 'items', that has a reference to all of the pizzas that have the class name "mover":
 
-[..]
-var items = [];
-[..]
-document.addEventListener('DOMContentLoaded', function() {
-  [..]
-  // get all moving pizza objects from the DOM and put them into one array to reduce DOM access
-  items = document.getElementsByClassName('mover');
-  [..]
-});
+    [..]
+    var items = [];
+    [..]
+    document.addEventListener('DOMContentLoaded', function() {
+      [..]
+      // get all moving pizza objects from the DOM and put them into one array to reduce DOM access
+      items = document.getElementsByClassName('mover');
+      [..]
+    });
 
 Furthermore, I reduced the LAYOUT TIME by using faster methods to access the DOM (for example: 'document.getElementsByClassName()' instead of 'document.querySelectorAll()'):
 
-function changePizzaSizes(size) {
-    [..]
-    var randomPizzas = document.getElementsByClassName("randomPizzaContainer");
-    [..]
-}
+    function changePizzaSizes(size) {
+      [..]
+      var randomPizzas = document.getElementsByClassName("randomPizzaContainer");
+      [..]
+    }
 
-document.addEventListener('DOMContentLoaded', function() {
-  [..]
-  for (var i = 0; i < 25; i++) {
-    [..]
-    document.getElementById("movingPizzas1").appendChild(elem);
-  }
-  [..]
-});
+    document.addEventListener('DOMContentLoaded', function() {
+      [..]
+      for (var i = 0; i < 25; i++) {
+        [..]
+        document.getElementById("movingPizzas1").appendChild(elem);
+      }
+      [..]
+    });
 
-document.addEventListener('DOMContentLoaded', function() {
-  [..]
-  items = document.getElementsByClassName('mover');
-  [..]
-});
+    document.addEventListener('DOMContentLoaded', function() {
+      [..]
+      items = document.getElementsByClassName('mover');
+      [..]
+    });
 
 Even if the performance gain is not so big, I was curious to implement the CSS3 hardware acceleration with 'transform: translateX()', and to avoid to trigger re-layout:
 
-function updatePositions() {
-  [...]
-  for (var i = 0; i < items.length; i++) {
-    items[i].style.transform = 'translateX(' + parseInt(items[i].basicLeft + 100 * phases[i % 5] - halfScreenWidth ) + 'px' + ')';
-  }
-  [...]
-}
+    function updatePositions() {
+      [...]
+      for (var i = 0; i < items.length; i++) {
+        items[i].style.transform = 'translateX(' + parseInt(items[i].basicLeft + 100 * phases[i % 5] - halfScreenWidth ) + 'px' + ')';
+      }
+      [...]
+    }
 
 Then, I reduced the PAINT TIME by forcing each moving pizza into its own composite layer to let the Graphics Processing Unit do the work. Adding 'backface-visibility' to the css mover class in 'views/css/style.css' did the trick:
 
-.mover {
-  position: fixed;
-  width: 256px;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  z-index: -1;
-}
+    .mover {
+      position: fixed;
+      width: 256px;
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      z-index: -1;
+    }
 
 When we scroll now, the browser will only repaint the pixels that are affected by the moving pizzas. There is no need anymore to repaint the whole screen.
 
