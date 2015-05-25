@@ -25,10 +25,12 @@ your pizza to one of three sizes.
 ### Project Overview
 
 Project 4 consists of two parts:
+
 1. Mobile Portfolio Performance Optimization
 2. Cameron's Pizza Shop's Rendering Optimization.
 
 The optimization results will be rated for:
+
 1. Time for initial page load in 'index.html'
 2. Smooth browser animations and efficient code execution in 'views/js/main.js' for
    the pizzeria page under 'views/pizza.html'
