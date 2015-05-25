@@ -18,6 +18,9 @@ cameron *at* udacity *dot* com
 
 // As you may have realized, this website randomly generates pizzas.
 // Here are arrays of all possible pizza ingredients.
+
+"use strict";
+
 var pizzaIngredients = {};
 pizzaIngredients.meats = [
   "Pepperoni",
@@ -440,9 +443,11 @@ var resizePizzas = function(size) {
         console.log("Bug in sizeSwitcher");
         break;
     }
-    // accesses the DOM outside the For Loop
-    var randomPizzas = document.getElementsByClassName("randomPizzaContainer");
-    for (var i = 0; i < randomPizzas.length; i++) {
+    // Accesses the DOM outside the For Loop
+    var randomPizzas = document.getElementsByClassName("randomPizzaContainer"),
+        // Get the number of pizza elements outside the For Loop
+        length = randomPizzas.length;
+    for (var i = 0; i < length; i++) {
       randomPizzas[i].style.width = newWidth + "%";
     }
   }
@@ -459,8 +464,9 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
+// Access the DOM outside the For Loop
+var pizzasDiv = document.getElementById("randomPizzas");
 for (var i = 0; i < 100; i++) {
-  var pizzasDiv = document.getElementById("randomPizzas");
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
 
@@ -490,14 +496,14 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // Moves the sliding background pizzas based on scroll position
 function updatePositions() {
   frame++;
-  //current screen width is needed for centering the background pizzas
+  // Current screen width is needed to center the background pizzas
   var halfScreenWidth = ((window.innerWidth > 0) ? window.innerWidth : screen.width) / 2;
   window.performance.mark("mark_start_frame");
   var phases = [];
-  //calculate the five phases that animate the scrolling background pizzas
+  // Calculate the five phases that animate the scrolling background pizzas outside the For Loop
   for (var x = 0; x < 5; x++) { phases[x] = Math.sin((document.body.scrollTop / 1250) + x); }
   for (var i = 0; i < items.length; i++) {
-    //move background pizzas horizontally, relative to their current position
+    // Move background pizzas horizontally, relative to their current position
     items[i].style.transform = 'translateX(' + parseInt(items[i].basicLeft + 100 * phases[i % 5] - halfScreenWidth ) + 'px' + ')';
   }
 
@@ -516,19 +522,27 @@ window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
-  var cols = 8;
-  var s = 256;
-  for (var i = 0; i < 25; i++) {
-    var elem = document.createElement('img');
+  // Declare variable outside the For Loop
+  var elem,
+      cols = 8,
+      s = 256,
+      // Access the DOM outside the For Loop
+      pizzasDiv = document.getElementById("movingPizzas1"),
+      // Get screen width to calculate number of background pizzas
+      screenWidth = ((window.innerWidth > 0) ? window.innerWidth : screen.width),
+      pizzas = screenWidth / 40;
+  for (var i = 0; i < pizzas; i++) {
+    elem = document.createElement('img');
     elem.className = 'mover';
-    elem.src = "images/pizza-100.png";//background pizza image file with height 100px and width 77.333px
+    // Background pizza image file with height 100px and width 77.333px
+    elem.src = "images/pizza-100.png";
     elem.style.height = "100px";
     elem.style.width = "77.333px";
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.getElementById("movingPizzas1").appendChild(elem);
+    pizzasDiv.appendChild(elem);
   }
-  // get all moving pizza objects from the DOM and put them into one array to reduce DOM access
+  // Get all moving pizza objects from the DOM and put them into one array to reduce DOM access
   items = document.getElementsByClassName('mover');
   updatePositions();
 });
