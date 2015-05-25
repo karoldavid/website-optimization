@@ -59,40 +59,40 @@ document.addEventListener('DOMContentLoaded', function() {
 
 To save more SCRIPTING TIME, I calculated variables, where possible, outside the For Loops, like the 5 phases in the function updatePositions():
 
-function updatePositions() {
-  [...]
-  var phases = [];
-  for (var x = 0; x < 5; x++) { phases[x] = Math.sin((document.body.scrollTop / 1250) + x); }
-  for (var i = 0; i < items.length; i++) {
-    items[i].style.transform = 'translateX(' + parseInt(items[i].basicLeft + 100 * phases[i % 5] - halfScreenWidth ) + 'px' + ')';
-  }
-  [...]
-}
+    function updatePositions() {
+      [...]
+      var phases = [];
+      for (var x = 0; x < 5; x++) { phases[x] = Math.sin((document.body.scrollTop / 1250) + x); }
+      for (var i = 0; i < items.length; i++) {
+        items[i].style.transform = 'translateX(' + parseInt(items[i].basicLeft + 100 * phases[i % 5] - halfScreenWidth ) + 'px' + ')';
+      }
+      [...]
+    }
 
 ... I accessed, where possible, the DOM outside the For Loops and I avoided calculating unnecessary values like 'dx':
 
-function changePizzaSizes(size) {
-    var newWidth;
-    switch(size) {
-      case "1":
-        newWidth = 25;
-        break;
-      case "2":
-        newWidth = 33.3;
-        break;
-      case "3":
-        newWidth = 50;
-        break;
-      default:
-        console.log("Bug in sizeSwitcher");
-        break;
-    }
+    function changePizzaSizes(size) {
+        var newWidth;
+        switch(size) {
+          case "1":
+          newWidth = 25;
+          break;
+        case "2":
+          newWidth = 33.3;
+          break;
+        case "3":
+          newWidth = 50;
+          break;
+        default:
+          console.log("Bug in sizeSwitcher");
+          break;
+      }
     
-    var randomPizzas = document.getElementsByClassName("randomPizzaContainer");
-    for (var i = 0; i < randomPizzas.length; i++) {
-      randomPizzas[i].style.width = newWidth + "%";
+      var randomPizzas = document.getElementsByClassName("randomPizzaContainer");
+      for (var i = 0; i < randomPizzas.length; i++) {
+        randomPizzas[i].style.width = newWidth + "%";
+      }
     }
-}
 
 The next change reduced the SCRIPTING TIME, too. There is no need to access the DOM element for every single scroll.
 Therefore, I created an array variable 'items', that has a reference to all of the pizzas that have the class name "mover":
