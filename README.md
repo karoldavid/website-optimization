@@ -37,7 +37,7 @@ The optimization results will be rated for:
 
 ### Measured Results
 
-1.Mobile Portfolio Page (index.html):
+1. Mobile Portfolio Page (index.html):
 
 * 93% Speed on Mobile
 * 95%  Speed on Desktop
