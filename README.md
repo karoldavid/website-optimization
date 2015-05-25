@@ -1,47 +1,48 @@
-## Website Performance And Rendering Optimization
+## Website Performance Optimization portfolio project
+
+forked from: https://github.com/udacity/frontend-nanodegree-mobile-portfolio.git
 
 Here is a link to the live version:
-http://karoldavid.github.io/frontend-nanodegree-mobile-portfolio/
-http://karoldavid.github.io/frontend-nanodegree-mobile-portfolio/views/pizza.html
+    http://karoldavid.github.io/frontend-nanodegree-mobile-portfolio/
 
+### HOWTO
 
-HOWTO:
-------
-On the bottom of the mobile portfolio page (index.html) you will find a link to Cam's Online Pizzeria (views/pizza.html).
+On the bottom of the mobile portfolio page (index.html) you will find a
+link to Cam's Online Pizzeria (views/pizza.html).
 
-Once you get to the online pizzeria, you may scroll down or you can click on one of the menu items "Menu", "Our Ingredients", "Pick a Pizza Now!" to
-get to the slider, which allows you to adjust your pizza to one of three sizes.
+Once you get to the online pizzeria, you may scroll down or you can
+click on one of the menu items "Menu", "Our Ingredients",
+"Pick a Pizza Now!" to get to the slider, which allows you to adjust
+your pizza to one of three sizes.
 
+### Overview
 
-Overview:
----------
-Project 4 consists of two parts, (1) the Mobile Portfolio Performance Optimization and 
-of the (2) Cameron's Pizza Shop's Rendering Optimization.
+Project 4 consists of two parts, (1) the Mobile Portfolio Performance
+Optimization and of the (2) Cameron's Pizza Shop's Rendering
+Optimization.
 
 The optimization mesures will be rated for:
-(1) Time for initial page load in 'index.html'
-(2) Smooth browser animations and efficient code execution in 'views/js/main.js' for the
-    pizzeria page under 'views/pizza.html'
+1. Time for initial page load in 'index.html'
+2. Smooth browser animations and efficient code execution in 'views/js/main.js' for
+   the pizzeria page under 'views/pizza.html'
 
+### Results
 
-Results:
---------
-(1) Mobile Portfolio Page (index.html):
-    - 93%  Speed on Mobile
-    - 95%  Speed on Desktop
-    - 100% Mobile UserExperience
-    => https://developers.google.com/speed/pagespeed/insights/
+1. Mobile Portfolio Page (index.html):
+* 93% Speed on Mobile
+* 95%  Speed on Desktop
+* 100% Mobile UserExperience
+=> https://developers.google.com/speed/pagespeed/insights/
 
-(2) Cam's Online Pizzeria (pizza.html, views/js/main.js):
-    - scrolling is under 60 frames per second
-    - time to resize a pizza is less than 5ms
-    => shown in the browser console
+2. Cam's Online Pizzeria (pizza.html, views/js/main.js):
+* scrolling is under 60 frames per second
+* time to resize a pizza is less than 5ms
+=> shown in the browser console
 
 Furthermore, static assests such as images, css and javascipt files are automatically optimized, concatenated and/ or mini-/ uglyfied with Grunt.
 
+### Optimization of Cam's Online Pizzeria:
 
-Optimization of Cam's Online Pizzeria:
---------------------------------------
 Basically, I was looking for possible optimizations of JavaScript, Layout and Paint execution (The Critical Rendering Path:
 HTML -> CSSOM <- JavaScript -> Render Tree -> Layout -> Paint).
 
