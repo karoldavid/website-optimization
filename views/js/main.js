@@ -524,14 +524,16 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   // Declare variable outside the For Loop
   var elem,
-      cols = 8,
+      // Get screen width to calculate number of columns for background pizzas
+      cols = Math.round((((window.innerWidth > 0) ? window.innerWidth : screen.width)) / 200),
       s = 256,
       // Get screen height to calculate number of rows for background pizzas
-      screenHeight = ((window.innerHeight > 0) ? window.innerHeight : screen.height),
-      // calculate number of background pizzas: rows * columns
-      pizzas = Math.round((screenHeight / s) * cols),
+      rows = Math.round((((window.innerHeight > 0) ? window.innerHeight : screen.height)) / s),
+      // calculate number of background pizzas
+      pizzas = rows * cols,
       // Access the DOM outside the For Loop
       pizzasDiv = document.getElementById("movingPizzas1");
+      console.log('No of Pizzas: ' + pizzas);
   for (var i = 0; i < pizzas; i++) {
     elem = document.createElement('img');
     elem.className = 'mover';
