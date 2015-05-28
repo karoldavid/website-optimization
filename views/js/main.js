@@ -19,7 +19,10 @@ cameron *at* udacity *dot* com
 // As you may have realized, this website randomly generates pizzas.
 // Here are arrays of all possible pizza ingredients.
 
+
+/* jshint ignore:start */
 "use strict";
+/* jshint ignore:end */
 
 var pizzaIngredients = {};
 pizzaIngredients.meats = [
