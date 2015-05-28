@@ -19,7 +19,10 @@ cameron *at* udacity *dot* com
 // As you may have realized, this website randomly generates pizzas.
 // Here are arrays of all possible pizza ingredients.
 
+
+/* jshint ignore:start */
 "use strict";
+/* jshint ignore:end */
 
 var pizzaIngredients = {};
 pizzaIngredients.meats = [
@@ -504,7 +507,7 @@ function updatePositions() {
   // Calculates the five phases that animate the scrolling background pizzas outside the For Loop
   for (var x = 0; x < 5; x++) { phases[x] = Math.sin((document.body.scrollTop / 1250) + x); }
   for (var i = 0; i < items.length; i++) {
-    // Moves background pizzas horizontally, relative to their current position
+    // Moves background pizzas horizontally and relative to their current position
     items[i].style.transform = 'translateX(' + parseInt(items[i].basicLeft + 100 * phases[i % 5] - halfScreenWidth ) + 'px' + ')';
   }
 

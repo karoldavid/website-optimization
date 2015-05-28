@@ -56,8 +56,8 @@ The optimization results will be rated for:
 
 Static assests such as images, css and javascipt files are automatically
 optimized, concatenated and/ or mini-/ uglyfied with Grunt. Grunt Watch automates
-this task. It simply lurks for any changes in the script, sheets and image folders
-to run the specific tasks. html lint.
+this task and runs tasks whenever watched files are changed.
+Linting files to check for errors with jshint and html lint.
 
 ### Optimization of Cam's Online Pizzeria:
 
