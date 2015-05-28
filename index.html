@@ -85,16 +85,9 @@
     </ul>
     <p>&copy; Web Performance <script>document.write(new Date().getFullYear())</script> <span id="crp-stats"></span></p>
   </footer>
-  <script>
-    (function(w,g){w['GoogleAnalyticsObject']=g;
-      w[g]=w[g]||function(){(w[g].q=w[g].q||[]).push(arguments)};w[g].l=1*new Date();})(window,'ga');
-      // TODO: replace with your Google Analytics profile ID.
-      ga('create', 'UA-XXXX-Y');
-      ga('send', 'pageview');
-  </script>
   <script async src="http://www.google-analytics.com/analytics.js"></script>
   <script>
-    // load css after page build
+    // Loads css after page build
     var cb = function() {
       var l = document.createElement('link'); l.rel = 'stylesheet';
       l.href = 'css/build/concat.min.css';
@@ -107,7 +100,7 @@
   </script>
   <script>
     function init() {
-      // shrink header on scroll
+      // Shrinks header on scroll
       $(function() {
         var shrinkHeader = 50;
         $(window).scroll(function() {
@@ -123,13 +116,13 @@
           return window.pageYOffset;
         }
       });
-      // load defered cookie monster image
+      // Loads defered cookie monster image
         var imgDefer = document.getElementById('cookie');
         console.log(imgDefer);
         if(imgDefer.getAttribute('data-src')) {
           imgDefer.setAttribute('src',imgDefer.getAttribute('data-src'));
         }       
-      // append footer social icon classes after page load
+      // Appends footer social icon classes after page load
       var fa = ['fa-twitter', 'fa-github', 'fa-tumblr', 'fa-linkedin', 'fa-envelope-o', 'fa-rss'],
           socialFooter = document.getElementById('social'),
           x = 0;
