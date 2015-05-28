@@ -43,7 +43,7 @@ module.exports = function(grunt) {
         }  
     },
      // configure jshint to validate js files -----------------------------------
-    jshint --verbose: {
+    jshint: {
       options: {
         reporter: require('jshint-stylish') // use jshint-stylish to make our errors look and read good
       },
@@ -206,7 +206,7 @@ module.exports = function(grunt) {
 }
 });
   
-  // grunt.loadNpmTasks('grunt-newer');
+  grunt.loadNpmTasks('grunt-newer');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-htmlhint');
