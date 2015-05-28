@@ -55,7 +55,9 @@ The optimization results will be rated for:
 ### Additional Rating
 
 Static assests such as images, css and javascipt files are automatically
-optimized, concatenated and/ or mini-/ uglyfied with Grunt.
+optimized, concatenated and/ or mini-/ uglyfied with Grunt. Grunt Watch automates
+this task. It simply lurks for any changes in the script, sheets and image folders
+to run the specific tasks. html lint.
 
 ### Optimization of Cam's Online Pizzeria:
 

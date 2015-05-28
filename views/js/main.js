@@ -144,7 +144,8 @@ pizzaIngredients.crusts = [
   "Flatbread Crust",
   "Stuffed Crust"
 ];
-// array for moving pizza objects
+
+// Array for moving pizza objects
 var items = [];
 
 // Name generator pulled from http://saturdaykid.com/usernames/generator.html
@@ -337,7 +338,7 @@ var ingredientItemizer = function(string) {
   return "<li>" + string + "</li>";
 };
 
-// Returns a string with random pizza ingredients nested inside <li> tags
+// Returns a string with random pizza ingredients nested inside li tags
 var makeRandomPizza = function() {
   var pizza = "";
 
@@ -363,7 +364,7 @@ var makeRandomPizza = function() {
   return pizza;
 };
 
-// returns a DOM element for each pizza
+// Returns a DOM element for each pizza
 var pizzaElementGenerator = function(i) {
   var pizzaContainer,             // contains pizza title, image and list of ingredients
       pizzaImageContainer,        // contains the pizza image
@@ -445,7 +446,7 @@ var resizePizzas = function(size) {
     }
     // Accesses the DOM outside the For Loop
     var randomPizzas = document.getElementsByClassName("randomPizzaContainer"),
-        // Get the number of pizza elements outside the For Loop
+    // Gets the number of pizza elements outside the For Loop
         length = randomPizzas.length;
     for (var i = 0; i < length; i++) {
       randomPizzas[i].style.width = newWidth + "%";
@@ -496,14 +497,14 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // Moves the sliding background pizzas based on scroll position
 function updatePositions() {
   frame++;
-  // Current screen width is needed to center the background pizzas
+  // Gets the current screen width to center the background pizzas
   var halfScreenWidth = ((window.innerWidth > 0) ? window.innerWidth : screen.width) / 2;
   window.performance.mark("mark_start_frame");
   var phases = [];
-  // Calculate the five phases that animate the scrolling background pizzas outside the For Loop
+  // Calculates the five phases that animate the scrolling background pizzas outside the For Loop
   for (var x = 0; x < 5; x++) { phases[x] = Math.sin((document.body.scrollTop / 1250) + x); }
   for (var i = 0; i < items.length; i++) {
-    // Move background pizzas horizontally, relative to their current position
+    // Moves background pizzas horizontally, relative to their current position
     items[i].style.transform = 'translateX(' + parseInt(items[i].basicLeft + 100 * phases[i % 5] - halfScreenWidth ) + 'px' + ')';
   }
 
@@ -517,35 +518,34 @@ function updatePositions() {
   }
 }
 
-// runs updatePositions on scroll
+// Runs updatePositions on scroll
 window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
-  // Declare variable outside the For Loop
+  // Declares variable outside the For Loop
   var elem,
-      // Get screen width to calculate number of columns for background pizzas
+      // Gets screen width to calculate number of columns for background pizzas
       cols = Math.round((((window.innerWidth > 0) ? window.innerWidth : screen.width)) / 200),
       s = 256,
-      // Get screen height to calculate number of rows for background pizzas
+      // Gets screen height to calculate number of rows for background pizzas
       rows = Math.round((((window.innerHeight > 0) ? window.innerHeight : screen.height)) / s),
-      // calculate number of background pizzas
+      // Calculates number of background pizzas
       pizzas = rows * cols,
-      // Access the DOM outside the For Loop
+      // Accesses the DOM outside the For Loop
       pizzasDiv = document.getElementById("movingPizzas1");
       console.log('No of Pizzas: ' + pizzas);
   for (var i = 0; i < pizzas; i++) {
     elem = document.createElement('img');
     elem.className = 'mover';
-    // Background pizza image file with height 100px and width 77.333px
-    elem.src = "images/pizza-100.png";
+    elem.src = "images/pizza-100.png";// Background pizza image file with height 100px and width 77.333px
     elem.style.height = "100px";
     elem.style.width = "77.333px";
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     pizzasDiv.appendChild(elem);
   }
-  // Get all moving pizza objects from the DOM and put them into one array to reduce DOM access
+  // Gets all moving pizza objects from the DOM and puts them into one array to reduce DOM access
   items = document.getElementsByClassName('mover');
   updatePositions();
 });
