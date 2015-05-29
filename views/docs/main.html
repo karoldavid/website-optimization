@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>main.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>main.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/*
+Welcome to the 60fps project! Your goal is to make Cam's Pizzeria website run
+jank-free at 60 frames per second.
+
+There are two major issues in this code that lead to sub-60fps performance. Can
+you spot and fix both?
+
+
+Built into the code, you'll find a few instances of the User Timing API
+(window.performance), which will be console.log()ing frame rate data into the
+browser console. To learn more about User Timing API, check out:
+http://www.html5rocks.com/en/tutorials/webperformance/usertiming/
+
+Creator:
+Cameron Pittman, Udacity Course Developer
+cameron *at* udacity *dot* com
+*/</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>As you may have realized, this website randomly generates pizzas.
+Here are arrays of all possible pizza ingredients.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-pi">
+"use strict"</span>;
+
+<span class="hljs-keyword">var</span> pizzaIngredients = {};
+pizzaIngredients.meats = [
+  <span class="hljs-string">"Pepperoni"</span>,
+  <span class="hljs-string">"Sausage"</span>,
+  <span class="hljs-string">"Fennel Sausage"</span>,
+  <span class="hljs-string">"Spicy Sausage"</span>,
+  <span class="hljs-string">"Chicken"</span>,
+  <span class="hljs-string">"BBQ Chicken"</span>,
+  <span class="hljs-string">"Chorizo"</span>,
+  <span class="hljs-string">"Chicken Andouille"</span>,
+  <span class="hljs-string">"Salami"</span>,
+  <span class="hljs-string">"Tofu"</span>,
+  <span class="hljs-string">"Bacon"</span>,
+  <span class="hljs-string">"Canadian Bacon"</span>,
+  <span class="hljs-string">"Proscuitto"</span>,
+  <span class="hljs-string">"Italian Sausage"</span>,
+  <span class="hljs-string">"Ground Beef"</span>,
+  <span class="hljs-string">"Anchovies"</span>,
+  <span class="hljs-string">"Turkey"</span>,
+  <span class="hljs-string">"Ham"</span>,
+  <span class="hljs-string">"Venison"</span>,
+  <span class="hljs-string">"Lamb"</span>,
+  <span class="hljs-string">"Duck"</span>,
+  <span class="hljs-string">"Soylent Green"</span>,
+  <span class="hljs-string">"Carne Asada"</span>,
+  <span class="hljs-string">"Soppressata Picante"</span>,
+  <span class="hljs-string">"Coppa"</span>,
+  <span class="hljs-string">"Pancetta"</span>,
+  <span class="hljs-string">"Bresola"</span>,
+  <span class="hljs-string">"Lox"</span>,
+  <span class="hljs-string">"Guanciale"</span>,
+  <span class="hljs-string">"Chili"</span>,
+  <span class="hljs-string">"Beef Jerky"</span>,
+  <span class="hljs-string">"Pastrami"</span>,
+  <span class="hljs-string">"Kielbasa"</span>,
+  <span class="hljs-string">"Scallops"</span>,
+  <span class="hljs-string">"Filet Mignon"</span>
+];
+pizzaIngredients.nonMeats = [
+  <span class="hljs-string">"White Onions"</span>,
+  <span class="hljs-string">"Red Onions"</span>,
+  <span class="hljs-string">"Sauteed Onions"</span>,
+  <span class="hljs-string">"Green Peppers"</span>,
+  <span class="hljs-string">"Red Peppers"</span>,
+  <span class="hljs-string">"Banana Peppers"</span>,
+  <span class="hljs-string">"Ghost Peppers"</span>,
+  <span class="hljs-string">"Habanero Peppers"</span>,
+  <span class="hljs-string">"Jalapeno Peppers"</span>,
+  <span class="hljs-string">"Stuffed Peppers"</span>,
+  <span class="hljs-string">"Spinach"</span>,
+  <span class="hljs-string">"Tomatoes"</span>,
+  <span class="hljs-string">"Pineapple"</span>,
+  <span class="hljs-string">"Pear Slices"</span>,
+  <span class="hljs-string">"Apple Slices"</span>,
+  <span class="hljs-string">"Mushrooms"</span>,
+  <span class="hljs-string">"Arugula"</span>,
+  <span class="hljs-string">"Basil"</span>,
+  <span class="hljs-string">"Fennel"</span>,
+  <span class="hljs-string">"Rosemary"</span>,
+  <span class="hljs-string">"Cilantro"</span>,
+  <span class="hljs-string">"Avocado"</span>,
+  <span class="hljs-string">"Guacamole"</span>,
+  <span class="hljs-string">"Salsa"</span>,
+  <span class="hljs-string">"Swiss Chard"</span>,
+  <span class="hljs-string">"Kale"</span>,
+  <span class="hljs-string">"Sun Dried Tomatoes"</span>,
+  <span class="hljs-string">"Walnuts"</span>,
+  <span class="hljs-string">"Artichoke"</span>,
+  <span class="hljs-string">"Asparagus"</span>,
+  <span class="hljs-string">"Caramelized Onions"</span>,
+  <span class="hljs-string">"Mango"</span>,
+  <span class="hljs-string">"Garlic"</span>,
+  <span class="hljs-string">"Olives"</span>,
+  <span class="hljs-string">"Cauliflower"</span>,
+  <span class="hljs-string">"Polenta"</span>,
+  <span class="hljs-string">"Fried Egg"</span>,
+  <span class="hljs-string">"Zucchini"</span>,
+  <span class="hljs-string">"Hummus"</span>
+];
+pizzaIngredients.cheeses = [
+  <span class="hljs-string">"American Cheese"</span>,
+  <span class="hljs-string">"Swiss Cheese"</span>,
+  <span class="hljs-string">"Goat Cheese"</span>,
+  <span class="hljs-string">"Mozzarella Cheese"</span>,
+  <span class="hljs-string">"Parmesean Cheese"</span>,
+  <span class="hljs-string">"Velveeta Cheese"</span>,
+  <span class="hljs-string">"Gouda Cheese"</span>,
+  <span class="hljs-string">"Muenster Cheese"</span>,
+  <span class="hljs-string">"Applewood Cheese"</span>,
+  <span class="hljs-string">"Asiago Cheese"</span>,
+  <span class="hljs-string">"Bleu Cheese"</span>,
+  <span class="hljs-string">"Boursin Cheese"</span>,
+  <span class="hljs-string">"Brie Cheese"</span>,
+  <span class="hljs-string">"Cheddar Cheese"</span>,
+  <span class="hljs-string">"Chevre Cheese"</span>,
+  <span class="hljs-string">"Havarti Cheese"</span>,
+  <span class="hljs-string">"Jack Cheese"</span>,
+  <span class="hljs-string">"Pepper Jack Cheese"</span>,
+  <span class="hljs-string">"Gruyere Cheese"</span>,
+  <span class="hljs-string">"Limberger Cheese"</span>,
+  <span class="hljs-string">"Manchego Cheese"</span>,
+  <span class="hljs-string">"Marscapone Cheese"</span>,
+  <span class="hljs-string">"Pecorino Cheese"</span>,
+  <span class="hljs-string">"Provolone Cheese"</span>,
+  <span class="hljs-string">"Queso Cheese"</span>,
+  <span class="hljs-string">"Roquefort Cheese"</span>,
+  <span class="hljs-string">"Romano Cheese"</span>,
+  <span class="hljs-string">"Ricotta Cheese"</span>,
+  <span class="hljs-string">"Smoked Gouda"</span>
+];
+pizzaIngredients.sauces = [
+  <span class="hljs-string">"Red Sauce"</span>,
+  <span class="hljs-string">"Marinara"</span>,
+  <span class="hljs-string">"BBQ Sauce"</span>,
+  <span class="hljs-string">"No Sauce"</span>,
+  <span class="hljs-string">"Hot Sauce"</span>
+];
+pizzaIngredients.crusts = [
+  <span class="hljs-string">"White Crust"</span>,
+  <span class="hljs-string">"Whole Wheat Crust"</span>,
+  <span class="hljs-string">"Flatbread Crust"</span>,
+  <span class="hljs-string">"Stuffed Crust"</span>
+];</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Array for moving pizza objects</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> items = [];</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Name generator pulled from <a href="http://saturdaykid.com/usernames/generator.html">http://saturdaykid.com/usernames/generator.html</a>
+Capitalizes first letter of each word</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">String</span>.prototype.capitalize = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.charAt(<span class="hljs-number">0</span>).toUpperCase() + <span class="hljs-keyword">this</span>.slice(<span class="hljs-number">1</span>);
+};</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Pulls adjective out of array using random number sent from generator</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAdj</span>(<span class="hljs-params">x</span>)</span>{
+  <span class="hljs-keyword">switch</span>(x) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"dark"</span>:
+      <span class="hljs-keyword">var</span> dark = [<span class="hljs-string">"dark"</span>,<span class="hljs-string">"morbid"</span>, <span class="hljs-string">"scary"</span>, <span class="hljs-string">"spooky"</span>, <span class="hljs-string">"gothic"</span>, <span class="hljs-string">"deviant"</span>, <span class="hljs-string">"creepy"</span>, <span class="hljs-string">"sadistic"</span>, <span class="hljs-string">"black"</span>, <span class="hljs-string">"dangerous"</span>, <span class="hljs-string">"dejected"</span>, <span class="hljs-string">"haunted"</span>,
+      <span class="hljs-string">"morose"</span>, <span class="hljs-string">"tragic"</span>, <span class="hljs-string">"shattered"</span>, <span class="hljs-string">"broken"</span>, <span class="hljs-string">"sad"</span>, <span class="hljs-string">"melancholy"</span>, <span class="hljs-string">"somber"</span>, <span class="hljs-string">"dark"</span>, <span class="hljs-string">"gloomy"</span>, <span class="hljs-string">"homicidal"</span>, <span class="hljs-string">"murderous"</span>, <span class="hljs-string">"shady"</span>, <span class="hljs-string">"misty"</span>,
+      <span class="hljs-string">"dusky"</span>, <span class="hljs-string">"ghostly"</span>, <span class="hljs-string">"shadowy"</span>, <span class="hljs-string">"demented"</span>, <span class="hljs-string">"cursed"</span>, <span class="hljs-string">"insane"</span>, <span class="hljs-string">"possessed"</span>, <span class="hljs-string">"grotesque"</span>, <span class="hljs-string">"obsessed"</span>];
+      <span class="hljs-keyword">return</span> dark;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"color"</span>:
+      <span class="hljs-keyword">var</span> colors = [<span class="hljs-string">"blue"</span>, <span class="hljs-string">"green"</span>, <span class="hljs-string">"purple"</span>, <span class="hljs-string">"grey"</span>, <span class="hljs-string">"scarlet"</span>, <span class="hljs-string">"NeonGreen"</span>, <span class="hljs-string">"NeonBlue"</span>, <span class="hljs-string">"NeonPink"</span>, <span class="hljs-string">"HotPink"</span>, <span class="hljs-string">"pink"</span>, <span class="hljs-string">"black"</span>, <span class="hljs-string">"red"</span>,
+      <span class="hljs-string">"maroon"</span>, <span class="hljs-string">"silver"</span>, <span class="hljs-string">"golden"</span>, <span class="hljs-string">"yellow"</span>, <span class="hljs-string">"orange"</span>, <span class="hljs-string">"mustard"</span>, <span class="hljs-string">"plum"</span>, <span class="hljs-string">"violet"</span>, <span class="hljs-string">"cerulean"</span>, <span class="hljs-string">"brown"</span>, <span class="hljs-string">"lavender"</span>, <span class="hljs-string">"violet"</span>, <span class="hljs-string">"magenta"</span>,
+      <span class="hljs-string">"chestnut"</span>, <span class="hljs-string">"rosy"</span>, <span class="hljs-string">"copper"</span>, <span class="hljs-string">"crimson"</span>, <span class="hljs-string">"teal"</span>, <span class="hljs-string">"indigo"</span>, <span class="hljs-string">"navy"</span>, <span class="hljs-string">"azure"</span>, <span class="hljs-string">"periwinkle"</span>, <span class="hljs-string">"brassy"</span>, <span class="hljs-string">"verdigris"</span>, <span class="hljs-string">"veridian"</span>, <span class="hljs-string">"tan"</span>,
+      <span class="hljs-string">"raspberry"</span>, <span class="hljs-string">"beige"</span>, <span class="hljs-string">"sandy"</span>, <span class="hljs-string">"ElectricBlue"</span>, <span class="hljs-string">"white"</span>, <span class="hljs-string">"champagne"</span>, <span class="hljs-string">"coral"</span>, <span class="hljs-string">"cyan"</span>];
+      <span class="hljs-keyword">return</span> colors;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"whimsical"</span>:
+      <span class="hljs-keyword">var</span> whimsy = [<span class="hljs-string">"whimsical"</span>, <span class="hljs-string">"silly"</span>, <span class="hljs-string">"drunken"</span>, <span class="hljs-string">"goofy"</span>, <span class="hljs-string">"funny"</span>, <span class="hljs-string">"weird"</span>, <span class="hljs-string">"strange"</span>, <span class="hljs-string">"odd"</span>, <span class="hljs-string">"playful"</span>, <span class="hljs-string">"clever"</span>, <span class="hljs-string">"boastful"</span>, <span class="hljs-string">"breakdancing"</span>,
+      <span class="hljs-string">"hilarious"</span>, <span class="hljs-string">"conceited"</span>, <span class="hljs-string">"happy"</span>, <span class="hljs-string">"comical"</span>, <span class="hljs-string">"curious"</span>, <span class="hljs-string">"peculiar"</span>, <span class="hljs-string">"quaint"</span>, <span class="hljs-string">"quirky"</span>, <span class="hljs-string">"fancy"</span>, <span class="hljs-string">"wayward"</span>, <span class="hljs-string">"fickle"</span>, <span class="hljs-string">"yawning"</span>, <span class="hljs-string">"sleepy"</span>,
+      <span class="hljs-string">"cockeyed"</span>, <span class="hljs-string">"dizzy"</span>, <span class="hljs-string">"dancing"</span>, <span class="hljs-string">"absurd"</span>, <span class="hljs-string">"laughing"</span>, <span class="hljs-string">"hairy"</span>, <span class="hljs-string">"smiling"</span>, <span class="hljs-string">"perplexed"</span>, <span class="hljs-string">"baffled"</span>, <span class="hljs-string">"cockamamie"</span>, <span class="hljs-string">"vulgar"</span>, <span class="hljs-string">"hoodwinked"</span>,
+      <span class="hljs-string">"brainwashed"</span>];
+      <span class="hljs-keyword">return</span> whimsy;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"shiny"</span>:
+      <span class="hljs-keyword">var</span> shiny = [<span class="hljs-string">"sapphire"</span>, <span class="hljs-string">"opal"</span>, <span class="hljs-string">"silver"</span>, <span class="hljs-string">"gold"</span>, <span class="hljs-string">"platinum"</span>, <span class="hljs-string">"ruby"</span>, <span class="hljs-string">"emerald"</span>, <span class="hljs-string">"topaz"</span>, <span class="hljs-string">"diamond"</span>, <span class="hljs-string">"amethyst"</span>, <span class="hljs-string">"turquoise"</span>,
+      <span class="hljs-string">"starlit"</span>, <span class="hljs-string">"moonlit"</span>, <span class="hljs-string">"bronze"</span>, <span class="hljs-string">"metal"</span>, <span class="hljs-string">"jade"</span>, <span class="hljs-string">"amber"</span>, <span class="hljs-string">"garnet"</span>, <span class="hljs-string">"obsidian"</span>, <span class="hljs-string">"onyx"</span>, <span class="hljs-string">"pearl"</span>, <span class="hljs-string">"copper"</span>, <span class="hljs-string">"sunlit"</span>, <span class="hljs-string">"brass"</span>, <span class="hljs-string">"brassy"</span>,
+      <span class="hljs-string">"metallic"</span>];
+      <span class="hljs-keyword">return</span> shiny;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"noisy"</span>:
+      <span class="hljs-keyword">var</span> noisy = [<span class="hljs-string">"untuned"</span>, <span class="hljs-string">"loud"</span>, <span class="hljs-string">"soft"</span>, <span class="hljs-string">"shrieking"</span>, <span class="hljs-string">"melodious"</span>, <span class="hljs-string">"musical"</span>, <span class="hljs-string">"operatic"</span>, <span class="hljs-string">"symphonic"</span>, <span class="hljs-string">"dancing"</span>, <span class="hljs-string">"lyrical"</span>, <span class="hljs-string">"harmonic"</span>,
+      <span class="hljs-string">"orchestral"</span>, <span class="hljs-string">"noisy"</span>, <span class="hljs-string">"dissonant"</span>, <span class="hljs-string">"rhythmic"</span>, <span class="hljs-string">"hissing"</span>, <span class="hljs-string">"singing"</span>, <span class="hljs-string">"crooning"</span>, <span class="hljs-string">"shouting"</span>, <span class="hljs-string">"screaming"</span>, <span class="hljs-string">"wailing"</span>, <span class="hljs-string">"crying"</span>, <span class="hljs-string">"howling"</span>,
+      <span class="hljs-string">"yelling"</span>, <span class="hljs-string">"hollering"</span>, <span class="hljs-string">"caterwauling"</span>, <span class="hljs-string">"bawling"</span>, <span class="hljs-string">"bellowing"</span>, <span class="hljs-string">"roaring"</span>, <span class="hljs-string">"squealing"</span>, <span class="hljs-string">"beeping"</span>, <span class="hljs-string">"knocking"</span>, <span class="hljs-string">"tapping"</span>, <span class="hljs-string">"rapping"</span>,
+      <span class="hljs-string">"humming"</span>, <span class="hljs-string">"scatting"</span>, <span class="hljs-string">"whispered"</span>, <span class="hljs-string">"whispering"</span>, <span class="hljs-string">"rasping"</span>, <span class="hljs-string">"buzzing"</span>, <span class="hljs-string">"whirring"</span>, <span class="hljs-string">"whistling"</span>, <span class="hljs-string">"whistled"</span>];
+      <span class="hljs-keyword">return</span> noisy;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"apocalyptic"</span>:
+      <span class="hljs-keyword">var</span> apocalyptic = [<span class="hljs-string">"nuclear"</span>, <span class="hljs-string">"apocalyptic"</span>, <span class="hljs-string">"desolate"</span>, <span class="hljs-string">"atomic"</span>, <span class="hljs-string">"zombie"</span>, <span class="hljs-string">"collapsed"</span>, <span class="hljs-string">"grim"</span>, <span class="hljs-string">"fallen"</span>, <span class="hljs-string">"collapsed"</span>, <span class="hljs-string">"cannibalistic"</span>,
+      <span class="hljs-string">"radioactive"</span>, <span class="hljs-string">"toxic"</span>, <span class="hljs-string">"poisonous"</span>, <span class="hljs-string">"venomous"</span>, <span class="hljs-string">"disastrous"</span>, <span class="hljs-string">"grimy"</span>, <span class="hljs-string">"dirty"</span>, <span class="hljs-string">"undead"</span>, <span class="hljs-string">"bloodshot"</span>, <span class="hljs-string">"rusty"</span>, <span class="hljs-string">"glowing"</span>, <span class="hljs-string">"decaying"</span>,
+      <span class="hljs-string">"rotten"</span>, <span class="hljs-string">"deadly"</span>, <span class="hljs-string">"plagued"</span>, <span class="hljs-string">"decimated"</span>, <span class="hljs-string">"rotting"</span>, <span class="hljs-string">"putrid"</span>, <span class="hljs-string">"decayed"</span>, <span class="hljs-string">"deserted"</span>, <span class="hljs-string">"acidic"</span>];
+      <span class="hljs-keyword">return</span> apocalyptic;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"insulting"</span>:
+      <span class="hljs-keyword">var</span> insulting = [<span class="hljs-string">"stupid"</span>, <span class="hljs-string">"idiotic"</span>, <span class="hljs-string">"fat"</span>, <span class="hljs-string">"ugly"</span>, <span class="hljs-string">"hideous"</span>, <span class="hljs-string">"grotesque"</span>, <span class="hljs-string">"dull"</span>, <span class="hljs-string">"dumb"</span>, <span class="hljs-string">"lazy"</span>, <span class="hljs-string">"sluggish"</span>, <span class="hljs-string">"brainless"</span>, <span class="hljs-string">"slow"</span>,
+      <span class="hljs-string">"gullible"</span>, <span class="hljs-string">"obtuse"</span>, <span class="hljs-string">"dense"</span>, <span class="hljs-string">"dim"</span>, <span class="hljs-string">"dazed"</span>, <span class="hljs-string">"ridiculous"</span>, <span class="hljs-string">"witless"</span>, <span class="hljs-string">"daft"</span>, <span class="hljs-string">"crazy"</span>, <span class="hljs-string">"vapid"</span>, <span class="hljs-string">"inane"</span>, <span class="hljs-string">"mundane"</span>, <span class="hljs-string">"hollow"</span>, <span class="hljs-string">"vacuous"</span>,
+      <span class="hljs-string">"boring"</span>, <span class="hljs-string">"insipid"</span>, <span class="hljs-string">"tedious"</span>, <span class="hljs-string">"monotonous"</span>, <span class="hljs-string">"weird"</span>, <span class="hljs-string">"bizarre"</span>, <span class="hljs-string">"backward"</span>, <span class="hljs-string">"moronic"</span>, <span class="hljs-string">"ignorant"</span>, <span class="hljs-string">"scatterbrained"</span>, <span class="hljs-string">"forgetful"</span>, <span class="hljs-string">"careless"</span>,
+      <span class="hljs-string">"lethargic"</span>, <span class="hljs-string">"insolent"</span>, <span class="hljs-string">"indolent"</span>, <span class="hljs-string">"loitering"</span>, <span class="hljs-string">"gross"</span>, <span class="hljs-string">"disgusting"</span>, <span class="hljs-string">"bland"</span>, <span class="hljs-string">"horrid"</span>, <span class="hljs-string">"unseemly"</span>, <span class="hljs-string">"revolting"</span>, <span class="hljs-string">"homely"</span>, <span class="hljs-string">"deformed"</span>,
+      <span class="hljs-string">"disfigured"</span>, <span class="hljs-string">"offensive"</span>, <span class="hljs-string">"cowardly"</span>, <span class="hljs-string">"weak"</span>, <span class="hljs-string">"villainous"</span>, <span class="hljs-string">"fearful"</span>, <span class="hljs-string">"monstrous"</span>, <span class="hljs-string">"unattractive"</span>, <span class="hljs-string">"unpleasant"</span>, <span class="hljs-string">"nasty"</span>, <span class="hljs-string">"beastly"</span>, <span class="hljs-string">"snide"</span>,
+      <span class="hljs-string">"horrible"</span>, <span class="hljs-string">"syncophantic"</span>, <span class="hljs-string">"unhelpful"</span>, <span class="hljs-string">"bootlicking"</span>];
+      <span class="hljs-keyword">return</span> insulting;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"praise"</span>:
+      <span class="hljs-keyword">var</span> praise = [<span class="hljs-string">"beautiful"</span>, <span class="hljs-string">"intelligent"</span>, <span class="hljs-string">"smart"</span>, <span class="hljs-string">"genius"</span>, <span class="hljs-string">"ingenious"</span>, <span class="hljs-string">"gorgeous"</span>, <span class="hljs-string">"pretty"</span>, <span class="hljs-string">"witty"</span>, <span class="hljs-string">"angelic"</span>, <span class="hljs-string">"handsome"</span>, <span class="hljs-string">"graceful"</span>,
+      <span class="hljs-string">"talented"</span>, <span class="hljs-string">"exquisite"</span>, <span class="hljs-string">"enchanting"</span>, <span class="hljs-string">"fascinating"</span>, <span class="hljs-string">"interesting"</span>, <span class="hljs-string">"divine"</span>, <span class="hljs-string">"alluring"</span>, <span class="hljs-string">"ravishing"</span>, <span class="hljs-string">"wonderful"</span>, <span class="hljs-string">"magnificient"</span>, <span class="hljs-string">"marvelous"</span>,
+      <span class="hljs-string">"dazzling"</span>, <span class="hljs-string">"cute"</span>, <span class="hljs-string">"charming"</span>, <span class="hljs-string">"attractive"</span>, <span class="hljs-string">"nifty"</span>, <span class="hljs-string">"delightful"</span>, <span class="hljs-string">"superior"</span>, <span class="hljs-string">"amiable"</span>, <span class="hljs-string">"gentle"</span>, <span class="hljs-string">"heroic"</span>, <span class="hljs-string">"courageous"</span>, <span class="hljs-string">"valiant"</span>, <span class="hljs-string">"brave"</span>,
+      <span class="hljs-string">"noble"</span>, <span class="hljs-string">"daring"</span>, <span class="hljs-string">"fearless"</span>, <span class="hljs-string">"gallant"</span>, <span class="hljs-string">"adventurous"</span>, <span class="hljs-string">"cool"</span>, <span class="hljs-string">"enthusiastic"</span>, <span class="hljs-string">"fierce"</span>, <span class="hljs-string">"awesome"</span>, <span class="hljs-string">"radical"</span>, <span class="hljs-string">"tubular"</span>, <span class="hljs-string">"fearsome"</span>,
+      <span class="hljs-string">"majestic"</span>, <span class="hljs-string">"grand"</span>, <span class="hljs-string">"stunning"</span>];
+      <span class="hljs-keyword">return</span> praise;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"scientific"</span>:
+      <span class="hljs-keyword">var</span> scientific = [<span class="hljs-string">"scientific"</span>, <span class="hljs-string">"technical"</span>, <span class="hljs-string">"digital"</span>, <span class="hljs-string">"programming"</span>, <span class="hljs-string">"calculating"</span>, <span class="hljs-string">"formulating"</span>, <span class="hljs-string">"cyberpunk"</span>, <span class="hljs-string">"mechanical"</span>, <span class="hljs-string">"technological"</span>,
+      <span class="hljs-string">"innovative"</span>, <span class="hljs-string">"brainy"</span>, <span class="hljs-string">"chemical"</span>, <span class="hljs-string">"quantum"</span>, <span class="hljs-string">"astro"</span>, <span class="hljs-string">"space"</span>, <span class="hljs-string">"theoretical"</span>, <span class="hljs-string">"atomic"</span>, <span class="hljs-string">"electronic"</span>, <span class="hljs-string">"gaseous"</span>, <span class="hljs-string">"investigative"</span>, <span class="hljs-string">"solar"</span>,
+      <span class="hljs-string">"extinct"</span>, <span class="hljs-string">"galactic"</span>];
+      <span class="hljs-keyword">return</span> scientific;
+    <span class="hljs-keyword">default</span>:
+      <span class="hljs-keyword">var</span> scientific_default = [<span class="hljs-string">"scientific"</span>, <span class="hljs-string">"technical"</span>, <span class="hljs-string">"digital"</span>, <span class="hljs-string">"programming"</span>, <span class="hljs-string">"calculating"</span>, <span class="hljs-string">"formulating"</span>, <span class="hljs-string">"cyberpunk"</span>, <span class="hljs-string">"mechanical"</span>, <span class="hljs-string">"technological"</span>,
+      <span class="hljs-string">"innovative"</span>, <span class="hljs-string">"brainy"</span>, <span class="hljs-string">"chemical"</span>, <span class="hljs-string">"quantum"</span>, <span class="hljs-string">"astro"</span>, <span class="hljs-string">"space"</span>, <span class="hljs-string">"theoretical"</span>, <span class="hljs-string">"atomic"</span>, <span class="hljs-string">"electronic"</span>, <span class="hljs-string">"gaseous"</span>, <span class="hljs-string">"investigative"</span>, <span class="hljs-string">"solar"</span>,
+      <span class="hljs-string">"extinct"</span>, <span class="hljs-string">"galactic"</span>];
+      <span class="hljs-keyword">return</span> scientific_default;
+  }
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Pulls noun out of array using random number sent from generator</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getNoun</span>(<span class="hljs-params">y</span>) </span>{
+  <span class="hljs-keyword">switch</span>(y) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"animals"</span>:
+      <span class="hljs-keyword">var</span> animals = [<span class="hljs-string">"flamingo"</span>, <span class="hljs-string">"hedgehog"</span>, <span class="hljs-string">"owl"</span>, <span class="hljs-string">"elephant"</span>, <span class="hljs-string">"pussycat"</span>, <span class="hljs-string">"alligator"</span>, <span class="hljs-string">"dachsund"</span>, <span class="hljs-string">"poodle"</span>, <span class="hljs-string">"beagle"</span>, <span class="hljs-string">"crocodile"</span>, <span class="hljs-string">"kangaroo"</span>,
+      <span class="hljs-string">"wallaby"</span>, <span class="hljs-string">"woodpecker"</span>, <span class="hljs-string">"eagle"</span>, <span class="hljs-string">"falcon"</span>, <span class="hljs-string">"canary"</span>, <span class="hljs-string">"parrot"</span>, <span class="hljs-string">"parakeet"</span>, <span class="hljs-string">"hamster"</span>, <span class="hljs-string">"gerbil"</span>, <span class="hljs-string">"squirrel"</span>, <span class="hljs-string">"rat"</span>, <span class="hljs-string">"dove"</span>, <span class="hljs-string">"toucan"</span>,
+      <span class="hljs-string">"raccoon"</span>, <span class="hljs-string">"vulture"</span>, <span class="hljs-string">"peacock"</span>, <span class="hljs-string">"goldfish"</span>, <span class="hljs-string">"rook"</span>, <span class="hljs-string">"koala"</span>, <span class="hljs-string">"skunk"</span>, <span class="hljs-string">"goat"</span>, <span class="hljs-string">"rooster"</span>, <span class="hljs-string">"fox"</span>, <span class="hljs-string">"porcupine"</span>, <span class="hljs-string">"llama"</span>, <span class="hljs-string">"grasshopper"</span>,
+      <span class="hljs-string">"gorilla"</span>, <span class="hljs-string">"monkey"</span>, <span class="hljs-string">"seahorse"</span>, <span class="hljs-string">"wombat"</span>, <span class="hljs-string">"wolf"</span>, <span class="hljs-string">"giraffe"</span>, <span class="hljs-string">"badger"</span>, <span class="hljs-string">"lion"</span>, <span class="hljs-string">"mouse"</span>, <span class="hljs-string">"beetle"</span>, <span class="hljs-string">"cricket"</span>, <span class="hljs-string">"nightingale"</span>,
+      <span class="hljs-string">"hawk"</span>, <span class="hljs-string">"trout"</span>, <span class="hljs-string">"squid"</span>, <span class="hljs-string">"octopus"</span>, <span class="hljs-string">"sloth"</span>, <span class="hljs-string">"snail"</span>, <span class="hljs-string">"locust"</span>, <span class="hljs-string">"baboon"</span>, <span class="hljs-string">"lemur"</span>, <span class="hljs-string">"meerkat"</span>, <span class="hljs-string">"oyster"</span>, <span class="hljs-string">"frog"</span>, <span class="hljs-string">"toad"</span>, <span class="hljs-string">"jellyfish"</span>,
+      <span class="hljs-string">"butterfly"</span>, <span class="hljs-string">"caterpillar"</span>, <span class="hljs-string">"tiger"</span>, <span class="hljs-string">"hyena"</span>, <span class="hljs-string">"zebra"</span>, <span class="hljs-string">"snail"</span>, <span class="hljs-string">"pig"</span>, <span class="hljs-string">"weasel"</span>, <span class="hljs-string">"donkey"</span>, <span class="hljs-string">"penguin"</span>, <span class="hljs-string">"crane"</span>, <span class="hljs-string">"buzzard"</span>, <span class="hljs-string">"vulture"</span>,
+      <span class="hljs-string">"rhino"</span>, <span class="hljs-string">"hippopotamus"</span>, <span class="hljs-string">"dolphin"</span>, <span class="hljs-string">"sparrow"</span>, <span class="hljs-string">"beaver"</span>, <span class="hljs-string">"moose"</span>, <span class="hljs-string">"minnow"</span>, <span class="hljs-string">"otter"</span>, <span class="hljs-string">"bat"</span>, <span class="hljs-string">"mongoose"</span>, <span class="hljs-string">"swan"</span>, <span class="hljs-string">"firefly"</span>, <span class="hljs-string">"platypus"</span>];
+      <span class="hljs-keyword">return</span> animals;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"profession"</span>:
+      <span class="hljs-keyword">var</span> professions = [<span class="hljs-string">"doctor"</span>, <span class="hljs-string">"lawyer"</span>, <span class="hljs-string">"ninja"</span>, <span class="hljs-string">"writer"</span>, <span class="hljs-string">"samurai"</span>, <span class="hljs-string">"surgeon"</span>, <span class="hljs-string">"clerk"</span>, <span class="hljs-string">"artist"</span>, <span class="hljs-string">"actor"</span>, <span class="hljs-string">"engineer"</span>, <span class="hljs-string">"mechanic"</span>,
+      <span class="hljs-string">"comedian"</span>, <span class="hljs-string">"fireman"</span>, <span class="hljs-string">"nurse"</span>, <span class="hljs-string">"RockStar"</span>, <span class="hljs-string">"musician"</span>, <span class="hljs-string">"carpenter"</span>, <span class="hljs-string">"plumber"</span>, <span class="hljs-string">"cashier"</span>, <span class="hljs-string">"electrician"</span>, <span class="hljs-string">"waiter"</span>, <span class="hljs-string">"president"</span>, <span class="hljs-string">"governor"</span>,
+      <span class="hljs-string">"senator"</span>, <span class="hljs-string">"scientist"</span>, <span class="hljs-string">"programmer"</span>, <span class="hljs-string">"singer"</span>, <span class="hljs-string">"dancer"</span>, <span class="hljs-string">"director"</span>, <span class="hljs-string">"mayor"</span>, <span class="hljs-string">"merchant"</span>, <span class="hljs-string">"detective"</span>, <span class="hljs-string">"investigator"</span>, <span class="hljs-string">"navigator"</span>, <span class="hljs-string">"pilot"</span>,
+      <span class="hljs-string">"priest"</span>, <span class="hljs-string">"cowboy"</span>, <span class="hljs-string">"stagehand"</span>, <span class="hljs-string">"soldier"</span>, <span class="hljs-string">"ambassador"</span>, <span class="hljs-string">"pirate"</span>, <span class="hljs-string">"miner"</span>, <span class="hljs-string">"police"</span>];
+      <span class="hljs-keyword">return</span> professions;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"fantasy"</span>:
+      <span class="hljs-keyword">var</span> fantasy = [<span class="hljs-string">"centaur"</span>, <span class="hljs-string">"wizard"</span>, <span class="hljs-string">"gnome"</span>, <span class="hljs-string">"orc"</span>, <span class="hljs-string">"troll"</span>, <span class="hljs-string">"sword"</span>, <span class="hljs-string">"fairy"</span>, <span class="hljs-string">"pegasus"</span>, <span class="hljs-string">"halfling"</span>, <span class="hljs-string">"elf"</span>, <span class="hljs-string">"changeling"</span>, <span class="hljs-string">"ghost"</span>,
+      <span class="hljs-string">"knight"</span>, <span class="hljs-string">"squire"</span>, <span class="hljs-string">"magician"</span>, <span class="hljs-string">"witch"</span>, <span class="hljs-string">"warlock"</span>, <span class="hljs-string">"unicorn"</span>, <span class="hljs-string">"dragon"</span>, <span class="hljs-string">"wyvern"</span>, <span class="hljs-string">"princess"</span>, <span class="hljs-string">"prince"</span>, <span class="hljs-string">"king"</span>, <span class="hljs-string">"queen"</span>, <span class="hljs-string">"jester"</span>,
+      <span class="hljs-string">"tower"</span>, <span class="hljs-string">"castle"</span>, <span class="hljs-string">"kraken"</span>, <span class="hljs-string">"seamonster"</span>, <span class="hljs-string">"mermaid"</span>, <span class="hljs-string">"psychic"</span>, <span class="hljs-string">"seer"</span>, <span class="hljs-string">"oracle"</span>];
+      <span class="hljs-keyword">return</span> fantasy;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"music"</span>:
+      <span class="hljs-keyword">var</span> music = [<span class="hljs-string">"violin"</span>, <span class="hljs-string">"flute"</span>, <span class="hljs-string">"bagpipe"</span>, <span class="hljs-string">"guitar"</span>, <span class="hljs-string">"symphony"</span>, <span class="hljs-string">"orchestra"</span>, <span class="hljs-string">"piano"</span>, <span class="hljs-string">"trombone"</span>, <span class="hljs-string">"tuba"</span>, <span class="hljs-string">"opera"</span>, <span class="hljs-string">"drums"</span>,
+      <span class="hljs-string">"harpsichord"</span>, <span class="hljs-string">"harp"</span>, <span class="hljs-string">"harmonica"</span>, <span class="hljs-string">"accordion"</span>, <span class="hljs-string">"tenor"</span>, <span class="hljs-string">"soprano"</span>, <span class="hljs-string">"baritone"</span>, <span class="hljs-string">"cello"</span>, <span class="hljs-string">"viola"</span>, <span class="hljs-string">"piccolo"</span>, <span class="hljs-string">"ukelele"</span>, <span class="hljs-string">"woodwind"</span>, <span class="hljs-string">"saxophone"</span>,
+      <span class="hljs-string">"bugle"</span>, <span class="hljs-string">"trumpet"</span>, <span class="hljs-string">"sousaphone"</span>, <span class="hljs-string">"cornet"</span>, <span class="hljs-string">"stradivarius"</span>, <span class="hljs-string">"marimbas"</span>, <span class="hljs-string">"bells"</span>, <span class="hljs-string">"timpani"</span>, <span class="hljs-string">"bongos"</span>, <span class="hljs-string">"clarinet"</span>, <span class="hljs-string">"recorder"</span>, <span class="hljs-string">"oboe"</span>, <span class="hljs-string">"conductor"</span>,
+      <span class="hljs-string">"singer"</span>];
+      <span class="hljs-keyword">return</span> music;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"horror"</span>:
+      <span class="hljs-keyword">var</span> horror = [<span class="hljs-string">"murderer"</span>, <span class="hljs-string">"chainsaw"</span>, <span class="hljs-string">"knife"</span>, <span class="hljs-string">"sword"</span>, <span class="hljs-string">"murder"</span>, <span class="hljs-string">"devil"</span>, <span class="hljs-string">"killer"</span>, <span class="hljs-string">"psycho"</span>, <span class="hljs-string">"ghost"</span>, <span class="hljs-string">"monster"</span>, <span class="hljs-string">"godzilla"</span>, <span class="hljs-string">"werewolf"</span>,
+      <span class="hljs-string">"vampire"</span>, <span class="hljs-string">"demon"</span>, <span class="hljs-string">"graveyard"</span>, <span class="hljs-string">"zombie"</span>, <span class="hljs-string">"mummy"</span>, <span class="hljs-string">"curse"</span>, <span class="hljs-string">"death"</span>, <span class="hljs-string">"grave"</span>, <span class="hljs-string">"tomb"</span>, <span class="hljs-string">"beast"</span>, <span class="hljs-string">"nightmare"</span>, <span class="hljs-string">"frankenstein"</span>, <span class="hljs-string">"specter"</span>,
+      <span class="hljs-string">"poltergeist"</span>, <span class="hljs-string">"wraith"</span>, <span class="hljs-string">"corpse"</span>, <span class="hljs-string">"scream"</span>, <span class="hljs-string">"massacre"</span>, <span class="hljs-string">"cannibal"</span>, <span class="hljs-string">"skull"</span>, <span class="hljs-string">"bones"</span>, <span class="hljs-string">"undertaker"</span>, <span class="hljs-string">"zombie"</span>, <span class="hljs-string">"creature"</span>, <span class="hljs-string">"mask"</span>, <span class="hljs-string">"psychopath"</span>,
+      <span class="hljs-string">"fiend"</span>, <span class="hljs-string">"satanist"</span>, <span class="hljs-string">"moon"</span>, <span class="hljs-string">"fullMoon"</span>];
+      <span class="hljs-keyword">return</span> horror;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"gross"</span>:
+      <span class="hljs-keyword">var</span> gross = [<span class="hljs-string">"slime"</span>, <span class="hljs-string">"bug"</span>, <span class="hljs-string">"roach"</span>, <span class="hljs-string">"fluid"</span>, <span class="hljs-string">"pus"</span>, <span class="hljs-string">"booger"</span>, <span class="hljs-string">"spit"</span>, <span class="hljs-string">"boil"</span>, <span class="hljs-string">"blister"</span>, <span class="hljs-string">"orifice"</span>, <span class="hljs-string">"secretion"</span>, <span class="hljs-string">"mucus"</span>, <span class="hljs-string">"phlegm"</span>,
+      <span class="hljs-string">"centipede"</span>, <span class="hljs-string">"beetle"</span>, <span class="hljs-string">"fart"</span>, <span class="hljs-string">"snot"</span>, <span class="hljs-string">"crevice"</span>, <span class="hljs-string">"flatulence"</span>, <span class="hljs-string">"juice"</span>, <span class="hljs-string">"mold"</span>, <span class="hljs-string">"mildew"</span>, <span class="hljs-string">"germs"</span>, <span class="hljs-string">"discharge"</span>, <span class="hljs-string">"toilet"</span>, <span class="hljs-string">"udder"</span>, <span class="hljs-string">"odor"</span>, <span class="hljs-string">"substance"</span>,
+      <span class="hljs-string">"fluid"</span>, <span class="hljs-string">"moisture"</span>, <span class="hljs-string">"garbage"</span>, <span class="hljs-string">"trash"</span>, <span class="hljs-string">"bug"</span>];
+      <span class="hljs-keyword">return</span> gross;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"everyday"</span>:
+      <span class="hljs-keyword">var</span> everyday = [<span class="hljs-string">"mirror"</span>, <span class="hljs-string">"knife"</span>, <span class="hljs-string">"fork"</span>, <span class="hljs-string">"spork"</span>, <span class="hljs-string">"spoon"</span>, <span class="hljs-string">"tupperware"</span>, <span class="hljs-string">"minivan"</span>, <span class="hljs-string">"suburb"</span>, <span class="hljs-string">"lamp"</span>, <span class="hljs-string">"desk"</span>, <span class="hljs-string">"stereo"</span>, <span class="hljs-string">"television"</span>, <span class="hljs-string">"TV"</span>,
+      <span class="hljs-string">"book"</span>, <span class="hljs-string">"car"</span>, <span class="hljs-string">"truck"</span>, <span class="hljs-string">"soda"</span>, <span class="hljs-string">"door"</span>, <span class="hljs-string">"video"</span>, <span class="hljs-string">"game"</span>, <span class="hljs-string">"computer"</span>, <span class="hljs-string">"calender"</span>, <span class="hljs-string">"tree"</span>, <span class="hljs-string">"plant"</span>, <span class="hljs-string">"flower"</span>, <span class="hljs-string">"chimney"</span>, <span class="hljs-string">"attic"</span>, <span class="hljs-string">"kitchen"</span>,
+      <span class="hljs-string">"garden"</span>, <span class="hljs-string">"school"</span>, <span class="hljs-string">"wallet"</span>, <span class="hljs-string">"bottle"</span>];
+      <span class="hljs-keyword">return</span> everyday;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"jewelry"</span>:
+      <span class="hljs-keyword">var</span> jewelry = [<span class="hljs-string">"earrings"</span>, <span class="hljs-string">"ring"</span>, <span class="hljs-string">"necklace"</span>, <span class="hljs-string">"pendant"</span>, <span class="hljs-string">"choker"</span>, <span class="hljs-string">"brooch"</span>, <span class="hljs-string">"bracelet"</span>, <span class="hljs-string">"cameo"</span>, <span class="hljs-string">"charm"</span>, <span class="hljs-string">"bauble"</span>, <span class="hljs-string">"trinket"</span>, <span class="hljs-string">"jewelry"</span>,
+      <span class="hljs-string">"anklet"</span>, <span class="hljs-string">"bangle"</span>, <span class="hljs-string">"locket"</span>, <span class="hljs-string">"finery"</span>, <span class="hljs-string">"crown"</span>, <span class="hljs-string">"tiara"</span>, <span class="hljs-string">"blingBling"</span>, <span class="hljs-string">"chain"</span>, <span class="hljs-string">"rosary"</span>, <span class="hljs-string">"jewel"</span>, <span class="hljs-string">"gemstone"</span>, <span class="hljs-string">"beads"</span>, <span class="hljs-string">"armband"</span>, <span class="hljs-string">"pin"</span>,
+      <span class="hljs-string">"costume"</span>, <span class="hljs-string">"ornament"</span>, <span class="hljs-string">"treasure"</span>];
+      <span class="hljs-keyword">return</span> jewelry;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"places"</span>:
+      <span class="hljs-keyword">var</span> places = [<span class="hljs-string">"swamp"</span>, <span class="hljs-string">"graveyard"</span>, <span class="hljs-string">"cemetery"</span>, <span class="hljs-string">"park"</span>, <span class="hljs-string">"building"</span>, <span class="hljs-string">"house"</span>, <span class="hljs-string">"river"</span>, <span class="hljs-string">"ocean"</span>, <span class="hljs-string">"sea"</span>, <span class="hljs-string">"field"</span>, <span class="hljs-string">"forest"</span>, <span class="hljs-string">"woods"</span>, <span class="hljs-string">"neighborhood"</span>,
+      <span class="hljs-string">"city"</span>, <span class="hljs-string">"town"</span>, <span class="hljs-string">"suburb"</span>, <span class="hljs-string">"country"</span>, <span class="hljs-string">"meadow"</span>, <span class="hljs-string">"cliffs"</span>, <span class="hljs-string">"lake"</span>, <span class="hljs-string">"stream"</span>, <span class="hljs-string">"creek"</span>, <span class="hljs-string">"school"</span>, <span class="hljs-string">"college"</span>, <span class="hljs-string">"university"</span>, <span class="hljs-string">"library"</span>, <span class="hljs-string">"bakery"</span>,
+      <span class="hljs-string">"shop"</span>, <span class="hljs-string">"store"</span>, <span class="hljs-string">"theater"</span>, <span class="hljs-string">"garden"</span>, <span class="hljs-string">"canyon"</span>, <span class="hljs-string">"highway"</span>, <span class="hljs-string">"restaurant"</span>, <span class="hljs-string">"cafe"</span>, <span class="hljs-string">"diner"</span>, <span class="hljs-string">"street"</span>, <span class="hljs-string">"road"</span>, <span class="hljs-string">"freeway"</span>, <span class="hljs-string">"alley"</span>];
+      <span class="hljs-keyword">return</span> places;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"scifi"</span>:
+      <span class="hljs-keyword">var</span> scifi = [<span class="hljs-string">"robot"</span>, <span class="hljs-string">"alien"</span>, <span class="hljs-string">"raygun"</span>, <span class="hljs-string">"spaceship"</span>, <span class="hljs-string">"UFO"</span>, <span class="hljs-string">"rocket"</span>, <span class="hljs-string">"phaser"</span>, <span class="hljs-string">"astronaut"</span>, <span class="hljs-string">"spaceman"</span>, <span class="hljs-string">"planet"</span>, <span class="hljs-string">"star"</span>, <span class="hljs-string">"galaxy"</span>,
+      <span class="hljs-string">"computer"</span>, <span class="hljs-string">"future"</span>, <span class="hljs-string">"timeMachine"</span>, <span class="hljs-string">"wormHole"</span>, <span class="hljs-string">"timeTraveler"</span>, <span class="hljs-string">"scientist"</span>, <span class="hljs-string">"invention"</span>, <span class="hljs-string">"martian"</span>, <span class="hljs-string">"pluto"</span>, <span class="hljs-string">"jupiter"</span>, <span class="hljs-string">"saturn"</span>, <span class="hljs-string">"mars"</span>,
+      <span class="hljs-string">"quasar"</span>, <span class="hljs-string">"blackHole"</span>, <span class="hljs-string">"warpDrive"</span>, <span class="hljs-string">"laser"</span>, <span class="hljs-string">"orbit"</span>, <span class="hljs-string">"gears"</span>, <span class="hljs-string">"molecule"</span>, <span class="hljs-string">"electron"</span>, <span class="hljs-string">"neutrino"</span>, <span class="hljs-string">"proton"</span>, <span class="hljs-string">"experiment"</span>, <span class="hljs-string">"photon"</span>, <span class="hljs-string">"apparatus"</span>,
+      <span class="hljs-string">"universe"</span>, <span class="hljs-string">"gravity"</span>, <span class="hljs-string">"darkMatter"</span>, <span class="hljs-string">"constellation"</span>, <span class="hljs-string">"circuit"</span>, <span class="hljs-string">"asteroid"</span>];
+      <span class="hljs-keyword">return</span> scifi;
+    <span class="hljs-keyword">default</span>:
+      <span class="hljs-keyword">var</span> scifi_default = [<span class="hljs-string">"robot"</span>, <span class="hljs-string">"alien"</span>, <span class="hljs-string">"raygun"</span>, <span class="hljs-string">"spaceship"</span>, <span class="hljs-string">"UFO"</span>, <span class="hljs-string">"rocket"</span>, <span class="hljs-string">"phaser"</span>, <span class="hljs-string">"astronaut"</span>, <span class="hljs-string">"spaceman"</span>, <span class="hljs-string">"planet"</span>, <span class="hljs-string">"star"</span>, <span class="hljs-string">"galaxy"</span>,
+      <span class="hljs-string">"computer"</span>, <span class="hljs-string">"future"</span>, <span class="hljs-string">"timeMachine"</span>, <span class="hljs-string">"wormHole"</span>, <span class="hljs-string">"timeTraveler"</span>, <span class="hljs-string">"scientist"</span>, <span class="hljs-string">"invention"</span>, <span class="hljs-string">"martian"</span>, <span class="hljs-string">"pluto"</span>, <span class="hljs-string">"jupiter"</span>, <span class="hljs-string">"saturn"</span>, <span class="hljs-string">"mars"</span>,
+      <span class="hljs-string">"quasar"</span>, <span class="hljs-string">"blackHole"</span>, <span class="hljs-string">"warpDrive"</span>, <span class="hljs-string">"laser"</span>, <span class="hljs-string">"orbit"</span>, <span class="hljs-string">"gears"</span>, <span class="hljs-string">"molecule"</span>, <span class="hljs-string">"electron"</span>, <span class="hljs-string">"neutrino"</span>, <span class="hljs-string">"proton"</span>, <span class="hljs-string">"experiment"</span>, <span class="hljs-string">"photon"</span>, <span class="hljs-string">"apparatus"</span>,
+      <span class="hljs-string">"universe"</span>, <span class="hljs-string">"gravity"</span>, <span class="hljs-string">"darkMatter"</span>, <span class="hljs-string">"constellation"</span>, <span class="hljs-string">"circuit"</span>, <span class="hljs-string">"asteroid"</span>];
+      <span class="hljs-keyword">return</span> scifi_default;
+  }
+}
+
+<span class="hljs-keyword">var</span> adjectives = [<span class="hljs-string">"dark"</span>, <span class="hljs-string">"color"</span>, <span class="hljs-string">"whimsical"</span>, <span class="hljs-string">"shiny"</span>, <span class="hljs-string">"noise"</span>, <span class="hljs-string">"apocalyptic"</span>, <span class="hljs-string">"insulting"</span>, <span class="hljs-string">"praise"</span>, <span class="hljs-string">"scientific"</span>];  <span class="hljs-comment">// types of adjectives for pizza titles</span>
+<span class="hljs-keyword">var</span> nouns = [<span class="hljs-string">"animals"</span>, <span class="hljs-string">"everyday"</span>, <span class="hljs-string">"fantasy"</span>, <span class="hljs-string">"gross"</span>, <span class="hljs-string">"horror"</span>, <span class="hljs-string">"jewelry"</span>, <span class="hljs-string">"places"</span>, <span class="hljs-string">"scifi"</span>];                        <span class="hljs-comment">// types of nouns for pizza titles</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Generates random numbers for getAdj and getNoun functions and returns a new pizza name</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">generator</span>(<span class="hljs-params">adj, noun</span>) </span>{
+  <span class="hljs-keyword">var</span> adjectives = getAdj(adj);
+  <span class="hljs-keyword">var</span> nouns = getNoun(noun);
+  <span class="hljs-keyword">var</span> randomAdjective = <span class="hljs-built_in">parseInt</span>(<span class="hljs-built_in">Math</span>.random() * adjectives.length);
+  <span class="hljs-keyword">var</span> randomNoun = <span class="hljs-built_in">parseInt</span>(<span class="hljs-built_in">Math</span>.random() * nouns.length);
+  <span class="hljs-keyword">var</span> name = <span class="hljs-string">"The "</span> + adjectives[randomAdjective].capitalize() + <span class="hljs-string">" "</span> + nouns[randomNoun].capitalize();
+  <span class="hljs-keyword">return</span> name;
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Chooses random adjective and random noun</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">randomName</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">var</span> randomNumberAdj = <span class="hljs-built_in">parseInt</span>(<span class="hljs-built_in">Math</span>.random() * adjectives.length);
+  <span class="hljs-keyword">var</span> randomNumberNoun = <span class="hljs-built_in">parseInt</span>(<span class="hljs-built_in">Math</span>.random() * nouns.length);
+  <span class="hljs-keyword">return</span> generator(adjectives[randomNumberAdj], nouns[randomNumberNoun]);
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>These functions return a string of a random ingredient from each respective category of ingredients.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> selectRandomMeat = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">var</span> randomMeat = pizzaIngredients.meats[<span class="hljs-built_in">Math</span>.floor((<span class="hljs-built_in">Math</span>.random() * pizzaIngredients.meats.length))];
+  <span class="hljs-keyword">return</span> randomMeat;
+};
+
+<span class="hljs-keyword">var</span> selectRandomNonMeat = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">var</span> randomNonMeat = pizzaIngredients.nonMeats[<span class="hljs-built_in">Math</span>.floor((<span class="hljs-built_in">Math</span>.random() * pizzaIngredients.nonMeats.length))];
+  <span class="hljs-keyword">return</span> randomNonMeat;
+};
+
+<span class="hljs-keyword">var</span> selectRandomCheese = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">var</span> randomCheese = pizzaIngredients.cheeses[<span class="hljs-built_in">Math</span>.floor((<span class="hljs-built_in">Math</span>.random() * pizzaIngredients.cheeses.length))];
+  <span class="hljs-keyword">return</span> randomCheese;
+};
+
+<span class="hljs-keyword">var</span> selectRandomSauce = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">var</span> randomSauce = pizzaIngredients.sauces[<span class="hljs-built_in">Math</span>.floor((<span class="hljs-built_in">Math</span>.random() * pizzaIngredients.sauces.length))];
+  <span class="hljs-keyword">return</span> randomSauce;
+};
+
+<span class="hljs-keyword">var</span> selectRandomCrust = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">var</span> randomCrust = pizzaIngredients.crusts[<span class="hljs-built_in">Math</span>.floor((<span class="hljs-built_in">Math</span>.random() * pizzaIngredients.crusts.length))];
+  <span class="hljs-keyword">return</span> randomCrust;
+};
+
+<span class="hljs-keyword">var</span> ingredientItemizer = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">string</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-string">"&lt;li&gt;"</span> + string + <span class="hljs-string">"&lt;/li&gt;"</span>;
+};</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>Returns a string with random pizza ingredients nested inside li tags</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> makeRandomPizza = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">var</span> pizza = <span class="hljs-string">""</span>;
+
+  <span class="hljs-keyword">var</span> numberOfMeats = <span class="hljs-built_in">Math</span>.floor((<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">4</span>));
+  <span class="hljs-keyword">var</span> numberOfNonMeats = <span class="hljs-built_in">Math</span>.floor((<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">3</span>));
+  <span class="hljs-keyword">var</span> numberOfCheeses = <span class="hljs-built_in">Math</span>.floor((<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">2</span>));
+
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; numberOfMeats; i++) {
+    pizza = pizza + ingredientItemizer(selectRandomMeat());
+  }
+
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> j = <span class="hljs-number">0</span>; j &lt; numberOfNonMeats; j++) {
+    pizza = pizza + ingredientItemizer(selectRandomNonMeat());
+  }
+
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> k = <span class="hljs-number">0</span>; k &lt; numberOfCheeses; k++) {
+    pizza = pizza + ingredientItemizer(selectRandomCheese());
+  }
+
+  pizza = pizza + ingredientItemizer(selectRandomSauce());
+  pizza = pizza + ingredientItemizer(selectRandomCrust());
+
+  <span class="hljs-keyword">return</span> pizza;
+};</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>Returns a DOM element for each pizza</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> pizzaElementGenerator = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">i</span>) </span>{
+  <span class="hljs-keyword">var</span> pizzaContainer,             <span class="hljs-comment">// contains pizza title, image and list of ingredients</span>
+      pizzaImageContainer,        <span class="hljs-comment">// contains the pizza image</span>
+      pizzaImage,                 <span class="hljs-comment">// the pizza image itself</span>
+      pizzaDescriptionContainer,  <span class="hljs-comment">// contains the pizza title and list of ingredients</span>
+      pizzaName,                  <span class="hljs-comment">// the pizza name itself</span>
+      ul;                         <span class="hljs-comment">// the list of ingredients</span>
+
+  pizzaContainer  = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"div"</span>);
+  pizzaImageContainer = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"div"</span>);
+  pizzaImage = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"img"</span>);
+  pizzaDescriptionContainer = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"div"</span>);
+
+  pizzaContainer.classList.add(<span class="hljs-string">"randomPizzaContainer"</span>);
+  pizzaContainer.style.width = <span class="hljs-string">"33.33%"</span>;
+  pizzaContainer.style.height = <span class="hljs-string">"325px"</span>;
+  pizzaContainer.id = <span class="hljs-string">"pizza"</span> + i;                <span class="hljs-comment">// gives each pizza element a unique id</span>
+  pizzaImageContainer.classList.add(<span class="hljs-string">"col-md-6"</span>);
+
+  pizzaImage.src = <span class="hljs-string">"images/pizza-200.png"</span>; <span class="hljs-comment">// resizable pizza with optimal size</span>
+  pizzaImage.classList.add(<span class="hljs-string">"img-responsive"</span>);
+  pizzaImageContainer.appendChild(pizzaImage);
+  pizzaContainer.appendChild(pizzaImageContainer);
+
+  pizzaDescriptionContainer.classList.add(<span class="hljs-string">"col-md-6"</span>);
+
+  pizzaName = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"h4"</span>);
+  pizzaName.innerHTML = randomName();
+  pizzaDescriptionContainer.appendChild(pizzaName);
+
+  ul = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"ul"</span>);
+  ul.innerHTML = makeRandomPizza();
+  pizzaDescriptionContainer.appendChild(ul);
+  pizzaContainer.appendChild(pizzaDescriptionContainer);
+
+  <span class="hljs-keyword">return</span> pizzaContainer;
+};</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>resizePizzas(size) is called when the slider in the “Our Pizzas” section of the website moves.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> resizePizzas = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">size</span>) </span>{
+  <span class="hljs-built_in">window</span>.performance.mark(<span class="hljs-string">"mark_start_resize"</span>);   <span class="hljs-comment">// User Timing API function</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>Changes the value for the size of the pizza above the slider</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">changeSliderLabel</span>(<span class="hljs-params">size</span>) </span>{
+    <span class="hljs-keyword">switch</span>(size) {
+      <span class="hljs-keyword">case</span> <span class="hljs-string">"1"</span>:
+        <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"#pizzaSize"</span>).innerHTML = <span class="hljs-string">"Small"</span>;
+        <span class="hljs-keyword">return</span>;
+      <span class="hljs-keyword">case</span> <span class="hljs-string">"2"</span>:
+        <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"#pizzaSize"</span>).innerHTML = <span class="hljs-string">"Medium"</span>;
+        <span class="hljs-keyword">return</span>;
+      <span class="hljs-keyword">case</span> <span class="hljs-string">"3"</span>:
+        <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"#pizzaSize"</span>).innerHTML = <span class="hljs-string">"Large"</span>;
+        <span class="hljs-keyword">return</span>;
+      <span class="hljs-keyword">default</span>:
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"bug in changeSliderLabel"</span>);
+        <span class="hljs-keyword">break</span>;
+    }
+  }
+
+  changeSliderLabel(size);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>Iterates through pizza elements on the page and changes their widths</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">changePizzaSizes</span>(<span class="hljs-params">size</span>) </span>{
+    <span class="hljs-keyword">var</span> newWidth;
+    <span class="hljs-keyword">switch</span>(size) {
+      <span class="hljs-keyword">case</span> <span class="hljs-string">"1"</span>:
+        newWidth = <span class="hljs-number">25</span>;
+        <span class="hljs-keyword">break</span>;
+      <span class="hljs-keyword">case</span> <span class="hljs-string">"2"</span>:
+        newWidth = <span class="hljs-number">33.3</span>;
+        <span class="hljs-keyword">break</span>;
+      <span class="hljs-keyword">case</span> <span class="hljs-string">"3"</span>:
+        newWidth = <span class="hljs-number">50</span>;
+        <span class="hljs-keyword">break</span>;
+      <span class="hljs-keyword">default</span>:
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Bug in sizeSwitcher"</span>);
+        <span class="hljs-keyword">break</span>;
+    }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>Accesses the DOM outside the For Loop</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> randomPizzas = <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">"randomPizzaContainer"</span>),</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>Gets the number of pizza elements outside the For Loop</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        length = randomPizzas.length;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; length; i++) {
+      randomPizzas[i].style.width = newWidth + <span class="hljs-string">"%"</span>;
+    }
+  }
+
+  changePizzaSizes(size);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>User Timing API is awesome</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-built_in">window</span>.performance.mark(<span class="hljs-string">"mark_end_resize"</span>);
+  <span class="hljs-built_in">window</span>.performance.measure(<span class="hljs-string">"measure_pizza_resize"</span>, <span class="hljs-string">"mark_start_resize"</span>, <span class="hljs-string">"mark_end_resize"</span>);
+  <span class="hljs-keyword">var</span> timeToResize = <span class="hljs-built_in">window</span>.performance.getEntriesByName(<span class="hljs-string">"measure_pizza_resize"</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Time to resize pizzas: "</span> + timeToResize[<span class="hljs-number">0</span>].duration + <span class="hljs-string">"ms"</span>);
+};
+
+<span class="hljs-built_in">window</span>.performance.mark(<span class="hljs-string">"mark_start_generating"</span>); <span class="hljs-comment">// collect timing data</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>This for-loop actually creates and appends all of the pizzas when the page loads
+Access the DOM outside the For Loop</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> pizzasDiv = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"randomPizzas"</span>);
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100</span>; i++) {
+  pizzasDiv.appendChild(pizzaElementGenerator(i));
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <p>User Timing API again. These measurements tell you how long it took to generate the initial pizzas</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">window</span>.performance.mark(<span class="hljs-string">"mark_end_generating"</span>);
+<span class="hljs-built_in">window</span>.performance.measure(<span class="hljs-string">"measure_pizza_generation"</span>, <span class="hljs-string">"mark_start_generating"</span>, <span class="hljs-string">"mark_end_generating"</span>);
+<span class="hljs-keyword">var</span> timeToGenerate = <span class="hljs-built_in">window</span>.performance.getEntriesByName(<span class="hljs-string">"measure_pizza_generation"</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Time to generate pizzas on load: "</span> + timeToGenerate[<span class="hljs-number">0</span>].duration + <span class="hljs-string">"ms"</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <p>Iterator for number of times the pizzas in the background have scrolled.
+Used by updatePositions() to decide when to log the average time per frame</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> frame = <span class="hljs-number">0</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-21">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <p>Logs the average amount of time per 10 frames needed to move the sliding background pizzas on scroll.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">logAverageFrame</span>(<span class="hljs-params">times</span>) </span>{   <span class="hljs-comment">// times is the array of User Timing measurements from updatePositions()</span>
+  <span class="hljs-keyword">var</span> numberOfEntries = times.length;
+  <span class="hljs-keyword">var</span> sum = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = numberOfEntries - <span class="hljs-number">1</span>; i &gt; numberOfEntries - <span class="hljs-number">11</span>; i--) {
+    sum = sum + times[i].duration;
+  }
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Average time to generate last 10 frames: "</span> + sum / <span class="hljs-number">10</span> + <span class="hljs-string">"ms"</span>);
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-22">&#182;</a>
+              </div>
+              <p>The following code for sliding background pizzas was pulled from Ilya’s demo found at:
+<a href="https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html">https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html</a></p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-23">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-23">&#182;</a>
+              </div>
+              <p>Moves the sliding background pizzas based on scroll position</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updatePositions</span>(<span class="hljs-params"></span>) </span>{
+  frame++;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-24">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-24">&#182;</a>
+              </div>
+              <p>Gets the current screen width to center the background pizzas</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">var</span> halfScreenWidth = ((<span class="hljs-built_in">window</span>.innerWidth &gt; <span class="hljs-number">0</span>) ? <span class="hljs-built_in">window</span>.innerWidth : screen.width) / <span class="hljs-number">2</span>;
+  <span class="hljs-built_in">window</span>.performance.mark(<span class="hljs-string">"mark_start_frame"</span>);
+  <span class="hljs-keyword">var</span> phases = [];</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-25">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-25">&#182;</a>
+              </div>
+              <p>Calculates the five phases that animate the scrolling background pizzas outside the For Loop</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> x = <span class="hljs-number">0</span>; x &lt; <span class="hljs-number">5</span>; x++) { phases[x] = <span class="hljs-built_in">Math</span>.sin((<span class="hljs-built_in">document</span>.body.scrollTop / <span class="hljs-number">1250</span>) + x); }
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; items.length; i++) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-26">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-26">&#182;</a>
+              </div>
+              <p>Moves background pizzas horizontally, relative to their current position</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    items[i].style.transform = <span class="hljs-string">'translateX('</span> + <span class="hljs-built_in">parseInt</span>(items[i].basicLeft + <span class="hljs-number">100</span> * phases[i % <span class="hljs-number">5</span>] - halfScreenWidth ) + <span class="hljs-string">'px'</span> + <span class="hljs-string">')'</span>;
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-27">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-27">&#182;</a>
+              </div>
+              <p>User Timing API to the rescue again. Seriously, it’s worth learning.
+Super easy to create custom metrics.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-built_in">window</span>.performance.mark(<span class="hljs-string">"mark_end_frame"</span>);
+  <span class="hljs-built_in">window</span>.performance.measure(<span class="hljs-string">"measure_frame_duration"</span>, <span class="hljs-string">"mark_start_frame"</span>, <span class="hljs-string">"mark_end_frame"</span>);
+  <span class="hljs-keyword">if</span> (frame % <span class="hljs-number">10</span> === <span class="hljs-number">0</span>) {
+    <span class="hljs-keyword">var</span> timesToUpdatePosition = <span class="hljs-built_in">window</span>.performance.getEntriesByName(<span class="hljs-string">"measure_frame_duration"</span>);
+    logAverageFrame(timesToUpdatePosition);
+  }
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-28">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-28">&#182;</a>
+              </div>
+              <p>Runs updatePositions on scroll</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">'scroll'</span>, updatePositions);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-29">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-29">&#182;</a>
+              </div>
+              <p>Generates the sliding pizzas when the page loads.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">'DOMContentLoaded'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-30">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-30">&#182;</a>
+              </div>
+              <p>Declares variable outside the For Loop</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">var</span> elem,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-31">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-31">&#182;</a>
+              </div>
+              <p>Gets screen width to calculate number of columns for background pizzas</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>      cols = <span class="hljs-built_in">Math</span>.round((((<span class="hljs-built_in">window</span>.innerWidth &gt; <span class="hljs-number">0</span>) ? <span class="hljs-built_in">window</span>.innerWidth : screen.width)) / <span class="hljs-number">200</span>),
+      s = <span class="hljs-number">256</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-32">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-32">&#182;</a>
+              </div>
+              <p>Gets screen height to calculate number of rows for background pizzas</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>      rows = <span class="hljs-built_in">Math</span>.round((((<span class="hljs-built_in">window</span>.innerHeight &gt; <span class="hljs-number">0</span>) ? <span class="hljs-built_in">window</span>.innerHeight : screen.height)) / s),</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-33">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-33">&#182;</a>
+              </div>
+              <p>calculates number of background pizzas</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>      pizzas = rows * cols,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-34">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-34">&#182;</a>
+              </div>
+              <p>Accesses the DOM outside the For Loop</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>      pizzasDiv = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"movingPizzas1"</span>);
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'No of Pizzas: '</span> + pizzas);
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; pizzas; i++) {
+    elem = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'img'</span>);
+    elem.className = <span class="hljs-string">'mover'</span>;
+    elem.src = <span class="hljs-string">"images/pizza-100.png"</span>;<span class="hljs-comment">// Background pizza image file with height 100px and width 77.333px</span>
+    elem.style.height = <span class="hljs-string">"100px"</span>;
+    elem.style.width = <span class="hljs-string">"77.333px"</span>;
+    elem.basicLeft = (i % cols) * s;
+    elem.style.top = (<span class="hljs-built_in">Math</span>.floor(i / cols) * s) + <span class="hljs-string">'px'</span>;
+    pizzasDiv.appendChild(elem);
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-35">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-35">&#182;</a>
+              </div>
+              <p>Gets all moving pizza objects from the DOM and puts them into one array to reduce DOM access</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  items = <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">'mover'</span>);
+  updatePositions();
+});</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

@@ -45,8 +45,7 @@
     font-weight: normal;
     font-style: normal;
 
-}
-/*!
+};/*!
  *  Font Awesome 4.3.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
  */
@@ -1847,8 +1846,7 @@
 .fa-medium:before {
   content: "\f23a";
 }
-
-@media print {
+;@media print {
   * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; }
   a, a:visited { color: #444 !important; text-decoration: underline; }
   a[href]:after { content: " (" attr(href) ")"; }
@@ -1858,8 +1856,7 @@
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3{ page-break-after: avoid; }
 }
-
-header.shrink {
+;header.shrink {
   height: 3em;
 }
 

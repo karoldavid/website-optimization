@@ -147,10 +147,7 @@ pizzaIngredients.crusts = [
   "Flatbread Crust",
   "Stuffed Crust"
 ];
-<<<<<<< HEAD
 
-=======
->>>>>>> grunt-test
 // Array for moving pizza objects
 var items = [];
 
@@ -433,7 +430,7 @@ var resizePizzas = function(size) {
 
   changeSliderLabel(size);
 
-  // Iterates through pizza elements on the page and changes their widths
+  // Iterates through pizza elements on the page and changes theiir widths
   function changePizzaSizes(size) {
     var newWidth;
     switch(size) {

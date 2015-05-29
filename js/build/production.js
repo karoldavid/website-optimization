@@ -10349,8 +10349,7 @@ if ( typeof noGlobal === strundefined ) {
 return jQuery;
 
 }));
-
-/*!
+;/*!
  * classie v1.0.0
  * class helper functions
  * from bonzo https://github.com/ded/bonzo
@@ -10432,8 +10431,7 @@ if ( typeof define === 'function' && define.amd ) {
 }
 
 })( window );
-
-// Measuring the Critical Rendering Path with Navigation Timing
+;// Measuring the Critical Rendering Path with Navigation Timing
 // https://developers.google.com/web/fundamentals/performance/critical-rendering-path/measure-crp
 
 function logCRP() {
