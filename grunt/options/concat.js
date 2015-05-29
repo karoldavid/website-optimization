@@ -1,4 +1,7 @@
 module.exports = {
+    options: {
+      separator: ';',
+    },
     jsportfolio: {
         src: [
                'js/jquery-1.11.3.js',
