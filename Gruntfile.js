@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 module.exports = function(grunt) {
 
   grunt.initConfig({
@@ -220,3 +221,18 @@ module.exports = function(grunt) {
   grunt.registerTask('default', [ 'watch', 'jshint', 'htmlhint', 'responsive_images', 'imagemin', 'concat', 'uglify', 'cssmin']);
 
 };
+=======
+module.exports = function (grunt) {
+  require('load-grunt-tasks')(grunt);
+};
+
+
+
+// module.exports = function(grunt) {
+
+//   require('load-grunt-config')(grunt);
+//   grunt.registerTask('default', function() {
+//     grunt.log.write('Load default...').ok();
+//   });
+// };
+>>>>>>> grunt-test

@@ -147,7 +147,10 @@ pizzaIngredients.crusts = [
   "Flatbread Crust",
   "Stuffed Crust"
 ];
+<<<<<<< HEAD
 
+=======
+>>>>>>> grunt-test
 // Array for moving pizza objects
 var items = [];
 
@@ -537,7 +540,6 @@ document.addEventListener('DOMContentLoaded', function() {
       pizzas = rows * cols,
       // Accesses the DOM outside the For Loop
       pizzasDiv = document.getElementById("movingPizzas1");
-      console.log('No of Pizzas: ' + pizzas);
   for (var i = 0; i < pizzas; i++) {
     elem = document.createElement('img');
     elem.className = 'mover';
