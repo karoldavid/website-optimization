@@ -62,11 +62,8 @@ Here are arrays of all possible pizza ingredients.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>
-
-<span class="hljs-comment">/* jshint ignore:start */</span>
-<span class="hljs-pi">"use strict"</span>;
-<span class="hljs-comment">/* jshint ignore:end */</span>
+            <div class="content"><div class='highlight'><pre><span class="hljs-pi">
+"use strict"</span>;
 
 <span class="hljs-keyword">var</span> pizzaIngredients = {};
 pizzaIngredients.meats = [
@@ -201,7 +198,7 @@ pizzaIngredients.crusts = [
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <p>Array for moving pizza objects</p>
+              <p>array for moving pizza objects</p>
 
             </div>
             
@@ -478,7 +475,7 @@ Capitalizes first letter of each word</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
-              <p>Returns a string with random pizza ingredients nested inside li tags</p>
+              <p>Returns a string with random pizza ingredients nested inside <li> tags</p>
 
             </div>
             
@@ -516,7 +513,7 @@ Capitalizes first letter of each word</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
-              <p>Returns a DOM element for each pizza</p>
+              <p>returns a DOM element for each pizza</p>
 
             </div>
             
@@ -615,7 +612,7 @@ Capitalizes first letter of each word</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-14">&#182;</a>
               </div>
-              <p>Iterates through pizza elements on the page and changes theiir widths</p>
+              <p>Iterates through pizza elements on the page and changes their widths</p>
 
             </div>
             
@@ -660,7 +657,7 @@ Capitalizes first letter of each word</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-16">&#182;</a>
               </div>
-              <p>Gets the number of pizza elements outside the For Loop</p>
+              <p>Get the number of pizza elements outside the For Loop</p>
 
             </div>
             
@@ -807,14 +804,13 @@ Used by updatePositions() to decide when to log the average time per frame</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-24">&#182;</a>
               </div>
-              <p>Gets the current screen width to center the background pizzas</p>
+              <p>Current screen width is needed to center the background pizzas</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">var</span> halfScreenWidth = ((<span class="hljs-built_in">window</span>.innerWidth &gt; <span class="hljs-number">0</span>) ? <span class="hljs-built_in">window</span>.innerWidth : screen.width) / <span class="hljs-number">2</span>;
   <span class="hljs-built_in">window</span>.performance.mark(<span class="hljs-string">"mark_start_frame"</span>);
-  <span class="hljs-keyword">var</span> phases = [],
-      top = <span class="hljs-built_in">document</span>.body.scrollTop;</pre></div></div>
+  <span class="hljs-keyword">var</span> phases = [];</pre></div></div>
             
         </li>
         
@@ -825,11 +821,11 @@ Used by updatePositions() to decide when to log the average time per frame</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-25">&#182;</a>
               </div>
-              <p>Calculates the five phases that animate the scrolling background pizzas outside the For Loop</p>
+              <p>Calculate the five phases that animate the scrolling background pizzas outside the For Loop</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> x = <span class="hljs-number">0</span>; x &lt; <span class="hljs-number">5</span>; x++) { phases[x] = <span class="hljs-built_in">Math</span>.sin((top / <span class="hljs-number">1250</span>) + x) };
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> x = <span class="hljs-number">0</span>; x &lt; <span class="hljs-number">5</span>; x++) { phases[x] = <span class="hljs-built_in">Math</span>.sin((<span class="hljs-built_in">document</span>.body.scrollTop / <span class="hljs-number">1250</span>) + x); }
   <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; items.length; i++) {</pre></div></div>
             
         </li>
@@ -841,7 +837,7 @@ Used by updatePositions() to decide when to log the average time per frame</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-26">&#182;</a>
               </div>
-              <p>Moves background pizzas horizontally and relative to their current position</p>
+              <p>Move background pizzas horizontally, relative to their current position</p>
 
             </div>
             
@@ -879,7 +875,7 @@ Super easy to create custom metrics.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-28">&#182;</a>
               </div>
-              <p>Runs updatePositions on scroll</p>
+              <p>runs updatePositions on scroll</p>
 
             </div>
             
@@ -909,7 +905,7 @@ Super easy to create custom metrics.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-30">&#182;</a>
               </div>
-              <p>Declares variable outside the For Loop</p>
+              <p>Declare variable outside the For Loop</p>
 
             </div>
             
@@ -924,7 +920,7 @@ Super easy to create custom metrics.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-31">&#182;</a>
               </div>
-              <p>Gets screen width to calculate number of columns for background pizzas</p>
+              <p>Get screen width to calculate number of columns for background pizzas</p>
 
             </div>
             
@@ -940,7 +936,7 @@ Super easy to create custom metrics.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-32">&#182;</a>
               </div>
-              <p>Gets screen height to calculate number of rows for background pizzas</p>
+              <p>Get screen height to calculate number of rows for background pizzas</p>
 
             </div>
             
@@ -955,7 +951,7 @@ Super easy to create custom metrics.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-33">&#182;</a>
               </div>
-              <p>Calculates number of background pizzas</p>
+              <p>calculate number of background pizzas</p>
 
             </div>
             
@@ -970,21 +966,15 @@ Super easy to create custom metrics.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-34">&#182;</a>
               </div>
-              <p>Accesses the DOM outside the For Loop</p>
+              <p>Access the DOM outside the For Loop</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>      pizzasDiv = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"movingPizzas1"</span>);
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'No of Pizzas: '</span> + pizzas);
   <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; pizzas; i++) {
     elem = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'img'</span>);
-    elem.className = <span class="hljs-string">'mover'</span>;
-    elem.src = <span class="hljs-string">"images/pizza-100.png"</span>;<span class="hljs-comment">// Background pizza image file with height 100px and width 77.333px</span>
-    elem.style.height = <span class="hljs-string">"100px"</span>;
-    elem.style.width = <span class="hljs-string">"77.333px"</span>;
-    elem.basicLeft = (i % cols) * s;
-    elem.style.top = (<span class="hljs-built_in">Math</span>.floor(i / cols) * s) + <span class="hljs-string">'px'</span>;
-    pizzasDiv.appendChild(elem);
-  }</pre></div></div>
+    elem.className = <span class="hljs-string">'mover'</span>;</pre></div></div>
             
         </li>
         
@@ -995,7 +985,28 @@ Super easy to create custom metrics.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-35">&#182;</a>
               </div>
-              <p>Gets all moving pizza objects from the DOM and puts them into one array to reduce DOM access</p>
+              <p>Background pizza image file with height 100px and width 77.333px</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    elem.src = <span class="hljs-string">"images/pizza-100.png"</span>;
+    elem.style.height = <span class="hljs-string">"100px"</span>;
+    elem.style.width = <span class="hljs-string">"77.333px"</span>;
+    elem.basicLeft = (i % cols) * s;
+    elem.style.top = (<span class="hljs-built_in">Math</span>.floor(i / cols) * s) + <span class="hljs-string">'px'</span>;
+    pizzasDiv.appendChild(elem);
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-36">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-36">&#182;</a>
+              </div>
+              <p>Get all moving pizza objects from the DOM and put them into one array to reduce DOM access</p>
 
             </div>
             

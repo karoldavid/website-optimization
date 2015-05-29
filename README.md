@@ -1,6 +1,6 @@
-## Website Performance Optimization portfolio project
+## Website Performance Optimization Portfolio Project
 
-#### This project is part of the Udacity Front-End Web Developer Nano Degree.
+#### This project is part of the Udacity Front-End Web Developer Nanodegree
 
 https://www.udacity.com/course/front-end-web-developer-nanodegree--nd00
 
@@ -32,15 +32,15 @@ Project 4 consists of two parts:
 The optimization results will be rated for:
 
 1. Time for initial page load in 'index.html'
-2. Smooth browser animations and efficient code execution in 'views/js/main.js' for
-   the pizzeria page under 'views/pizza.html'
+2. Smooth browser animations and efficient code execution in
+   'views/js/main.js' for the pizzeria page under 'views/pizza.html'
 
 ### Measured Results
 
 1. Mobile Portfolio Page (index.html):
 
 * 93% Speed on Mobile
-* 95%  Speed on Desktop
+* 95% Speed on Desktop
 * 100% Mobile UserExperience
 
 => https://developers.google.com/speed/pagespeed/insights/
@@ -56,10 +56,16 @@ The optimization results will be rated for:
 
 Static assests such as images, css and javascipt files are automatically
 optimized, concatenated and/ or mini-/ uglyfied with Grunt. Grunt Watch automates
-this task and runs tasks whenever watched files are changed.
-Linting files to check for errors with jshint and html lint.
+this tasks and runs them whenever watched files have changed. Furthermore,
+Grunt is linting files to check for errors with jshint and htmlhint. You may also
+type grunt pagespeed into the console to get the actual pagespeed results for
+the live version.
 
 ### Optimization of Cam's Online Pizzeria:
+
+Here is a link to the documentation of 'views/js/main.js' created with Docco:
+
+http://karoldavid.github.io/frontend-nanodegree-mobile-portfolio/views/docs/main.html
 
 Basically, I was looking for possible optimizations of JavaScript, Layout and Paint
 execution (The Critical Rendering Path: HTML -> CSSOM <- JavaScript -> Render Tree
@@ -70,7 +76,7 @@ To get started, I was on the lookout for the more obvious bottlenecks in
 
 For example, I asked myself if there is really a need to animate 200 background pizzas?
 Therefore I calculate dynamically the number of background pizzas needed to fill the
-screen, based on browser window resolution:
+screen, based on browser window resolution (width and height):
 
     document.addEventListener('DOMContentLoaded', function() {
       [..]
@@ -88,14 +94,23 @@ To save more SCRIPTING TIME, I calculated variables, where possible, outside the
 like the 5 phases in the function updatePositions():
 
     function updatePositions() {
-      [...]
-      var phases = [];
-      for (var x = 0; x < 5; x++) { phases[x] = Math.sin((document.body.scrollTop / 1250) + x); }
-      for (var i = 0; i < items.length; i++) {
-        items[i].style.transform = 'translateX(' + parseInt(items[i].basicLeft + 100 * phases[i % 5] - halfScreenWidth ) + 'px' + ')';
-      }
-      [...]
+      [..]
+      var phases = [],
+        top = document.body.scrollTop;
+      // Calculates the five phases that animate the scrolling background pizzas outside the For Loop
+      for (var x = 0; x < 5; x++) { phases[x] = Math.sin((top / 1250) + x) };
+      [..]
     }
+
+  // User Timing API to the rescue again. Seriously, it's worth learning.
+  // Super easy to create custom metrics.
+  window.performance.mark("mark_end_frame");
+  window.performance.measure("measure_frame_duration", "mark_start_frame", "mark_end_frame");
+  if (frame % 10 === 0) {
+    var timesToUpdatePosition = window.performance.getEntriesByName("measure_frame_duration");
+    logAverageFrame(timesToUpdatePosition);
+  }
+}
 
 ... I accessed, where possible, the DOM outside the For Loops and I avoided calculating
 unnecessary values like 'dx':
