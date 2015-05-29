@@ -67,14 +67,19 @@ To get started, I was on the lookout for the more obvious bottlenecks in
 'views/js/main.js', that are usually easier to change.
 
 For example, I asked myself if there is really a need to animate 200 background pizzas?
-After some experimenting, I reduced this number to a more reasonable size of 25:
+Therefore I calculate dynamically the number of background pizzas needed to fill the
+screen, based on browser window resolution:
 
     document.addEventListener('DOMContentLoaded', function() {
-      [...]
-      for (var i = 0; i < 25; i++) {
-        [...]
-      }
-      [...]
+      [..]
+      // Get screen width to calculate number of columns for background pizzas
+      cols = Math.round((((window.innerWidth > 0) ? window.innerWidth : screen.width)) / 200),
+      s = 256,
+      // Get screen height to calculate number of rows for background pizzas
+      rows = Math.round((((window.innerHeight > 0) ? window.innerHeight : screen.height)) / s),
+      // calculate number of background pizzas
+      pizzas = rows * cols,
+      [..]
     });
 
 To save more SCRIPTING TIME, I calculated variables, where possible, outside the For Loops,
@@ -120,12 +125,16 @@ The next change reduced the SCRIPTING TIME, too. There is no need to access the 
 for every single scroll. Therefore, I created an array variable 'items', that has a reference
 to all of the pizzas that have the class name "mover":
 
+    // Array for moving pizza objects
     [..]
     var items = [];
     [..]
     document.addEventListener('DOMContentLoaded', function() {
+      [...]
+      // Access the DOM outside the For Loop
+      pizzasDiv = document.getElementById("movingPizzas1");
       [..]
-      // get all moving pizza objects from the DOM and put them into one array to reduce DOM access
+      // Get all moving pizza objects from the DOM and put them into one array to reduce DOM access
       items = document.getElementsByClassName('mover');
       [..]
     });
