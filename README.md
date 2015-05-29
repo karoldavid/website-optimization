@@ -58,7 +58,7 @@ Static assests such as images, css and javascipt files are automatically
 optimized, concatenated and/ or mini-/ uglyfied with Grunt. Grunt Watch automates
 this tasks and runs them whenever watched files have changed. Furthermore,
 Grunt is linting files to check for errors with jshint and htmlhint. You may also
-type grunt pagespeed into the console to get the actual pagespeed results for
+type 'grunt pagespeed' into the console to get the actual pagespeed results for
 the live version.
 
 ### Optimization of Cam's Online Pizzeria:
@@ -75,7 +75,7 @@ To get started, I was on the lookout for the more obvious bottlenecks in
 'views/js/main.js', that are usually easier to change.
 
 For example, I asked myself if there is really a need to animate 200 background pizzas?
-Therefore I calculate dynamically the number of background pizzas needed to fill the
+So, I have chosen to calculate dynamically the number of background pizzas needed to fill the
 screen, based on browser window resolution (width and height):
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -102,17 +102,7 @@ like the 5 phases in the function updatePositions():
       [..]
     }
 
-  // User Timing API to the rescue again. Seriously, it's worth learning.
-  // Super easy to create custom metrics.
-  window.performance.mark("mark_end_frame");
-  window.performance.measure("measure_frame_duration", "mark_start_frame", "mark_end_frame");
-  if (frame % 10 === 0) {
-    var timesToUpdatePosition = window.performance.getEntriesByName("measure_frame_duration");
-    logAverageFrame(timesToUpdatePosition);
-  }
-}
-
-... I accessed, where possible, the DOM outside the For Loops and I avoided calculating
+... I accessed, where possible, the DOM outside the For Loops and I avoided to calculate
 unnecessary values like 'dx':
 
     function changePizzaSizes(size) {
