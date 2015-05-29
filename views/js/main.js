@@ -147,7 +147,7 @@ pizzaIngredients.crusts = [
   "Flatbread Crust",
   "Stuffed Crust"
 ];
-// array for moving pizza objects
+// Array for moving pizza objects
 var items = [];
 
 // Name generator pulled from http://saturdaykid.com/usernames/generator.html
@@ -536,7 +536,6 @@ document.addEventListener('DOMContentLoaded', function() {
       pizzas = rows * cols,
       // Access the DOM outside the For Loop
       pizzasDiv = document.getElementById("movingPizzas1");
-      console.log('No of Pizzas: ' + pizzas);
   for (var i = 0; i < pizzas; i++) {
     elem = document.createElement('img');
     elem.className = 'mover';
