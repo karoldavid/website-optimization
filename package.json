@@ -14,6 +14,7 @@
     "grunt-htmlhint": "^0.4.1",
     "grunt-load-options": "^0.2.1",
     "grunt-newer": "^1.1.0",
+    "grunt-pagespeed": "^1.0.0",
     "jshint-stylish": "^2.0.0",
     "load-grunt-config": "^0.17.1",
     "load-grunt-tasks": "^3.2.0"
