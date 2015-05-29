@@ -503,9 +503,10 @@ function updatePositions() {
   // Gets the current screen width to center the background pizzas
   var halfScreenWidth = ((window.innerWidth > 0) ? window.innerWidth : screen.width) / 2;
   window.performance.mark("mark_start_frame");
-  var phases = [];
+  var phases = [],
+      top = document.body.scrollTop;
   // Calculates the five phases that animate the scrolling background pizzas outside the For Loop
-  for (var x = 0; x < 5; x++) { phases[x] = Math.sin((document.body.scrollTop / 1250) + x); }
+  for (var x = 0; x < 5; x++) { phases[x] = Math.sin((top / 1250) + x) };
   for (var i = 0; i < items.length; i++) {
     // Moves background pizzas horizontally and relative to their current position
     items[i].style.transform = 'translateX(' + parseInt(items[i].basicLeft + 100 * phases[i % 5] - halfScreenWidth ) + 'px' + ')';
