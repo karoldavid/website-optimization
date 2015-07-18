@@ -505,6 +505,7 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
   var phases = [],
       top = document.body.scrollTop;
+      console.log(document.body.scrollTop);
   // Calculates the five phases that animate the scrolling background pizzas outside the For Loop
   for (var x = 0; x < 5; x++) { phases[x] = Math.sin((top / 1250) + x) };
   for (var i = 0; i < items.length; i++) {

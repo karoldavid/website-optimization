@@ -27,14 +27,32 @@
       </div>
       <div class="portfolio">
         <div class="flex">
+          <div class="yellow-box">
+            <picture>
+              <source srcset="img/logo-200_large_2x.png 2x, img/logo-100_large_1x.png" />
+              <img src="img/logo.png" alt="Logo">
+            </picture>
+            <a href="http://karoldavid.github.io/neighborhood-map"><h3>Region Map UI</h3></a>
+            <p>The single-page application is programmed in JavaScript with the KnockoutJS Model-View-View Model (MVVM) pattern for the User Interface. dynamically it sends async requests to APIs such as Google Maps & StreetView, FourSqaare, Openweathermap, MediaWiki.</p>
+          </div>
+          <div class="green-box">
+            <picture>
+              <source srcset="img/yinyang-200_large_2x.png 2x, img/yinyang-100_large_1x.png" />
+              <img src="img/yinyang.png" alt="Yin Yang">
+            </picture>
+            <a href="http://karoldavid.github.io/chinese-boxing-international/"><h3>Tai Qui & Self Defence</h3></a>
+            <p>This website is a draft in progress.</p>
+          </div>
+        </div>
+        <div class="flex">
           <div class="blue-box">
             <picture>
               <source srcset="img/dziecko_rosemary-200_large_2x.jpg 2x, img/dziecko_rosemary-100_large_1x.jpg" />
               <img src="img/dziecko_rosemary.jpg" alt="Dziecko Rosemary">
             </picture>
             <a href="http://karoldavid.github.io/movie-poster-blog/"><h3>Movie Poster Gallery</h3></a>
-            <p>This movie poster gallery displays a collection of 110 Polish movie posters from 1947 to 1989. They are made by Polish artist.
-            The pictures of the movie posters are photographs of the original collection. The interactive and responsive online gallery is manly programmed in JavaScript. The data displayed is a json dump from mongoDB.</p>
+            <p>This searchable and responsive movie poster gallery displays a collection of 110 Polish movie posters from 1947 to 1989, made by Polish artist.
+            The pictures of the movie posters are photographs of the original collection. The online gallery is manly programmed in JavaScript and KnockoutJS. The data displayed is a json dump from mongoDB.</p>
           </div>
           <div class="red-box">
             <picture>
@@ -52,7 +70,7 @@
               <img src="img/logo.png" alt="Logo">
             </picture>
             <a href="http://karoldavid.github.io/interactive-resume/"><h3>Interactive Online Resume</h3></a>
-            <p>The interactive online resume website is a project, programmed for the Udacity Front-End Web Developer Nano Degree. It is mainly programmed in JavaScript. The data displayed are wrapped in JSON objects</p>
+            <p>This interactive online resume website is a project, programmed for the Udacity Front-End Web Developer Nano Degree. It is mainly programmed in JavaScript. The data displayed are wrapped in JSON objects</p>
           </div>
           <div class="green-box">
             <picture>
@@ -60,7 +78,7 @@
               <img src="img/star.png" alt="Arcade Game Star">
             </picture>
             <a href="http://karoldavid.github.io/arcade-game/"><h3>Gem Land - Game</h3></a>
-            <p>This game is a project, programmed for the Udacity Front-End Web Developer Nano Degree. The focos of this work is object oriented programming in JavaScript and HTML5 canvas manipulation.</p>
+            <p>This arcade game clone is a project, programmed for the Udacity Front-End Web Developer Nano Degree. The focos of this work is object oriented programming in JavaScript and HTML5 canvas manipulation.</p>
           </div>
         </div>
       </div>        
@@ -88,6 +106,7 @@
   <script async src="js/build/production.min.js"></script>
   <script>
     // Loads css after page build
+    // Source: https://developers.google.com/speed/docs/insights/OptimizeCSSDelivery
     var cb = function() {
       var l = document.createElement('link'); l.rel = 'stylesheet';
       l.href = 'css/build/concat.min.css';
