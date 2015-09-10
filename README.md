@@ -209,7 +209,7 @@ http://jashkenas.github.io/docco/
 * This project is part of the Udacity Front-End Web Developer Nanodegree
 https://www.udacity.com/course/front-end-web-developer-nanodegree--nd00
 
-*The repository was forked from:
+* The repository was forked from:
 https://github.com/udacity/frontend-nanodegree-mobile-portfolio.git
 
 ### Questions?
