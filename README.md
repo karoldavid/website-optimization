@@ -57,7 +57,7 @@ the live version.
 
 Here is a link to the documentation of 'views/js/main.js' created with Docco:
 
-http://karoldavid.github.io/frontend-nanodegree-mobile-portfolio/views/docs/main.html
+http://karoldavid.github.io/website-optimization/views/docs/main.html
 
 Basically, I was looking for possible optimizations of JavaScript, Layout and Paint
 execution (The Critical Rendering Path: HTML -> CSSOM <- JavaScript -> Render Tree
@@ -192,7 +192,6 @@ Finally, I created an own optimized image file ('views/images/pizza-100.png') fo
 having the exact size it has on a normal desktop screen. The resizable pizza got it's own optimized image
 file ('views/images/pizza-200.png'), too.
 
-
 ## Resources
 
 * Chrome DevTools
@@ -203,6 +202,9 @@ https://developers.google.com/speed/pagespeed/insights/
 
 * GRUNT The JavaScript Task Runner
 http://gruntjs.com/
+
+* DOCCO Documentation Generator
+http://jashkenas.github.io/docco/
 
 * This project is part of the Udacity Front-End Web Developer Nanodegree
 https://www.udacity.com/course/front-end-web-developer-nanodegree--nd00
