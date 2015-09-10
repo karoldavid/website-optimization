@@ -1,28 +1,10 @@
 ## Website Performance Optimization Portfolio Project
 
-#### This project is part of the Udacity Front-End Web Developer Nanodegree
-
-https://www.udacity.com/course/front-end-web-developer-nanodegree--nd00
-
-#### The code was forked from:
-
-https://github.com/udacity/frontend-nanodegree-mobile-portfolio.git
-
 #### Here is a link to the live version:
 
-http://karoldavid.github.io/frontend-nanodegree-mobile-portfolio/
+http://karoldavid.github.io/website-optimization/
 
-### HOWTO
-
-On the bottom of the mobile portfolio page (index.html) you will find a
-link to Cam's Online Pizzeria (views/pizza.html).
-
-Once you get to the online pizzeria, you may scroll down or you can
-click on one of the menu items "Menu", "Our Ingredients",
-"Pick a Pizza Now!" to get to the slider, which allows you to adjust
-your pizza to one of three sizes.
-
-### Project Overview
+## Project Overview
 
 Project 4 consists of two parts:
 
@@ -35,7 +17,17 @@ The optimization results will be rated for:
 2. Smooth browser animations and efficient code execution in
    'views/js/main.js' for the pizzeria page under 'views/pizza.html'
 
-### Measured Results
+## HOWTO
+
+On the bottom of the mobile portfolio page (index.html) you will find a
+link to Cam's Online Pizzeria (views/pizza.html).
+
+Once you get to the online pizzeria, you may scroll down or you can
+click on one of the menu items "Menu", "Our Ingredients",
+"Pick a Pizza Now!" to get to the slider, which allows you to adjust
+your pizza to one of three sizes.
+
+## Measured Results
 
 1. Mobile Portfolio Page (index.html):
 
@@ -52,7 +44,7 @@ The optimization results will be rated for:
 
 => shown in the browser console
 
-### Additional Rating
+## Additional Rating
 
 Static assests such as images, css and javascipt files are automatically
 optimized, concatenated and/ or mini-/ uglyfied with Grunt. Grunt Watch automates
@@ -61,7 +53,7 @@ Grunt is linting files to check for errors with jshint and htmlhint. You may als
 type 'grunt pagespeed' into the console to get the actual pagespeed results for
 the live version.
 
-### Optimization of Cam's Online Pizzeria:
+## Optimization of Cam's Online Pizzeria:
 
 Here is a link to the documentation of 'views/js/main.js' created with Docco:
 
@@ -200,6 +192,24 @@ Finally, I created an own optimized image file ('views/images/pizza-100.png') fo
 having the exact size it has on a normal desktop screen. The resizable pizza got it's own optimized image
 file ('views/images/pizza-200.png'), too.
 
-### Contact
 
-My email address k.zysk@zoho.com
+## Resources
+
+* Chrome DevTools
+https://developer.chrome.com/devtools
+
+* PageSpeed Insights
+https://developers.google.com/speed/pagespeed/insights/
+
+* GRUNT The JavaScript Task Runner
+http://gruntjs.com/
+
+* This project is part of the Udacity Front-End Web Developer Nanodegree
+https://www.udacity.com/course/front-end-web-developer-nanodegree--nd00
+
+*The repository was forked from:
+https://github.com/udacity/frontend-nanodegree-mobile-portfolio.git
+
+### Questions?
+
+Send an email to k.zysk@zoho.com
