@@ -546,7 +546,7 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.height = "100px";
     elem.style.width = "77.333px";
     elem.basicLeft = (i % cols) * s;
-    elem.style.top = (Math.floor(i / cols) * s) + 'px';
+    elem.style.top = (Math.ceil(i / cols) * s) + 'px';
     pizzasDiv.appendChild(elem);
   }
   // Gets all moving pizza objects from the DOM and puts them into one array to reduce DOM access
