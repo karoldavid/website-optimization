@@ -1,4 +1,4 @@
-## Website Performance Optimization Portfolio Project
+## WEBSITE PERFORMANCE OPTIMIZATION PORTFOLIO PROJECT
 
 #### Here is a link to the live version:
 
@@ -17,7 +17,7 @@ The optimization results will be rated for:
 2. Smooth browser animations and efficient code execution in
    'views/js/main.js' for the pizzeria page under 'views/pizza.html'
 
-## HOWTO
+## How to use
 
 On the bottom of the mobile portfolio page (index.html) you will find a
 link to Cam's Online Pizzeria (views/pizza.html).
@@ -214,4 +214,4 @@ https://github.com/udacity/frontend-nanodegree-mobile-portfolio.git
 
 ### Questions?
 
-Send an email to k.zysk@zoho.com
+Please send an email to k.zysk@zoho.com
