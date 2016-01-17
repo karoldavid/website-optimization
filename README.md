@@ -1,8 +1,6 @@
-## WEBSITE PERFORMANCE OPTIMIZATION PORTFOLIO PROJECT
+## Website Performance Optimization Portfolio Project
 
-#### Here is a link to the live version:
-
-http://karoldavid.github.io/website-optimization/
+Link to the live version: http://karoldavid.github.io/website-optimization/
 
 ## Project Overview
 
@@ -212,6 +210,6 @@ https://www.udacity.com/course/front-end-web-developer-nanodegree--nd00
 * The repository was forked from:
 https://github.com/udacity/frontend-nanodegree-mobile-portfolio.git
 
-### Questions?
+## Questions?
 
-Please send an email to k.zysk@zoho.com
+Email me at k.zysk@zoho.com
