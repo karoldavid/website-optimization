@@ -1,4 +1,4 @@
-## Website Performance Optimization Portfolio Project
+## Website Performance Optimization
 
 Link to the live version: http://karoldavid.github.io/website-optimization/
 
@@ -204,11 +204,11 @@ http://gruntjs.com/
 * DOCCO Documentation Generator
 http://jashkenas.github.io/docco/
 
-* This project is part of the Udacity Front-End Web Developer Nanodegree
-https://www.udacity.com/course/front-end-web-developer-nanodegree--nd00
+## FEND Nanodegree
 
-* The repository was forked from:
-https://github.com/udacity/frontend-nanodegree-mobile-portfolio.git
+The Website Optimization Project is part of the Udacity Front-End Webdeveloper Nanodegree
+
+FEND PROGRAM https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001
 
 ## Questions?
 
